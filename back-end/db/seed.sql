@@ -1,8 +1,10 @@
-INSERT INTO test (name) VALUES
-('Monday'),
-('Tuesday'),
-('Wednesday'),
-('Thursday'),
-('Friday'),
-('Saturday'),
-('Sunday');
+\c artnet_db;
+
+INSERT INTO artists (name) VALUES
+('Monica'),
+('Trisha'),
+('Wendy'),
+('Tatiana'),
+('Frankie'),
+('Shawn'),
+('Sam');

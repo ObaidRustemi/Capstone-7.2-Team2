@@ -16,11 +16,11 @@ function App() {
   }, []);
   return (
     <div>
-      <ul>
+      {/* <ul>
         {days.map((day) => (
           <li key={day.name}>{day.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }

@@ -13,7 +13,7 @@ CREATE TABLE users(
     password TEXT,
     phone_number TEXT,
     is_artist BOOLEAN,
-    is_gallery BOOLEAN
+    is_venue BOOLEAN
 );
 
 DROP TABLE IF EXISTS artwork;

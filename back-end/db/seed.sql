@@ -1,6 +1,6 @@
 \c artapp_db;
 
-INSERT INTO users(username, email, password, phone_number, is_artist, is_gallery) VALUES
+INSERT INTO users(username, email, password, phone_number, is_artist, is_venue) VALUES
 ('Monica', 'monica@gmail.com', 'monica123', 12345678, true, false),
 ('Trisha', 'trisha@gmail.com', 'trisha123', 12345678, true, false),
 ('Wendy', 'wendy@gmail.com', 'wendy123', 12345678, true, false),

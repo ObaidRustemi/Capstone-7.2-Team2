@@ -1,11 +1,11 @@
 const db = require("../db/dbConfig");
 
-const getAllArtists = async () => {
-  console.log("getAllArtists");
+const getAllUsers= async () => {
+  console.log("getAllUsers");
 
   try {
-    const allArtists = await db.any("SELECT * FROM artists");
-    return allArtists;
+    const allUsers= await db.any("SELECT * FROM users");
+    return allUsers;
   } catch (error) {
       console.log("you have hit an error")
     console.log(error);
@@ -13,5 +13,5 @@ const getAllArtists = async () => {
 };
 
 module.exports = {
-  getAllArtists,
+  getAllUsers,
 };

@@ -1,13 +1,14 @@
 \c artapp_db;
 
-INSERT INTO users(username) VALUES
-('Monica'),
-('Trisha'),
-('Wendy'),
-('Tatiana'),
-('Frankie'),
-('Shawn'),
-('Sam');
+INSERT INTO users(username, email, password, phone_number, is_artist, is_gallery) VALUES
+('Monica', 'monica@gmail.com', 'monica123', 12345678, true, false),
+('Trisha', 'trisha@gmail.com', 'trisha123', 12345678, true, false),
+('Wendy', 'wendy@gmail.com', 'wendy123', 12345678, true, false),
+('Tatiana', 'tatiana@gmail.com', 'tatiana123', 12345678, true, false),
+('Frankie', 'frankie@gmail.com', 'frankie123', 12345678, true, false),
+('Shawn', 'shawn@gmail.com', 'shawn123', 12345678, false, true),
+('Sam', 'trisha@gmail.com', 'trisha123', 12345678, false, true);
+
 
 INSERT INTO artwork (title, artist_id, image) VALUES
 ('title 1', 1, 'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2012/01/hokusai.jpg'),
@@ -19,26 +20,11 @@ INSERT INTO artwork (title, artist_id, image) VALUES
 ('title 7', 7, 'https://cdn.shopify.com/s/files/1/1043/4860/products/14ers_original_batik_12_by_17_300_2048x2048.JPG?v=1455754701');
 
 INSERT INTO venues ( name, owner_id, address) VALUES  
-('VENUE 1', 1, '2453 Broadway, New York NY 10043'),
-('VENUE 2', 2, '5344 Amsterdam, New York NY 10043'),
-('VENUE 3', 3, '88 Hamilton, New York NY 10043'),
-('VENUE 4', 4, '11 West 139th ST, New York NY 10043'),
-('VENUE 5', 5, '124 East Adam Clayton Powell, New York NY 10043'),
-('VENUE 6', 6, '3333 Riverside, New York NY 10043'),
-('VENUE 7', 7, '123 Essex ST, New York NY 10043');
+('VENUE 1', 6, '2453 Broadway, New York NY 10043'),
+('VENUE 2', 7, '5344 Amsterdam, New York NY 10043');
 
 INSERT INTO venue_images (venue_id, photo_url) VALUES   
 (1,'https://media.timeout.com/images/105439629/image.jpg'),
 (1,'https://d4qwptktddc5f.cloudfront.net/easy_thumbnails/thumbs_Interior-Design-American-Kennel-Club-Museum-of-the-Dog-New-York-01-0319.jpg.770x0_q95.jpg'),
 (2,'https://www.centralparktours.net/blog/content/images/2020/07/nycgallery.jpg'),
-(2,'http://thepaperbox.nyc/wp-content/uploads/2016/02/back-yard-185x185.jpg'),
-(3,'http://thepaperbox.nyc/wp-content/uploads/2016/02/thepaperboxbrooklyn2-185x185.jpg'),
-(3,'http://thepaperbox.nyc/wp-content/uploads/2016/02/bar-185x185.jpg'),
-(4,'https://media.timeout.com/images/104677572/750/562/image.jpg'),
-(4,'https://res.cloudinary.com/the-jewish-museum/image/fetch/q_auto,f_auto/v1/https://s3.amazonaws.com/tjmassets/carousels/1245_Constellations_Homepage.jpg'),
-(5,''),
-(5,''),
-(6,''),
-(6,''),
-(7,''),
-(7,'');
+(2,'http://thepaperbox.nyc/wp-content/uploads/2016/02/back-yard-185x185.jpg');

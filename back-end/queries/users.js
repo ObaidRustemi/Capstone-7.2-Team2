@@ -12,6 +12,19 @@ const getAllUsers= async () => {
   }
 };
 
+const getUser= async (id) => {
+  console.log("getUser");
+
+  try {
+    const user= await db.any("SELECT * FROM users WHERE id = $1", id);
+    return user;
+  } catch (error) {
+      console.log("you have hit an error")
+    console.log(error);
+  }
+};
+
 module.exports = {
   getAllUsers,
+  getUser
 };

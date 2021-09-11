@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS artnet_db;
+DROP DATABASE IF EXISTS ArtApp_db;
 
-CREATE DATABASE artnet_db;
+CREATE DATABASE ArtApp_db;
 
-\c artnet_db;
+\c ArtApp_db;
 
 DROP TABLE IF EXISTS users;
 
@@ -37,9 +37,9 @@ CREATE TABLE artwork(
 --     message TEXT
 -- );
 
-DROP TABLE IF EXISTS galleries;
+DROP TABLE IF EXISTS venues;
 
-CREATE TABLE galleries(
+CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 
     name TEXT,
     owner_id INT REFERENCES user(id),
@@ -57,10 +57,10 @@ CREATE TABLE galleries(
 --     message TEXT
 -- );
 
-DROP TABLE IF EXISTS gallery_images;
+DROP TABLE IF EXISTS venue_images;
 
-CREATE TABLE gallery_images(
+CREATE TABLE venue_images(
     id SERIAL PRIMARY KEY, 
-    gallery_id INT REFERENCES users(id),
+    venue_id INT REFERENCES users(id),
     photo_url TEXT
 );

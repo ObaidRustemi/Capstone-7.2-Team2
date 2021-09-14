@@ -1,8 +1,11 @@
 const express = require("express");
+const venuesController = require("./venuesController")
 
 const users = express.Router();
 
 const { getAllUsers, getUser, postUser, editUser, deleteUser } = require("../queries/users");
+
+users.use("/:owner_id/venues", venuesController);
 
 users.get("/", async (req, res) => {
   const allUsers = await getAllUsers();

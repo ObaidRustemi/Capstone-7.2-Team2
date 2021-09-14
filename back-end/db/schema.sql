@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS venues;
 CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 
     name TEXT,
+    venue_profile_photo TEXT,
     owner_id INT REFERENCES users(id),
     address TEXT
 );

@@ -19,9 +19,10 @@ INSERT INTO artwork (title, artist_id, image) VALUES
 ('title 6', 6, 'https://mearone.com/wp-content/uploads/2021/03/TRIPFULL.jpg'),
 ('title 7', 7, 'https://cdn.shopify.com/s/files/1/1043/4860/products/14ers_original_batik_12_by_17_300_2048x2048.JPG?v=1455754701');
 
-INSERT INTO venues ( name, owner_id, address) VALUES  
-('VENUE 1', 6, '2453 Broadway, New York NY 10043'),
-('VENUE 2', 7, '5344 Amsterdam, New York NY 10043');
+INSERT INTO venues ( name, venue_profile_photo, owner_id, address) VALUES  
+('VENUE 1', 'https://media.timeout.com/images/105439629/image.jpg', 6, '2453 Broadway, New York NY 10043'),
+('VENUE 3', 'https://media.timeout.com/images/105439629/image.jpg', 6, '4566 Broadway, New York NY 10043'),
+('VENUE 2', 'https://media.timeout.com/images/105439629/image.jpg', 7, '5344 Amsterdam, New York NY 10043');
 
 INSERT INTO venue_images (venue_id, photo_url) VALUES   
 (1,'https://media.timeout.com/images/105439629/image.jpg'),

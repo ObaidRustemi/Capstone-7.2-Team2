@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS ArtApp_db;
+DROP DATABASE IF EXISTS artapp_db;
 
-CREATE DATABASE ArtApp_db;
+CREATE DATABASE artapp_db;
 
-\c ArtApp_db;
+\c artapp_db;
 
 DROP TABLE IF EXISTS users;
 
@@ -13,7 +13,7 @@ CREATE TABLE users(
     password TEXT,
     phone_number TEXT,
     is_artist BOOLEAN,
-    is_gallery BOOLEAN
+    is_venue BOOLEAN
 );
 
 DROP TABLE IF EXISTS artwork;
@@ -42,7 +42,8 @@ DROP TABLE IF EXISTS venues;
 CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 
     name TEXT,
-    owner_id INT REFERENCES user(id),
+    venue_profile_photo TEXT,
+    owner_id INT REFERENCES users(id),
     address TEXT
 );
 

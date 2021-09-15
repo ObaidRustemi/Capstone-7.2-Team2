@@ -1,10 +1,10 @@
 const db = require("../db/dbConfig");
 
-const getAllArtwork = async () => {
+const getAllArtwork = async (userId) => {
   console.log("getAllArtwork");
 
   try {
-    const allArtwork = await db.any("SELECT * FROM artwork");
+    const allArtwork = await db.any("SELECT * FROM artwork WHERE artist_id = $1", userId);
     return allArtwork;
   } catch (error) {
     console.log("you have hit an error");
@@ -16,34 +16,34 @@ const getArtwork = async (id) => {
   console.log("getArtwork");
 
   try {
-    const user = await db.any("SELECT * FROM artwork WHERE id = $1", id);
+    const user = await db.one("SELECT * FROM artwork WHERE id = $1", id);
     return user;
   } catch (error) {
     console.log("you have hit an error");
     console.log(error);
   }
 };
-const postArtwork = async (newArtwork) => {
+const postArtwork = async (artwork, userId) => {
   const { title, image } =
-    newArtwork;
+    artwork
   try {
-    const artwork = await db.any(
-      "INSERT INTO artwork(title, image) VALUES ($1, $2) RETURNING *",
-      [title, image]
+    const newArtwork = await db.any(
+      "INSERT INTO artwork(title, image, artist_id) VALUES ($1, $2, $3) RETURNING *",
+      [title, image, userId]
     );
-    return artwork;
+    return newArtwork;
   } catch (error) {
     console.log("you have hit an error");
     console.log(error);
   }
 };
 const editArtwork = async (artwork, id) => {
-  const { title, image} = artwork;
+  const { title, image, artist_id} = artwork;
   user;
   try {
     const updatedArtwork = await db.one(
-      "UPDATE artwork SET title = $1, image = $2 WHERE id = $3 RETURNING *",
-      [title, image, id]
+      "UPDATE artwork SET title = $1, image = $2, artist_id = $3 WHERE id = $4 RETURNING *",
+      [title, image, artist_id, id]
     );
     return updatedArtwork;
   } catch (error) {

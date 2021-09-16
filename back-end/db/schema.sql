@@ -62,6 +62,6 @@ DROP TABLE IF EXISTS venue_images;
 
 CREATE TABLE venue_images(
     id SERIAL PRIMARY KEY, 
-    venue_id INT REFERENCES users(id),
+    venue_id INT REFERENCES venues(id),
     photo_url TEXT
 );

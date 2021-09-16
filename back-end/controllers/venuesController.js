@@ -1,4 +1,5 @@
 const express = require("express");
+const venueImagesController = require("./venueImagesController");
 
 const venues = express.Router({ mergeParams: true });
 
@@ -9,6 +10,8 @@ const {
   deleteVenue,
   updateVenue,
 } = require("../queries/venues");
+
+venues.use("/:venue_id/venue_images", venueImagesController);
 
 venues.get("/", async (req, res) => {
   const { owner_id } = req.params;

@@ -1,6 +1,7 @@
 const express = require("express");
 // import artwork from "./artworkController";
 const artworkController = require("./artworkController")
+const venuesController = require("./venuesController")
 
 const users = express.Router();
 // const artwork = express.Router();
@@ -8,6 +9,8 @@ const users = express.Router();
 const { getAllUsers, getUser, postUser, editUser, deleteUser } = require("../queries/users");
 users.use("/:artist_id/artwork", artworkController);
 
+
+users.use("/:owner_id/venues", venuesController);
 
 users.get("/", async (req, res) => {
   const allUsers = await getAllUsers();

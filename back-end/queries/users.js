@@ -4,8 +4,6 @@ const db = require("../db/dbConfig");
 
 const getAllUsers = async () => {
   console.log("getAllUsers");
-
-
   try {
     const allUsers = await db.any("SELECT * FROM users");
     return allUsers;
@@ -19,7 +17,7 @@ const getUser = async (id) => {
   console.log("getUser");
 
   try {
-    const user = await db.any("SELECT * FROM users WHERE id = $1", id);
+    const user = await db.one("SELECT * FROM users WHERE id = $1", id);
     return user;
   } catch (error) {
     console.log("you have hit an error");
@@ -30,7 +28,7 @@ const postUser = async (newUser) => {
   const { profile_pic, type_of_art, description, phone_number, location, is_venue} =
     newUser;
   try {
-    const user = await db.any(
+    const user = await db.one(
       "INSERT INTO users(profile_pic, type_of_art, description, phone_number, location, is_venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
       [profile_pic, type_of_art, description, phone_number, location, is_venue]
     );

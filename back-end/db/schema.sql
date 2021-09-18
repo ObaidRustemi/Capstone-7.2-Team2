@@ -8,11 +8,11 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    username TEXT,
-    email TEXT,
-    password TEXT,
-    phone_number TEXT,
-    is_artist BOOLEAN,
+    profile_pic TEXT,
+    type_of_art TEXT,
+    description TEXT,
+    phone_number INT,
+    location TEXT,
     is_venue BOOLEAN
 );
 

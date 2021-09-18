@@ -4,8 +4,6 @@ const db = require("../db/dbConfig");
 
 const getAllUsers = async () => {
   console.log("getAllUsers");
-
-
   try {
     const allUsers = await db.any("SELECT * FROM users");
     return allUsers;
@@ -19,7 +17,7 @@ const getUser = async (id) => {
   console.log("getUser");
 
   try {
-    const user = await db.any("SELECT * FROM users WHERE id = $1", id);
+    const user = await db.one("SELECT * FROM users WHERE id = $1", id);
     return user;
   } catch (error) {
     console.log("you have hit an error");
@@ -27,12 +25,12 @@ const getUser = async (id) => {
   }
 };
 const postUser = async (newUser) => {
-  const { username, email, password, phone_number, is_artist, is_venue } =
+  const { profile_pic, type_of_art, description, phone_number, location, is_venue} =
     newUser;
   try {
-    const user = await db.any(
-      "INSERT INTO users(username, email, password, phone_number, is_artist, is_venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [username, email, password, phone_number, is_artist, is_venue]
+    const user = await db.one(
+      "INSERT INTO users(profile_pic, type_of_art, description, phone_number, location, is_venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [profile_pic, type_of_art, description, phone_number, location, is_venue]
     );
     return user;
   } catch (error) {
@@ -41,12 +39,12 @@ const postUser = async (newUser) => {
   }
 };
 const editUser = async (user, id) => {
-  const { username, email, password, phone_number, is_artist, is_venue } = user;
+  const { profile_pic, type_of_art, description, phone_number, location, is_venue } = user;
   user;
   try {
     const updatedUser = await db.one(
-      "UPDATE users SET username = $1, email = $2, password = $3, phone_number = $4, is_artist = $5, is_venue= $6 WHERE id = $7 RETURNING *",
-      [username, email, password, phone_number, is_artist, is_venue, id]
+      "UPDATE users SET profile_pic = $1, type_of_art = $2, description = $3, phone_number = $4, location = $5, is_venue= $6 WHERE id = $7 RETURNING *",
+      [profile_pic, type_of_art, description, phone_number, location, is_venue, id]
     );
     return updatedUser;
   } catch (error) {

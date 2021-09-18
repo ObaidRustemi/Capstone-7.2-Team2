@@ -1,0 +1,14 @@
+#nav-main-div{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.left{
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.right{
+
+}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Users = ({ user }) => {
+  debugger
   return (
     <li>
       <Link to={`/users/${user.id}`}>

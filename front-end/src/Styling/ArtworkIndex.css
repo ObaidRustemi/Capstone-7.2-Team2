@@ -1,0 +1,113 @@
+.ArtworkIndex {
+    margin: 40px;
+    color: black;
+    font-family: Maven Pro;
+    text-transform: uppercase;
+    height: 100%;
+
+}
+
+.ArtworkIndex .title {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+}
+
+.ArtworkIndex .title h1 {
+    font-size: 28px;
+    text-align: start;
+}
+
+.artwork-index img {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    object-fit: contain;
+    margin: 0;
+  }
+  
+  .artwork-index ul {
+    list-style: none;
+    width: 90vw;
+    display: grid;
+    grid-auto-columns: minmax(max-content, 1fr);
+    grid-template-areas: "c c c c";
+    gap: 10px;
+    justify-items: flex-start;
+  }
+  
+  .artwork-index li {
+    width: 280px;
+    padding: 10px;
+    margin: 0 10px 40px;
+    border: radial-gradient(
+      299.2% 165.53% at 0% 2.87%,
+      #000000 0%,
+      #555 100%
+    );
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+  }
+  
+  .artwork-index li a {
+    text-decoration: none;
+    color: rgb(2, 2, 2);
+    width: 100%;
+  }
+  
+  .artwork-index li a:hover {
+    text-decoration: underline;
+  }
+  
+  .artwork-index li h2 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* .artwork-index li h3 {
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: #777;
+  } */
+  
+  /* .artwork-index li div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  } */
+
+  @media screen and (max-width: 1280px) {
+    .artwork-index ul {
+      grid-template-areas: "c c c";
+    }
+  }
+  
+  @media screen and (max-width: 980px) {
+    .artwork-index ul {
+      grid-template-areas: "c c";
+      justify-items: center;
+    }
+  }
+  
+  @media screen and (max-width: 680px) {
+    .ArtworkIndex {
+      margin: 40px 20px;
+    }
+  
+    .artwork-index img {
+      margin: 0 auto;
+    }
+  
+    .artwork-index ul {
+      grid-template-areas: "c";
+    }
+  
+    .artwork-index li {
+      width: 80vw;
+    }
+  }

@@ -11,6 +11,7 @@ const UserList = ({users}) => {
     <div className="user-list-container">
       <ul>
         {users.map((user) => {
+          
           return <User key={user.id} user={user}/>;
         })}
       </ul>

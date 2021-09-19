@@ -9,6 +9,7 @@
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-/* .right{
-
-} */
+.right  div {
+display: flex;
+/* justify-content: space-evenly; */
+}

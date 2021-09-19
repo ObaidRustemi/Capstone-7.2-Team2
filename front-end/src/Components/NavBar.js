@@ -5,6 +5,7 @@ import { useAuth } from "../Contexts/AuthContext";
 
 const NavBar = () => {
   const { currentUser } = useAuth();
+  debugger
 
   return (
     <div id="nav-main-div">
@@ -15,7 +16,12 @@ const NavBar = () => {
         {currentUser ? (
           <div>
             <p> Hello {currentUser.email}!</p>
+           <p>
             <NavLink to="/dashboard"> Account Info </NavLink>
+            </p>
+            <p>
+            <NavLink to="/uploadArtwork"> Upload </NavLink>
+            </p>
           </div>
         ) : (
           <div>

@@ -7,15 +7,14 @@ import Login from "./Components/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
 import UpdateProfile from "./Components/UpdateProfile";
+import UploadArtwork from "./Components/UploadArtwork";
+import UploadVenueImage from "./Components/UploadVenueImage"
 
 //DEPENDENCIES
 import React from "react";
-import axios from "axios";
 import { Switch, Route } from "react-router-dom";
-import { apiURL } from "./util/apiURL.js";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "./Contexts/AuthContext";
-const API = apiURL();
 
 function App() {
   return (
@@ -35,6 +34,8 @@ function App() {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+              <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
+              <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
               {/* <Index /> */}
               {/* </Route> */}
             </Switch>

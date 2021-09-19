@@ -20,6 +20,7 @@ venueImages.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const singleImageForVenue = await getImageForVenue(id);
+    console.log(singleImageForVenue["id"])
     if (singleImageForVenue["id"]) {
       res.json({ success: true, payload: singleImageForVenue });
     } else {

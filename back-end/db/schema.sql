@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    profile_pic TEXT,
+    username TEXT,
     type_of_art TEXT,
     description TEXT,
     phone_number INT,

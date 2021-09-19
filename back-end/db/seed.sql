@@ -1,6 +1,6 @@
 \c artapp_db;
 
-INSERT INTO users(profile_pic, type_of_art, description, phone_number, location, is_venue) VALUES
+INSERT INTO users(username, type_of_art, description, phone_number, location, is_venue) VALUES
 ('Monica', 'Abstract', 'Abstract art is an art in which the artwork is based on general ideas rather than having any physical existence. In other words, we can say that an abstract art is based on an internal form instead of having any pictorial representation of things.', 12345678, 'NY,USA', false),
 ('Trisha', 'Impressionism', 'Impressionism is a genre of art that became popular in the late 19th century in a response to the needs of the French Academie des Beaux-Arts, commonly called The Academie.', 12345678, 'MS,USA', false),
 ('Wendy', 'Realism', 'Realism is a genre of art which is based on practical matters or real things rather than imaginary or visionary representations. Realism developed as a reaction to the romanticism in the 19th century. ', 12345678, 'PAT,NJ', false),

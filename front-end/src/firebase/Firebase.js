@@ -1,5 +1,7 @@
 import firebase from "firebase/compat/app";
+// import { getStorage } from "firebase/storage"; 
 import "firebase/compat/auth";
+import "firebase/compat/storage";
 
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -11,5 +13,6 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
 
+export const storage = firebase.storage();
 export const auth = app.auth();
 export default app;

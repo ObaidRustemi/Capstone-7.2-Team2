@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import useStorage from "../Components/UseStorage"
+// import UseStorage from "../Components/UseStorage";
+import { storage } from "../firebase/Firebase";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -18,16 +19,49 @@ const UploadForm = () => {
     }
   };
 
-  return (
-    <form>
-      <label>title</label>
-      <input type="file" onChange={changeHandler} />
-      <div>
-        {error && <div> {error} </div>}
-        {file && <div> {file.name} </div>}
+  const handleUpload = () => {
+    if (file) {
+      debugger;
+      // UseStorage(file)
+      const uploadTask = storage.ref(`/${file.name}`).put(file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          console.log(snapshot);
+        },
+        () => {
+          storage
+            .ref(`/${file.name}`)
+            .child(file.name)
+            .getDownloadURL()
+            .then((url) => {
+              console.log(url);
+            });
+        }
+      );
 
+      debugger;
+    } else {
+      window.alert("Please choose a file first!");
+    }
+  };
+
+  return (
+    <div>
+      <form>
+        <label>title</label>
+        <input type="file" onChange={changeHandler} />
+        <div>
+          {error && <div> {error} </div>}
+          {file && <div> {file.name} </div>}
+        </div>
+      </form>
+      <div>
+        <button onClick={handleUpload}> upload</button>
       </div>
-    </form>
+
+      {file&& <img src={file.name}  alt="file pic"/>}
+    </div>
   );
 };
 

@@ -12,6 +12,8 @@ const {
   editUser,
   deleteUser,
 } = require("../queries/users");
+const { getAllVenuesForUser } = require("../queries/venues");
+
 users.use("/:artist_id/artwork", artworkController);
 
 users.use("/:owner_id/venues", venuesController);
@@ -21,16 +23,36 @@ users.get("/", async (req, res) => {
   res.json({ success: true, payload: allUsers });
 });
 
-
 users.get("/:id", async (req, res) => {
+  // let res = await axios.get(`${API}/users/${id}?isVenue=${user.isVenueOwner}`);
+  // req.params.id  ..... 6
+  // req.query.isVenue ..... true
+
+  // const data = await getUser(id, isVenueOwner); { user: {}, venues: [{}] }
+
   try {
+    // const { isVenueOwner } = req.query
+    const is_venue = true;
     const { id } = req.params;
-    const user = await getUser(id);
-    if (user["id"]) {
-      console.log("inside if")
-      res.json({ success: true, payload: user });
+    const user = await getUser(id, is_venue);
+
+    if (user?.is_venue) {
+      console.log("inside if");
+      const venues = await getAllVenuesForUser(id);
+      const user = await getUser(id);
+      res.json({
+        success: true,
+        payload: { user, venues },
+      });
+    } else if (user?.id) {
+      console.log("inside else if");
+      const user = await getUser(id);
+      res.json({
+        success: true,
+        payload: { user },
+      });
     } else {
-      console.log("inside the throw")
+      console.log("inside the throw");
       throw user;
     }
   } catch (error) {
@@ -41,58 +63,54 @@ users.get("/:id", async (req, res) => {
 });
 
 users.post("/", async (req, res) => {
-  try{
+  try {
     const newUser = await postUser(req.body);
-    if(newUser){
+    if (newUser) {
       res.json({ success: true, payload: newUser });
-    }else{
-      throw newUser
+    } else {
+      throw newUser;
     }
-  }catch(error){
+  } catch (error) {
     res.status(422).json({
       success: false,
       payload: "Must enter required field",
       error: error,
     });
   }
-  
-  
 });
 
 users.put("/:id", async (req, res) => {
-  try{
+  try {
     const { id } = req.params;
     const updatedUser = await editUser(req.body, id);
-    if(updatedUser["id"]){
+    if (updatedUser["id"]) {
       res.json({ success: true, payload: updatedUser });
-    }else{
-      throw updatedUser
+    } else {
+      throw updatedUser;
     }
-  }catch(error){
+  } catch (error) {
     res
-    .status(422)
-    .json({ success: false, payload: "Must enter valid data", error: error });
+      .status(422)
+      .json({ success: false, payload: "Must enter valid data", error: error });
   }
-  
-  
+
   res.json(updatedUser);
 });
 
 users.delete("/:id", async (req, res) => {
-  try{
+  try {
     const { id } = req.params;
     const deletedUser = await deleteUser(id);
-    if(deletedUser["id"]){
+    if (deletedUser["id"]) {
       res.json({ success: true, payload: deletedUser });
-    }else{
-      throw deletedUser
+    } else {
+      throw deletedUser;
     }
-  }catch(error){
+  } catch (error) {
     res
-        .status(404)
-        .json({ success: false, payload: "User not found", error: error });
+      .status(404)
+      .json({ success: false, payload: "User not found", error: error });
   }
-
 });
 
 module.exports = users;

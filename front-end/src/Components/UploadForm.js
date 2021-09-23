@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import UseStorage from "../Components/UseStorage";
 import { storage } from "../firebase/Firebase";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [url, setUrl] = useState(null);
 
   const types = ["image/png", "image/jpeg"];
   const changeHandler = (e) => {
@@ -21,26 +23,29 @@ const UploadForm = () => {
 
   const handleUpload = () => {
     if (file) {
-      debugger;
-      // UseStorage(file)
-      const uploadTask = storage.ref(`/${file.name}`).put(file);
+      const uploadTask = storage.ref(`/deeznuts/${file.name}`).put(file);
+
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          console.log(snapshot);
+          let percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(percentage);
         },
-        () => {
-          storage
-            .ref(`/${file.name}`)
-            .child(file.name)
-            .getDownloadURL()
-            .then((url) => {
-              console.log(url);
-            });
+        (error) => {
+          setError(error);
+        },
+        async () => {
+          const url = await storage
+            .ref(`/deeznuts/${file.name}`)
+            .getDownloadURL();
+          if (url) {
+            setUrl(url);
+          } else {
+            setUrl(null);
+          }
         }
       );
-
-      debugger;
     } else {
       window.alert("Please choose a file first!");
     }
@@ -60,7 +65,8 @@ const UploadForm = () => {
         <button onClick={handleUpload}> upload</button>
       </div>
 
-      {file&& <img src={file.name}  alt="file pic"/>}
+      {file && <img src={url} alt="file pic" />}
+      {progress && progress}
     </div>
   );
 };

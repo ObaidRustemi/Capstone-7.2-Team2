@@ -16,6 +16,7 @@ import { Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "./Contexts/AuthContext";
 
+
 function App() {
   return (
     <div className="App">

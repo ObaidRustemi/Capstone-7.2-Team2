@@ -38,10 +38,10 @@ export default function SignUp() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="username">
+            {/* <Form.Group id="username">
               <Form.Label>User Name</Form.Label>
               <Form.Control type="name" ref={usernameRef} required />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

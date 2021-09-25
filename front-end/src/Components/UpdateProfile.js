@@ -3,12 +3,14 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { currentUser, updateEmail, updatePassword } = useAuth();
+  const { updateEmail, updatePassword } = useAuth();
+  const currentUser  = useSelector((state) => state.currentUser);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();

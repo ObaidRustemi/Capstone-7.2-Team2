@@ -1,6 +1,7 @@
 #nav-main-div{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
 }
@@ -9,7 +10,22 @@
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.right  div {
-display: flex;
-/* justify-content: space-evenly; */
+.title {
+    color: black;
+}
+/* .right{
+
+} */
+
+.nav{
+    align-items: center;
+}
+.nav p {
+    padding-right: 25px;
+    padding-top: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: black
 }

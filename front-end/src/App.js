@@ -17,32 +17,36 @@ import { Container } from "react-bootstrap";
 import { AuthProvider } from "./Contexts/AuthContext";
 const API = apiURL();
 
+
 function App() {
   return (
-    <div className="App">
-      <AuthProvider>
-      <NavBar />
-      <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "100vh" }}
-      >
-        {/* <main> */}
-        <div className="w-100" style={{ maxWidht: "400px" }}>
-            <Switch>
-              <Route exact path="/" component={Index} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              {/* <Index /> */}
-              {/* </Route> */}
-            </Switch>
-          {/* </main> */}
-        </div>
-      </Container>
-          </AuthProvider>
-    </div>
+      <div className="App">
+        <AuthProvider>
+          <NavBar />
+          <Container
+            className="d-flex align-items-center justify-content-center"
+            style={{ minHeight: "100vh" }}
+          >
+            {/* <main> */}
+            <div className="w-100" style={{ maxWidht: "400px" }}>
+              <Switch>
+                <Route exact path="/" component={Index} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute
+                  path="/update-profile"
+                  component={UpdateProfile}
+                />
+                <Route path="/signup" component={SignUp} />
+                <Route path="/login" component={Login} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                {/* <Index /> */}
+                {/* </Route> */}
+              </Switch>
+              {/* </main> */}
+            </div>
+          </Container>
+        </AuthProvider>
+      </div>
   );
 }
 

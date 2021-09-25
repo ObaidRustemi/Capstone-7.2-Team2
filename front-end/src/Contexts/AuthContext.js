@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../Firebase";
+import { useSelector, useDispatch } from "react-redux";
 
 const AuthContext = React.createContext();
 
@@ -8,7 +9,11 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
+  // const [currentUser, setCurrentUser] = useState();
+  const entireState = useSelector((state) => state)
+  console.log(entireState);
+  const { currentUser } = entireState;
+  const dispatch = useDispatch();
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -34,9 +39,21 @@ export function AuthProvider({ children }) {
       return currentUser.updatePassword(password)
   }
 
+  function getUid(user) {
+    if(user){
+      return user.uid
+    }else {
+      return "SIGNOUT"
+    }
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+      // setCurrentUser(user);
+      dispatch({
+        type: "CURRENT_USER",
+        currentUser: user
+      })
     });
     return unsubscribe;
   }, []);
@@ -48,7 +65,9 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    getUid
+
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

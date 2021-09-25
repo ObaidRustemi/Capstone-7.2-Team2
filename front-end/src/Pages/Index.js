@@ -2,7 +2,7 @@ const Index =()=>{
 
     return(
         <div id="index-main-div">
-         <h1>soy</h1>
+         <h1>HOME PAGE</h1>
         </div>
     )
 }

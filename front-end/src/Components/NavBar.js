@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthContext";
 import "../index.css";
 import { useSelector } from "react-redux";
+import { Navbar, Nav } from "react-bootstrap";
 
 const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);

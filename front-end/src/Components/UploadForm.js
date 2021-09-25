@@ -64,9 +64,10 @@ const UploadForm = () => {
       <div>
         <button onClick={handleUpload}> upload</button>
       </div>
-
-      {file && <img src={url} alt="file pic" />}
+      {url && <img src={url} alt="file pic" />}
+      <p>
       {progress && progress}
+      </p>
     </div>
   );
 };

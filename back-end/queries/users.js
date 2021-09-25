@@ -25,7 +25,8 @@ const getUser = async (id) => {
 };
 const postUser = async (newUser) => {
   const {
-    profile_pic,
+    username,
+    firebase_uid,
     type_of_art,
     description,
     phone_number,
@@ -34,8 +35,8 @@ const postUser = async (newUser) => {
   } = newUser;
   try {
     const user = await db.one(
-      "INSERT INTO users(profile_pic, type_of_art, description, phone_number, location, is_venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [profile_pic, type_of_art, description, phone_number, location, is_venue]
+      "INSERT INTO users(username,firebase_uid, type_of_art, description, phone_number, location, is_venue) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [username, firebase_uid,type_of_art, description, phone_number, location, is_venue]
     );
     return user;
   } catch (error) {
@@ -45,7 +46,7 @@ const postUser = async (newUser) => {
 };
 const editUser = async (user, id) => {
   const {
-    profile_pic,
+    username,
     type_of_art,
     description,
     phone_number,
@@ -55,9 +56,9 @@ const editUser = async (user, id) => {
   user;
   try {
     const updatedUser = await db.one(
-      "UPDATE users SET profile_pic = $1, type_of_art = $2, description = $3, phone_number = $4, location = $5, is_venue= $6 WHERE id = $7 RETURNING *",
+      "UPDATE users SET username = $1, type_of_art = $2, description = $3, phone_number = $4, location = $5, is_venue= $6 WHERE id = $7 RETURNING *",
       [
-        profile_pic,
+        username,
         type_of_art,
         description,
         phone_number,

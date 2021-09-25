@@ -9,7 +9,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username TEXT,
-    type_of_art TEXT,
+    firebase_uid TEXT,
+    type_of_art TEXT, 
     description TEXT,
     phone_number INT,
     location TEXT,

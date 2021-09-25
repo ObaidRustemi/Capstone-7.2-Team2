@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
-  const { currentUser, logout, getUid } = useAuth();
+  const { logout } = useAuth();
+  const currentUser  = useSelector((state) => state.currentUser);
   const history = useHistory();
 
   async function handleLogout() {

@@ -1,12 +1,12 @@
 import "../Styling/NavBar.css";
 import { NavLink, Link } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import "../index.css";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
+
 
   return (
     <div id="nav-main-div">
@@ -18,7 +18,12 @@ const NavBar = () => {
         {currentUser ? (
           <div>
             <p> Hello {currentUser.email}!</p>
+           <p>
             <NavLink to="/dashboard"> Account Info </NavLink>
+            </p>
+            <p>
+            <NavLink to="/uploadArtwork"> Upload </NavLink>
+            </p>
           </div>
         ) : (
           <div className="nav">

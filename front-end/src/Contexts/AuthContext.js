@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../Firebase";
 import { useSelector, useDispatch } from "react-redux";
+import { auth } from "../firebase/Firebase";
+
 
 const AuthContext = React.createContext();
 

@@ -3,13 +3,14 @@ import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
 import VenuesIndexPage from "./Pages/VenuesIndexPage";
 import UsersContainer from "./Containers/UsersContainer";
-import Show from "./Pages/Show";
+import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
 
 //DEPENDENCIES
 import React from "react";
 import axios from "axios";
 import { Switch, Route } from "react-router-dom";
 import { apiURL } from "./util/apiURL.js";
+
 const API = apiURL();
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
             <UsersContainer />
           </Route>
           <Route exact path="/users/:id">
-            <Show />
+            <VenueOwnerContainer/>
           </Route>
           <Route exact path="/index">
             <Index />

@@ -7,7 +7,7 @@ const getAllVenuesForUser = async (userId) => {
       `SELECT * FROM venues WHERE owner_id = $1`,
       userId
     );
-    console.log(allVenuesForUser)
+   
     return allVenuesForUser;
   } catch (error) {
     return error;

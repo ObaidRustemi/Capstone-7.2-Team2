@@ -11,3 +11,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.artist-show-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

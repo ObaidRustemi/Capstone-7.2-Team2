@@ -3,6 +3,8 @@ import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
 import VenuesIndexPage from "./Pages/VenuesIndexPage";
 import UsersContainer from "./Containers/UsersContainer";
+import ArtworkIndex from "./Pages/ArtworkIndex";
+import ArtistShow from "./Pages/ArtistShow";
 import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
 
 //DEPENDENCIES
@@ -24,9 +26,13 @@ function App() {
           </Route>
           <Route exact path="/users/:id">
             <VenueOwnerContainer/>
+            <ArtistShow />
           </Route>
           <Route exact path="/index">
             <Index />
+          </Route>
+          <Route exact path="/ArtworkIndex">
+            <ArtworkIndex />
           </Route>
           <Route exact path="/venuesIndex">
             <VenuesIndexPage />

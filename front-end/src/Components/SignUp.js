@@ -2,9 +2,13 @@ import React, { useState, useRef } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios"
+import {apiURL} from "../util/apiURL"
+
+const API = apiURL();
 
 export default function SignUp() {
-  const usernameRef = useRef()
+  // const usernameRef = useRef()
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -12,6 +16,13 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const [ newUser, setNewUser] = useState({
+    username: null,
+    firebase_uid: null,
+          phone_number: null,
+          is_venue: null
+  })
+  // const [uid, setUid] = useState(null)
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,12 +34,30 @@ export default function SignUp() {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/dashboard");
+      const  userSignUpPromise = await signup(emailRef.current.value, passwordRef.current.value);
+
+
+      // setNewUser( )
+      // debugger
+      const uid = userSignUpPromise.user.uid
+      
+      // setNewUser({...newUser, firebase_uid: uid})
+      const newUserTest = Object.assign( {}, newUser)
+      newUserTest.firebase_uid = uid
+      const res = await axios.post(`${API}/users`, newUser)
+      console.log(newUserTest)
+      // debugger
+      // history.push("/dashboard");
     } catch {
       setError("Failed to create account");
     }
     setLoading(false);
+  }
+
+  const handleNewUser = (e) =>{
+    // debugger
+    setNewUser({...newUser,  [e.target.id] : e.target.value})
+
   }
 
   return (
@@ -38,10 +67,10 @@ export default function SignUp() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            {/* <Form.Group id="username">
+            <Form.Group id="username">
               <Form.Label>User Name</Form.Label>
-              <Form.Control type="name" ref={usernameRef} required />
-            </Form.Group> */}
+              <Form.Control type="name" value={newUser.username} id="username" onChange={handleNewUser} required />
+            </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

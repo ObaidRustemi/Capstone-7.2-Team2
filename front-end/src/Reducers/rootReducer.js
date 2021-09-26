@@ -2,9 +2,11 @@ import { combineReducers } from "redux";
 import users from "./usersReducer";
 import venues from "./venuesReducer"
 import artwork from "./artworkReducer"
+import currentUser from "./currentUser"
 
 const appState = {
-    users, venues, artwork,
+    users, venues, currentUser, artwork
+
 };
 
 const rootReducer = combineReducers(appState);

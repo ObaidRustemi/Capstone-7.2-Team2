@@ -1,13 +1,15 @@
 \c artapp_db;
 
-INSERT INTO users(username, type_of_art, description, phone_number, location, is_venue) VALUES
-('Monica', 'Abstract', 'Abstract art is an art in which the artwork is based on general ideas rather than having any physical existence. In other words, we can say that an abstract art is based on an internal form instead of having any pictorial representation of things.', 12345678, 'NY,USA', false),
-('Trisha', 'Impressionism', 'Impressionism is a genre of art that became popular in the late 19th century in a response to the needs of the French Academie des Beaux-Arts, commonly called The Academie.', 12345678, 'MS,USA', false),
-('Wendy', 'Realism', 'Realism is a genre of art which is based on practical matters or real things rather than imaginary or visionary representations. Realism developed as a reaction to the romanticism in the 19th century. ', 12345678, 'PAT,NJ', false),
-('Tatiana', 'Neoclassicism', 'Neoclassicism was a Western cultural movement in the decorative and visual arts, literature, theatre, music, and architecture that drew inspiration from the art and culture of classical antiquity', 12345678, 'NY,USA', false),
-('Frankie', 'Romanticism', 'Romanticism is a genre of art which was originated in Europe somewhere in the 18th century against the Age of Enlightenment. Romanticism was an artistic and intellectual movement which is describes by an elevated interest in nature, importance given to the individual’s expression of thoughts and feelings, and to reject the norms of classicism', 12345678, 'NY,USA', false),
-('Shawn', 'Art Nouveau', 'Art Nouveau is a term which is derived from French language which literally means ‘new art’. This genre of art developed in France from where it extended to different European countries such as Belgium, Germany, Italy, etc.', 12345678, 'NY,USA', true),
-('Sam', 'Expressionism', 'Expressionism is a genre of art which deals with the subjective feelings of an artist. This genre of art flourished in the 20th century in a response to the impressionism. The main purpose of expressionism is to depict emotions by means of art.', 12345678, 'PAT,NJ', true);
+
+INSERT INTO users(username,firebase_uid, type_of_art, description, phone_number, location, is_venue) VALUES
+('Monica', null,'Abstract', 'Abstract art is an art in which the artwork is based on general ideas rather than having any physical existence. In other words, we can say that an abstract art is based on an internal form instead of having any pictorial representation of things.', 12345678, 'NY,USA', false),
+('Trisha',null, 'Impressionism', 'Impressionism is a genre of art that became popular in the late 19th century in a response to the needs of the French Academie des Beaux-Arts, commonly called The Academie.', 12345678, 'MS,USA', false),
+('Wendy', null,'Realism', 'Realism is a genre of art which is based on practical matters or real things rather than imaginary or visionary representations. Realism developed as a reaction to the romanticism in the 19th century. ', 12345678, 'PAT,NJ', false),
+('Tatiana', null,'Neoclassicism', 'Neoclassicism was a Western cultural movement in the decorative and visual arts, literature, theatre, music, and architecture that drew inspiration from the art and culture of classical antiquity', 12345678, 'NY,USA', false),
+('Frankie',null, 'Romanticism', 'Romanticism is a genre of art which was originated in Europe somewhere in the 18th century against the Age of Enlightenment. Romanticism was an artistic and intellectual movement which is describes by an elevated interest in nature, importance given to the individual’s expression of thoughts and feelings, and to reject the norms of classicism', 12345678, 'NY,USA', false),
+('Shawn', null,'Art Nouveau', 'Art Nouveau is a term which is derived from French language which literally means ‘new art’. This genre of art developed in France from where it extended to different European countries such as Belgium, Germany, Italy, etc.', 12345678, 'NY,USA', true),
+('Sam',null, 'Expressionism', 'Expressionism is a genre of art which deals with the subjective feelings of an artist. This genre of art flourished in the 20th century in a response to the impressionism. The main purpose of expressionism is to depict emotions by means of art.', 12345678, 'PAT,NJ', true);
+
 
 
 INSERT INTO artwork (title, artist_id, image) VALUES

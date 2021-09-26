@@ -19,6 +19,11 @@
   "homepage": "https://github.com/joinpursuit/pern-final-project#readme",
   "dependencies": {
     "react-redux": "^7.2.5",
+<<<<<<< HEAD
     "redux": "^4.1.1"
+=======
+    "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9"
+>>>>>>> 60a073871b7ab5317c748d7077c0b8b3cde83d34
   }
 }

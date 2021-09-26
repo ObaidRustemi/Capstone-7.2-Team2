@@ -1,4 +1,5 @@
 import "../Styling/UserIndex.css";
+
 import ArtworkList from "../Components/ArtworkList";
 
 const ArtistShow = ({ artwork }) => {
@@ -7,6 +8,7 @@ const ArtistShow = ({ artwork }) => {
     <div className="artist-show-container">
       <h3>Artist Details</h3>
       <ArtworkList artwork={artwork}/>
+
     </div>
   );
 };

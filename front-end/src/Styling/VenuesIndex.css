@@ -5,3 +5,7 @@
    color: white;
    height: 90vh;
 }
+
+.venues-index-container ul li img {
+    max-width: 200px;
+}

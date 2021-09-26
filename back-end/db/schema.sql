@@ -9,7 +9,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username TEXT,
-    type_of_art TEXT,
+    firebase_uid TEXT,
+    type_of_art TEXT, 
     description TEXT,
     phone_number INT,
     location TEXT,
@@ -45,6 +46,7 @@ CREATE TABLE venues(
     venue_profile_photo TEXT,
     owner_id INT REFERENCES users(id),
     address TEXT
+    -- ON DELETE CASCADE
 );
 
 --COME BACK LATER --

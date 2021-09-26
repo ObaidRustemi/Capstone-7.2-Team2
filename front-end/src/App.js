@@ -3,36 +3,74 @@ import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
 import VenuesIndexPage from "./Pages/VenuesIndexPage";
 import UsersContainer from "./Containers/UsersContainer";
+import UserRoutingContainer from "./Containers/UserRoutingContainer";
 import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
+import SignUp from "./Components/SignUp";
+import Dashboard from "./Components/Dashboard";
+import Login from "./Components/Login";
+import PrivateRoute from "./Components/PrivateRoute";
+import ForgotPassword from "./Components/ForgotPassword";
+import UpdateProfile from "./Components/UpdateProfile";
+import UploadArtwork from "./Components/UploadArtwork";
+import UploadVenueImage from "./Components/UploadVenueImage"
+
 
 //DEPENDENCIES
 import React from "react";
-import axios from "axios";
 import { Switch, Route } from "react-router-dom";
-import { apiURL } from "./util/apiURL.js";
 
-const API = apiURL();
+
+
+
+
+import { Container } from "react-bootstrap";
+import { AuthProvider } from "./Contexts/AuthContext";
+
+
 
 function App() {
   return (
+
     <div className="App">
+      <AuthProvider>
       <NavBar />
-      <main>
-        <Switch>
-          <Route exact path="/users">
+      <Container
+        className="d-flex align-items-center justify-content-center"
+        style={{ minHeight: "100vh" }}
+      >
+        {/* <main> */}
+        <div className="w-100" style={{ maxWidht: "400px" }}>
+            <Switch>
+             <Route exact path="/users">
+            <UsersContainer />
+          </Route>
+          <Route exact path="/users/:id">
+            <UserRoutingContainer/>
+          </Route>
+        
+              <Route exact path="/" component={Index} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <Route path="/signup" component={SignUp} />
+              <Route path="/login" component={Login} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+              <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
+              <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
+              <Route exact path="/users">
             <UsersContainer />
           </Route>
           <Route exact path="/users/:id">
             <VenueOwnerContainer/>
-          </Route>
-          <Route exact path="/index">
-            <Index />
-          </Route>
+            </Route>
+
+         
           <Route exact path="/venuesIndex">
             <VenuesIndexPage />
           </Route>
-        </Switch>
-      </main>
+            </Switch>
+        </div>
+      </Container>
+          </AuthProvider>
     </div>
   );
 }

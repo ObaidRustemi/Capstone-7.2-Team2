@@ -94,7 +94,7 @@ users.put("/:id", async (req, res) => {
       .json({ success: false, payload: "Must enter valid data", error: error });
   }
 
-  res.json(updatedUser);
+  // res.json(updatedUser);
 });
 
 users.delete("/:id", async (req, res) => {

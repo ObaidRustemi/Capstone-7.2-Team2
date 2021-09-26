@@ -14,7 +14,8 @@ CREATE TABLE users(
     description TEXT,
     phone_number INT,
     location TEXT,
-    is_venue BOOLEAN
+    is_venue BOOLEAN,
+    is_artist BOOLEAN
 );
 
 DROP TABLE IF EXISTS artwork;

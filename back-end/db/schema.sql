@@ -47,6 +47,7 @@ CREATE TABLE venues(
     venue_profile_photo TEXT,
     owner_id INT REFERENCES users(id),
     address TEXT
+    -- ON DELETE CASCADE
 );
 
 --COME BACK LATER --

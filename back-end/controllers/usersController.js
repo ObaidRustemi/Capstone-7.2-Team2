@@ -13,6 +13,8 @@ const {
   deleteUser,
 } = require("../queries/users");
 const { getAllVenuesForUser } = require("../queries/venues");
+const { getAllArtwork } = require("../queries/artwork")
+
 
 users.use("/:artist_id/artwork", artworkController);
 
@@ -31,25 +33,33 @@ users.get("/:id", async (req, res) => {
   // const data = await getUser(id, isVenueOwner); { user: {}, venues: [{}] }
 
   try {
-    // const { isVenueOwner } = req.query
-    const is_venue = true;
+
+  
+    
     const { id } = req.params;
-    const user = await getUser(id, is_venue);
+    const user = await getUser(id);
+
 
     if (user?.is_venue) {
       console.log("inside if");
       const venues = await getAllVenuesForUser(id);
-      const user = await getUser(id);
+
+//       const user = await getUser(id);
+
       res.json({
         success: true,
         payload: { user, venues },
       });
     } else if (user?.id) {
       console.log("inside else if");
-      const user = await getUser(id);
+
+      // const user = await getUser(id);
+      const userArtwork = await getAllArtwork(id)
+      console.log(userArtwork)
       res.json({
         success: true,
-        payload: { user },
+        payload: { user, userArtwork },
+
       });
     } else {
       console.log("inside the throw");

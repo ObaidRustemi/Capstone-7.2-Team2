@@ -56,6 +56,7 @@ const editUser = async (user, id) => {
   user;
   try {
     const updatedUser = await db.one(
+
       "UPDATE users SET username = $1, type_of_art = $2, description = $3, phone_number = $4, location = $5, is_venue= $6 WHERE id = $7 RETURNING *",
       [
         username,

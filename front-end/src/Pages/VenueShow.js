@@ -2,7 +2,9 @@ import React from "react";
 import "../Styling/UserIndex.css";
 import VenueList from "../Components/VenueList";
 
-const Show = ({ venues }) => {
+
+const VenueShow = ({ venues }) => {
+
   return (
     <div className="user-show-container">
       <h3>Venue Owner Details</h3>
@@ -11,4 +13,4 @@ const Show = ({ venues }) => {
   );
 };
 
-export default Show;
+export default VenueShow;

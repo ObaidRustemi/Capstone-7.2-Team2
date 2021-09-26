@@ -1,5 +1,6 @@
 \c artapp_db;
 
+
 INSERT INTO users(username,firebase_uid, type_of_art, description, phone_number, location, is_venue) VALUES
 ('Monica', null,'Abstract', 'Abstract art is an art in which the artwork is based on general ideas rather than having any physical existence. In other words, we can say that an abstract art is based on an internal form instead of having any pictorial representation of things.', 12345678, 'NY,USA', false),
 ('Trisha',null, 'Impressionism', 'Impressionism is a genre of art that became popular in the late 19th century in a response to the needs of the French Academie des Beaux-Arts, commonly called The Academie.', 12345678, 'MS,USA', false),
@@ -10,9 +11,10 @@ INSERT INTO users(username,firebase_uid, type_of_art, description, phone_number,
 ('Sam',null, 'Expressionism', 'Expressionism is a genre of art which deals with the subjective feelings of an artist. This genre of art flourished in the 20th century in a response to the impressionism. The main purpose of expressionism is to depict emotions by means of art.', 12345678, 'PAT,NJ', true);
 
 
+
 INSERT INTO artwork (title, artist_id, image) VALUES
 ('title 1', 1, 'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2012/01/hokusai.jpg'),
-('title 2', 2, 'https://image.shutterstock.com/image-illustration/seven-running-horses-wildlife-decorative-600w-1754614820.jpg'),
+('title 2', 1, 'https://image.shutterstock.com/image-illustration/seven-running-horses-wildlife-decorative-600w-1754614820.jpg'),
 ('title 3', 3, 'https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1602889523/auctions/NY010320/8_001.jpg'),
 ('title 4', 4, 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/11/11/1415723375557/9390c5a0-ff8c-4866-be24-8dc86fb512c7-1020x1016.jpeg?width=700&quality=85&auto=format&fit=max&s=4e31578a1b6f94c0328c1d6c5316a8e0'),
 ('title 5', 5, 'https://images.squarespace-cdn.com/content/v1/591cf35d20099ed1a3cc9c94/1495073736483-WD16PW5W6Y5QFIOAENL2/XCQ8Qcr.jpg?format=750w'),

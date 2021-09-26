@@ -3,7 +3,7 @@ import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
 import VenuesIndexPage from "./Pages/VenuesIndexPage";
 import UsersContainer from "./Containers/UsersContainer";
-import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
+import UserRoutingContainer from "./Containers/UserRoutingContainer";
 
 //DEPENDENCIES
 import React from "react";
@@ -19,11 +19,15 @@ function App() {
       <NavBar />
       <main>
         <Switch>
+         
           <Route exact path="/users">
             <UsersContainer />
           </Route>
           <Route exact path="/users/:id">
-            <VenueOwnerContainer/>
+            <UserRoutingContainer/>
+          </Route>
+          <Route exact path="/users/:id/ve">
+
           </Route>
           <Route exact path="/index">
             <Index />

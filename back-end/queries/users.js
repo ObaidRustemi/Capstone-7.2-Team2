@@ -19,10 +19,10 @@ const getUser = async (id) => {
     return data;
   } catch (error) {
     console.log("you have hit an error");
-    return error
-   
+    return error;
   }
 };
+
 const postUser = async (newUser) => {
   const {
     username,
@@ -32,12 +32,21 @@ const postUser = async (newUser) => {
     phone_number,
     location,
     is_venue,
-    is_artist
+    is_artist,
   } = newUser;
   try {
     const user = await db.one(
       "INSERT INTO users(username, firebase_uid, type_of_art, description, phone_number, location, is_venue, is_artist) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-      [username, firebase_uid,type_of_art, description, phone_number, location, is_venue, is_artist]
+      [
+        username,
+        firebase_uid,
+        type_of_art,
+        description,
+        phone_number,
+        location,
+        is_venue,
+        is_artist,
+      ]
     );
     return user;
   } catch (error) {
@@ -45,6 +54,7 @@ const postUser = async (newUser) => {
     console.log(error);
   }
 };
+
 const editUser = async (user, id) => {
   const {
     username,

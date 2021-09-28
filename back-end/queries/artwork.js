@@ -4,7 +4,10 @@ const getAllArtwork = async (userId) => {
   console.log("getAllArtwork");
 
   try {
-    const allArtwork = await db.any("SELECT * FROM artwork WHERE artist_id = $1", userId);
+    const allArtwork = await db.any(
+      "SELECT * FROM artwork WHERE artist_id = $1",
+      userId
+    );
     return allArtwork;
   } catch (error) {
     console.log("you have hit an error");
@@ -23,9 +26,9 @@ const getArtwork = async (id) => {
     console.log(error);
   }
 };
+
 const postArtwork = async (artwork, userId) => {
-  const { title, image } =
-    artwork
+  const { title, image } = artwork;
   try {
     const newArtwork = await db.any(
       "INSERT INTO artwork(title, image, artist_id) VALUES ($1, $2, $3) RETURNING *",
@@ -37,8 +40,9 @@ const postArtwork = async (artwork, userId) => {
     console.log(error);
   }
 };
+
 const editArtwork = async (artwork, id) => {
-  const { title, image, artist_id} = artwork;
+  const { title, image, artist_id } = artwork;
   user;
   try {
     const updatedArtwork = await db.one(
@@ -53,9 +57,11 @@ const editArtwork = async (artwork, id) => {
 };
 
 const deleteArtwork = async (id) => {
-
   try {
-    const deletedArtwork = await db.one("DELETE FROM artwork WHERE id= $1 RETURNING *", id);
+    const deletedArtwork = await db.one(
+      "DELETE FROM artwork WHERE id= $1 RETURNING *",
+      id
+    );
     return deletedArtwork;
   } catch (error) {
     console.log("you have hit an error");
@@ -68,5 +74,5 @@ module.exports = {
   getArtwork,
   postArtwork,
   editArtwork,
-  deleteArtwork
+  deleteArtwork,
 };

@@ -47,45 +47,45 @@ const newImageForVenue = async (image, venueId) => {
 };
 
 const deleteVenueImage = async (id) => {
-    console.log("deleteVenueImage");
-    try {
-      const deletedVenueImage = await db.one(
-        `
+  console.log("deleteVenueImage");
+  try {
+    const deletedVenueImage = await db.one(
+      `
             DELETE FROM venue_images
             WHERE id = $1
             RETURNING * 
         `,
-        id
-      );
-      return deletedVenueImage;
-    } catch (error) {
-      return error;
-    }
-  };
+      id
+    );
+    return deletedVenueImage;
+  } catch (error) {
+    return error;
+  }
+};
 
-  const updateVenueImage = async (id, venueImage) => {
-    console.log("updateVenueImage");
-    const { photo_url, venue_id } = venueImage;
-    try {
-      const updatedVenueImage = await db.one(
-        `
+const updateVenueImage = async (id, venueImage) => {
+  console.log("updateVenueImage");
+  const { photo_url, venue_id } = venueImage;
+  try {
+    const updatedVenueImage = await db.one(
+      `
             UPDATE venue_images
             SET photo_url = $1, venue_id = $2
             WHERE id = $3
             RETURNING * 
         `,
-        [photo_url, venue_id, id]
-      );
-      return updatedVenueImage;
-    } catch (error) {
-      return error;
-    }
-  };
+      [photo_url, venue_id, id]
+    );
+    return updatedVenueImage;
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   getAllImagesForVenue,
   getImageForVenue,
   newImageForVenue,
   deleteVenueImage,
-  updateVenueImage
+  updateVenueImage,
 };

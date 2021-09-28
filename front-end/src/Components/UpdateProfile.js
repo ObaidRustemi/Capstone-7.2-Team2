@@ -10,7 +10,7 @@ export default function UpdateProfile() {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { updateEmail, updatePassword } = useAuth();
-  const currentUser  = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.currentUser);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -73,7 +73,12 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
-            <Button variant="secondary" disabled={loading} className="w-100" type="submit">
+            <Button
+              variant="secondary"
+              disabled={loading}
+              className="w-100"
+              type="submit"
+            >
               Update
             </Button>
           </Form>

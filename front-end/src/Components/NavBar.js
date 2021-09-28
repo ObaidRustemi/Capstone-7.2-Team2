@@ -8,7 +8,6 @@ import { Navbar, Nav } from "react-bootstrap";
 const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
-
   return (
     <div id="nav-main-div">
       <div class="left" id="title">
@@ -19,11 +18,11 @@ const NavBar = () => {
         {currentUser ? (
           <div>
             <p> Hello {currentUser.email}!</p>
-           <p>
-            <NavLink to="/dashboard"> Account Info </NavLink>
+            <p>
+              <NavLink to="/dashboard"> Account Info </NavLink>
             </p>
             <p>
-            <NavLink to="/uploadArtwork"> Upload </NavLink>
+              <NavLink to="/uploadArtwork"> Upload </NavLink>
             </p>
           </div>
         ) : (

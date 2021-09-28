@@ -22,7 +22,6 @@ const UserRoutingContainer = () => {
     const fetchUser = async () => {
       try {
         let res = await axios.get(`${API}/users/${id}`);
-       
 
         // getting back user
         // user response has key of venues, save venues in state, render venues component
@@ -34,7 +33,7 @@ const UserRoutingContainer = () => {
         } else {
           await setIsVenue(false);
           const action = getArtworks(res.data.payload.userArtwork);
-          
+
           dispatch(action);
         }
       } catch (error) {

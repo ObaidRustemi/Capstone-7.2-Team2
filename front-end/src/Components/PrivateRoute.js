@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 //{{component: Componet}}
 //{..rest} rest of probs
 export default function PrivateRoute({ component: Component, ...rest }) {
-  const currentUser  = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.currentUser);
   // debugger
   return (
     <Route

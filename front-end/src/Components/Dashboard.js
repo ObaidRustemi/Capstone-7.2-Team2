@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
-  const currentUser  = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.currentUser);
   const history = useHistory();
 
   async function handleLogout() {
@@ -25,7 +25,7 @@ export default function Dashboard() {
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email} 
+          <strong>Email:</strong> {currentUser.email}
           <strong>UID:</strong> {currentUser.uid}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile

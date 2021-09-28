@@ -15,7 +15,7 @@ const UsersContainer = () => {
     const fetchUsers = async () => {
       try {
         let res = await axios.get(`${API}/users`);
-
+        
         const action = getUsers(res.data.payload);
         console.log("about to dispatch:::", action);
         dispatch(action);

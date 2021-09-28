@@ -4,7 +4,7 @@ import { apiURL } from "../util/apiURL";
 import { getUsers } from "../Actions/userActions";
 import UserIndex from "../Pages/UserIndex";
 import axios from "axios";
-import { Form } from "react-bootstrap";
+import "../Styling/Switch.css"
 
 const API = apiURL();
 
@@ -38,26 +38,12 @@ const UsersContainer = () => {
   //make toggle instead 
   return (
     <div>
-      <Form>
-  {['checkbox'].map((type) => (
-    <div key={`default-${type}`} className="mb-3">
-      <Form.Check 
-        type={type}
-        id={`default-${type}`}
-        label={`Find venues`}
-        onChange={handleCheckboxChange}
-      />
-      <Form.Check 
-        type={type}
-        id={`default-${type}`}
-        label={`Find artists`}
-      />
+      <label className="switch">
+        <input type="checkbox"/>
+        <span className="slider"/>
+      </label>
 
-    </div>
-  ))}
-</Form>
-  
-      <UserIndex users={users} />
+      {/* <UserIndex users={users} /> */}
 
     </div>
   )

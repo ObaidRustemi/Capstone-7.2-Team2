@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios"
-import {apiURL} from "../util/apiURL"
+import axios from "axios";
+import { apiURL } from "../util/apiURL";
 
 const API = apiURL();
 
@@ -16,12 +16,12 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const [ newUser, setNewUser] = useState({
+  const [newUser, setNewUser] = useState({
     username: null,
     firebase_uid: null,
-          phone_number: null,
-          is_venue: null
-  })
+    phone_number: null,
+    is_venue: null,
+  });
   // const [uid, setUid] = useState(null)
 
   async function handleSubmit(e) {
@@ -34,18 +34,20 @@ export default function SignUp() {
     try {
       setError("");
       setLoading(true);
-      const  userSignUpPromise = await signup(emailRef.current.value, passwordRef.current.value);
-
+      const userSignUpPromise = await signup(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
 
       // setNewUser( )
       // debugger
-      const uid = userSignUpPromise.user.uid
-      
+      const uid = userSignUpPromise.user.uid;
+
       // setNewUser({...newUser, firebase_uid: uid})
-      const newUserTest = Object.assign( {}, newUser)
-      newUserTest.firebase_uid = uid
-      const res = await axios.post(`${API}/users`, newUser)
-      console.log(newUserTest)
+      const newUserTest = Object.assign({}, newUser);
+      newUserTest.firebase_uid = uid;
+      const res = await axios.post(`${API}/users`, newUser);
+      console.log(newUserTest);
       // debugger
       // history.push("/dashboard");
     } catch {
@@ -54,11 +56,10 @@ export default function SignUp() {
     setLoading(false);
   }
 
-  const handleNewUser = (e) =>{
+  const handleNewUser = (e) => {
     // debugger
-    setNewUser({...newUser,  [e.target.id] : e.target.value})
-
-  }
+    setNewUser({ ...newUser, [e.target.id]: e.target.value });
+  };
 
   return (
     <>
@@ -69,7 +70,13 @@ export default function SignUp() {
           <Form onSubmit={handleSubmit}>
             <Form.Group id="username">
               <Form.Label>User Name</Form.Label>
-              <Form.Control type="name" value={newUser.username} id="username" onChange={handleNewUser} required />
+              <Form.Control
+                type="name"
+                value={newUser.username}
+                id="username"
+                onChange={handleNewUser}
+                required
+              />
             </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
@@ -83,7 +90,12 @@ export default function SignUp() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button variant="secondary" disabled={loading} className="w-100" type="submit">
+            <Button
+              variant="secondary"
+              disabled={loading}
+              className="w-100"
+              type="submit"
+            >
               Sign Up
             </Button>
           </Form>

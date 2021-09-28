@@ -40,7 +40,6 @@ function App() {
               <Route exact path="/users/:id">
                 <UserRoutingContainer />
               </Route>
-
               <Route exact path="/" component={Index} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />

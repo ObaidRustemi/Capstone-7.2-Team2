@@ -7,7 +7,7 @@ const getAllVenuesForUser = async (userId) => {
       `SELECT * FROM venues WHERE owner_id = $1`,
       userId
     );
-   
+
     return allVenuesForUser;
   } catch (error) {
     return error;
@@ -37,7 +37,7 @@ const newVenueForUser = async (venue, userId) => {
           VALUES ($1, $2, $3, $4)
           RETURNING *
       `,
-      [name,venue_profile_photo, address, userId]
+      [name, venue_profile_photo, address, userId]
     );
 
     return newVenue;

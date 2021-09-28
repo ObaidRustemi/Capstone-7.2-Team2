@@ -6,6 +6,8 @@
    height: 90vh;
 }
 
-.venues-index-container ul li img {
-    max-width: 200px;
+
+
+.venue-index-ul li img {
+    max-width: 250px;
 }

@@ -28,8 +28,10 @@ const UserRoutingContainer = () => {
         // passing down venues state into it
         if (res.data.payload.venues) {
           await setIsVenue(true);
-          const action = getVenues(res.data.payload.venues);
-          dispatch(action);
+          if(!venues.length) {
+            const action = getVenues(res.data.payload.venues);
+            dispatch(action);
+          }
         } else {
           await setIsVenue(false);
           const action = getArtworks(res.data.payload.userArtwork);

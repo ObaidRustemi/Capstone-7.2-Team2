@@ -28,6 +28,7 @@ const UserRoutingContainer = () => {
         // passing down venues state into it
         if (res.data.payload.venues) {
           await setIsVenue(true);
+
           if (!venues.length) {
             const action = getVenues(res.data.payload.venues);
             dispatch(action);

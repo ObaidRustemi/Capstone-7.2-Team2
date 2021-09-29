@@ -28,23 +28,29 @@ const UserRoutingContainer = () => {
         // passing down venues state into it
         if (res.data.payload.venues) {
           await setIsVenue(true);
-          if(!venues.length) {
+
+          if (!venues.length) {
             const action = getVenues(res.data.payload.venues);
             dispatch(action);
           }
         } else {
           await setIsVenue(false);
-          const action = getArtworks(res.data.payload.userArtwork);
-
-          dispatch(action);
+          if (artwork.length) {
+            const action = getArtworks(res.data.payload.userArtwork);
+            debugger
+            dispatch(action);
+          }
         }
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchUser();
   }, []);
+ 
   return isVenue === false ? (
+    
     <ArtistShow artwork={artwork} />
   ) : (
     <VenueShow venues={venues} />

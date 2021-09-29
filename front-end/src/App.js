@@ -1,10 +1,10 @@
 //PAGES AND COMPONENTS
 import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
-import VenuesIndexPage from "./Pages/VenuesIndexPage";
+
 import UsersContainer from "./Containers/UsersContainer";
 import UserRoutingContainer from "./Containers/UserRoutingContainer";
-import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
+
 import VenueInfoContainer from "./Containers/VenueInfoContainer";
 import SignUp from "./Components/SignUp";
 import Dashboard from "./Components/Dashboard";
@@ -51,16 +51,9 @@ function App() {
                 path="/uploadVenueImage"
                 component={UploadVenueImage}
               />
-            
-              <Route exact path="/users/:id">
-                <VenueOwnerContainer />
-              </Route>
+
               <Route exact path="/users/:id/venues/:venue_id">
                 <VenueInfoContainer />
-              </Route>
-
-              <Route exact path="/venuesIndex">
-                <VenuesIndexPage />
               </Route>
             </Switch>
           </div>

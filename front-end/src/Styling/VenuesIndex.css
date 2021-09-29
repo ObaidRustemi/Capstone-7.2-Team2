@@ -11,3 +11,7 @@
 .venue-index-ul li img {
     max-width: 250px;
 }
+
+ul li{
+    list-style: none;
+}

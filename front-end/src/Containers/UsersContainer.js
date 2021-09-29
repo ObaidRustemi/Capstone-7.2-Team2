@@ -28,7 +28,8 @@ const UsersContainer = () => {
         console.log(error);
       }
     };
-    if(users.length === 0){
+
+    if (users.length === 0) {
       fetchUsers();
     }
   }, []);

@@ -5,8 +5,8 @@ import VenueImageList from '../Components/VenueImageList'
 const VenueInfoPage = ({currentVenue, venueImages}) => {
 
     return (
-        <div className="venue-info-container">
-            <h1>Venue Info</h1>
+        <div>
+            
             <VenueImageList currentVenue={currentVenue} venueImages={venueImages}/>
         </div>
     )

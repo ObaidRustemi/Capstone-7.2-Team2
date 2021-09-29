@@ -1,0 +1,24 @@
+.venue-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.venue-image-list-container {
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 2px black solid; */
+    width: 65vw;
+}
+
+.venue-profile-photo {
+    max-width: 80vw;
+}
+
+.venue-blurb-container {
+    /* border: 2px solid black; */
+    margin-top: 5px;
+    width: 65vw;
+    margin-right: 200px;
+}

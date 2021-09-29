@@ -23,7 +23,9 @@ const UsersContainer = () => {
         console.log(error);
       }
     };
-    fetchUsers();
+    if (users.length === 0) {
+      fetchUsers();
+    }
   }, []);
 
   return <UserIndex users={users} />;

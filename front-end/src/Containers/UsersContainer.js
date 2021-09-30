@@ -7,6 +7,7 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 import Switch from "../Components/Switch"
 import "../Styling/Switch.css"
+import { Link } from "react-dom"
 
 const API = apiURL();
 
@@ -57,7 +58,8 @@ const UsersContainer = () => {
 
   const venues = users.filter(user => user.is_venue)
   const artists = users.filter(user => user.is_artist)
-
+  const user = users.filter(user => user)
+  // let userId = user.map(user => user.id)
   ///useState for user to render 
   //make toggle instead 
   return (
@@ -65,7 +67,7 @@ const UsersContainer = () => {
       {/* {toggle && <>Aritsit</>} */}
       {/* <Button onClick={handleClick}>Venues </Button> */}
     <Switch users={users} onChange={handleToggle}/>
-    <p>{toggled ? <ul>{artists.map(venue => <li>{venue.username}</li>)}</ul> :  <ul>{venues.map(venue => <li>{venue.username}</li>)}</ul>}</p>
+    <p>{toggled ? <ul>{artists.map(artist => <li>{artist.username}</li>)}</ul> :  <ul>{venues.map(venue => <li>{venue.username}</li>)}</ul>}</p>
       {/* <UserIndex users={users} /> */}
 
     </div>

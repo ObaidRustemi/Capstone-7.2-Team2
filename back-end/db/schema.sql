@@ -16,6 +16,7 @@ CREATE TABLE users(
     location TEXT,
     is_venue BOOLEAN,
     is_artist BOOLEAN
+    -- profile_img_firebase TEXT
 );
 
 DROP TABLE IF EXISTS artwork;

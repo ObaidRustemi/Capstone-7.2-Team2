@@ -41,7 +41,7 @@ function App() {
                 <UserRoutingContainer />
               </Route>
               <Route exact path="/" component={Index} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />{/* make a public dashboard */}
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />

@@ -37,7 +37,7 @@ const UserRoutingContainer = () => {
           await setIsVenue(false);
           if (artwork.length) {
             const action = getArtworks(res.data.payload.userArtwork);
-            debugger
+            debugger;
             dispatch(action);
           }
         }
@@ -48,9 +48,8 @@ const UserRoutingContainer = () => {
 
     fetchUser();
   }, []);
- 
+
   return isVenue === false ? (
-    
     <ArtistShow artwork={artwork} />
   ) : (
     <VenueShow venues={venues} />

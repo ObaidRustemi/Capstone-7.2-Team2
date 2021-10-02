@@ -2,6 +2,7 @@
 const cors = require("cors");
 const express = require("express");
 const usersController = require("./controllers/usersController");
+const venuesController = require("./controllers/venuesController")
 // const artworkController = require("./controllers/artworkController")
 
 // CONFIGURATION
@@ -13,6 +14,7 @@ app.use(express.json()); // Parse incoming JSON
 
 // USERS ROUTE
 app.use("/users", usersController);
+app.use("/venues", venuesController)
 // app.use("/users/:id/artwork", artworkController)
 
 // ROUTES

@@ -19,6 +19,7 @@ users.use("/:artist_id/artwork", artworkController);
 
 users.use("/:owner_id/venues", venuesController);
 
+
 users.get("/", async (req, res) => {
   const allUsers = await getAllUsers();
   res.json({ success: true, payload: allUsers });

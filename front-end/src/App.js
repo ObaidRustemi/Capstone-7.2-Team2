@@ -31,35 +31,35 @@ function App() {
           className="d-flex align-items-center justify-content-center"
           style={{ minHeight: "100vh" }}
         > */}
-          {/* <main> */}
-          {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
-            <Switch>
-              <Route exact path="/users">
-                <UsersContainer />
-              </Route>
-              <Route exact path="/users/:id">
-                <UserRoutingContainer />
-              </Route>
-              <Route exact path="/" component={Index} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />{/* make a public dashboard */}
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
-              <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
-              <Route exact path="/users/:id">
-                <VenueOwnerContainer />
-              </Route>
-              <PrivateRoute exact path="/venueownerupdate" component={VenueOwnerUpdate}/>
-              <Route exact path="/users/:id/venues/:venue_id">
-                <VenueInfoContainer />
-              </Route>
-              <Route exact path="/venuesIndex">
-                <VenuesIndexPage />
-              </Route>
-            </Switch>
-          {/* </div> */}
+        {/* <main> */}
+        {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
+        <Switch>
+          <Route exact path="/users">
+            <UsersContainer />
+          </Route>
+          <Route exact path="/users/:id">
+            <UserRoutingContainer />
+          </Route>
+          <Route exact path="/" component={Index} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          {/* make a public dashboard */}
+          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
+          <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
+
+          <PrivateRoute
+            exact
+            path="/venueownerupdate"
+            component={VenueOwnerUpdate}
+          />
+          <Route exact path="/users/:id/venues/:venue_id">
+            <VenueInfoContainer />
+          </Route>
+        </Switch>
+        {/* </div> */}
         {/* </Container> */}
       </AuthProvider>
     </div>

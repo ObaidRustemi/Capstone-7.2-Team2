@@ -1,12 +1,12 @@
 const db = require("../db/dbConfig");
 
-const getAllVenues = async () => {
-  console.log("getAllVenues");
-  try {
-    const allVenues = await db.any("SELECT * FROM venues");
-    return allVenues;
-  } catch (error) {}
-};
+// const getAllVenues = async () => {
+//   console.log("getAllVenues");
+//   try {
+//     const allVenues = await db.any("SELECT * FROM venues");
+//     return allVenues;
+//   } catch (error) {}
+// };
 
 const getAllVenuesForUser = async (userId) => {
   console.log("getAllVenuesForUser");
@@ -91,7 +91,6 @@ const updateVenue = async (id, venue) => {
 };
 
 module.exports = {
-  getAllVenues,
   getAllVenuesForUser,
   getVenueForUser,
   newVenueForUser,

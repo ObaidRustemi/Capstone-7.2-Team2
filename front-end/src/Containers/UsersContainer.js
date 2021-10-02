@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { apiURL } from "../util/apiURL";
 import { getUsers } from "../Actions/userActions";
-import UserIndex from "../Pages/UserIndex";
+// import UserIndex from "../Pages/UserIndex";
 import axios from "axios";
 import Switch from "../Components/Switch"
 import "../Styling/Switch.css"

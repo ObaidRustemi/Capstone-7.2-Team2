@@ -6,6 +6,8 @@ import {
   GET_VENUE,
   GET_ARTWORKS,
   GET_ARTWORK,
+  GET_VENUE_IMAGES,
+  GET_VENUE_IMAGE,
 } from "./actionTypes";
 
 export const getUsers = (payload) => {
@@ -26,6 +28,9 @@ export const getVenue = (payload) => {
 export const getArtworks = (payload) => {
   return { type: GET_ARTWORKS, payload };
 };
-export const getArtwork = (payload) => {
-  return { type: GET_ARTWORK, payload };
+export const getVenueImages = (payload) => {
+  return { type: GET_VENUE_IMAGES, payload };
+};
+export const getVenueImage = (payload) => {
+  return { type: GET_VENUE_IMAGE, payload };
 };

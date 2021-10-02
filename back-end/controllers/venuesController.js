@@ -11,6 +11,8 @@ const {
   updateVenue,
 } = require("../queries/venues");
 
+const { getAllImagesForVenue } = require("../queries/venueImages");
+
 venues.use("/:venue_id/venue_images", venueImagesController);
 
 venues.get("/", async (req, res) => {
@@ -23,10 +25,15 @@ venues.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const singleUserVenue = await getVenueForUser(id);
+    const allImagesForVenue = await getAllImagesForVenue(id);
+
     if (singleUserVenue["id"]) {
-      res.json({ success: true, payload: singleUserVenue });
+      res.json({
+        success: true,
+        payload: { singleUserVenue, allImagesForVenue },
+      });
     } else {
-      throw singleUserVenue;
+      throw (singleUserVenue, allImagesForVenue);
     }
   } catch (error) {
     res

@@ -19,13 +19,17 @@ INSERT INTO artwork (title, artist_id, image) VALUES
 ('title 6', 6, 'https://mearone.com/wp-content/uploads/2021/03/TRIPFULL.jpg'),
 ('title 7', 7, 'https://cdn.shopify.com/s/files/1/1043/4860/products/14ers_original_batik_12_by_17_300_2048x2048.JPG?v=1455754701');
 
-INSERT INTO venues ( name, venue_profile_photo, owner_id, address) VALUES  
-('VENUE 1', 'https://media.timeout.com/images/105439629/image.jpg', 6, '2453 Broadway, New York NY 10043'),
-('VENUE 3', 'https://media.timeout.com/images/105439629/image.jpg', 6, '4566 Broadway, New York NY 10043'),
-('VENUE 2', 'https://media.timeout.com/images/105439629/image.jpg', 7, '5344 Amsterdam, New York NY 10043');
+INSERT INTO venues ( name, venue_profile_photo, owner_id, venue_info, address) VALUES  
+('Emerson Art Exhibitions', 'https://media.timeout.com/images/105439629/image.jpg', 6,'Emerson art exhibitions are designed to provoke thought, broaden understanding of the world and spark curiosity and imagination. The Emerson encourages appreciation of the visual arts by curating and hosting art exhibitions of significant community value. The Emerson seeks exhibitions that interpret not only regional topics, but also touch upon national and international issues.' ,'2453 Broadway, New York NY 10043'),
+('VENUE 3', 'https://media.timeout.com/images/105439629/image.jpg', 6, 'Founded by Gallery Director Alex Farkas in 2006, UGallery has developed a loyal following of art collectors, artists, and interior designers in all 50 states and over 50 countries.' ,'4566 Broadway, New York NY 10043'),
+('VENUE 2', 'https://media.timeout.com/images/105439629/image.jpg', 7, 'Painter and poet Jesse Murry (1948–1993) identified three significant approaches to landscape —“poetic,” “dramatic,” and “visionary,” which he aimed to synthesize into abstract paintings. Built of subtly shifting color dynamics, his canvases became “places summoned by the memory through the imagination','5344 Amsterdam, New York NY 10043');
 
 INSERT INTO venue_images (venue_id, photo_url) VALUES   
-(1,'https://media.timeout.com/images/105439629/image.jpg'),
+(1,'https://cdn.theculturetrip.com/wp-content/uploads/2019/04/feature_vertical-gallery-chicago-_-8.jpg'),
+(1,'https://www.tripsavvy.com/thmb/VPYlfEARBBZbqwu3aGl9a7VfLHg=/3000x1687/smart/filters:no_upscale()/GettyImages-472768194-5d167ebc1a634312b25a98ca5d6613f9.jpg'),
 (1,'https://d4qwptktddc5f.cloudfront.net/easy_thumbnails/thumbs_Interior-Design-American-Kennel-Club-Museum-of-the-Dog-New-York-01-0319.jpg.770x0_q95.jpg'),
+(1,'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2019/01/dg00xh.jpg'),
+(1,'https://arttoartgallery.com/wp-content/uploads/2021/01/newslide2-1.jpg'),
+(1,'https://arttoartgallery.com/wp-content/uploads/2020/07/slidehpome-1.jpg'),
 (2,'https://www.centralparktours.net/blog/content/images/2020/07/nycgallery.jpg'),
 (2,'http://thepaperbox.nyc/wp-content/uploads/2016/02/back-yard-185x185.jpg');

@@ -1,10 +1,10 @@
 //PAGES AND COMPONENTS
 import Index from "./Pages/Index";
 import NavBar from "./Components/NavBar";
-import VenuesIndexPage from "./Pages/VenuesIndexPage";
+
 import UsersContainer from "./Containers/UsersContainer";
 import UserRoutingContainer from "./Containers/UserRoutingContainer";
-import VenueOwnerContainer from "./Containers/VenueOwnerContainer";
+
 import VenueInfoContainer from "./Containers/VenueInfoContainer";
 import SignUp from "./Components/SignUp";
 import Dashboard from "./Components/Dashboard";
@@ -27,12 +27,12 @@ function App() {
     <div className="App">
       <AuthProvider>
         <NavBar />
-        <Container
+        {/* <Container
           className="d-flex align-items-center justify-content-center"
           style={{ minHeight: "100vh" }}
-        >
+        > */}
           {/* <main> */}
-          <div className="w-100" style={{ maxWidht: "400px" }}>
+          {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
             <Switch>
               <Route exact path="/users">
                 <UsersContainer />
@@ -41,7 +41,7 @@ function App() {
                 <UserRoutingContainer />
               </Route>
               <Route exact path="/" component={Index} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />{/* make a public dashboard */}
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
@@ -59,8 +59,8 @@ function App() {
                 <VenuesIndexPage />
               </Route>
             </Switch>
-          </div>
-        </Container>
+          {/* </div> */}
+        {/* </Container> */}
       </AuthProvider>
     </div>
   );

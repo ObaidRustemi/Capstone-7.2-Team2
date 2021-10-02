@@ -18,11 +18,11 @@ code {
   padding: 30px;
 }
 
-.user_display {
+/* .user_display {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 
 /* .switch_component{
   display: flex;
@@ -30,15 +30,31 @@ code {
   align-items: center;
 } */
 
-.toggle {
+/* .toggle {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
-}
+} */
 
-.users{
+/* .users{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+} */
+
+/* .ul-shirts{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
 }
+.shirt-box{
+  margin: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  list-style: none;
+}   */

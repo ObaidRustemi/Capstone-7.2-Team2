@@ -12,7 +12,8 @@ const usersReducer = (state = initialState, action) => {
     case GET_USER:
       console.log("GET_USER case");
       // action.payload = { user: {}, venues: {} }
-      return [...state, action.payload.user];
+      // return [...state, action.payload.user];
+      return action.payload;
     default:
       return state;
   }

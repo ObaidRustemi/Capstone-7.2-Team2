@@ -1,3 +1,35 @@
-.artwork-index-ul li img {
-max-width: 200px;
+.artist-show-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px black solid;
+    width: 50vw;
+    height: 50vh;
+   
+}
+.artist-show-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid 2px black;
+    width: 98vw;
+}
+
+.artwork-index img {
+max-width: 400px;
+}
+
+.artwork-index {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    border: 2px solid black;
+    width: 60vw;
 }

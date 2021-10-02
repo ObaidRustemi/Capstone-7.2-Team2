@@ -17,3 +17,28 @@ code {
   background-color: black;
   padding: 30px;
 }
+
+.user_display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* .switch_component{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.users{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

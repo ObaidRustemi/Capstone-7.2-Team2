@@ -27,12 +27,12 @@ function App() {
     <div className="App">
       <AuthProvider>
         <NavBar />
-        <Container
+        {/* <Container
           className="d-flex align-items-center justify-content-center"
           style={{ minHeight: "100vh" }}
-        >
+        > */}
           {/* <main> */}
-          <div className="w-100" style={{ maxWidht: "400px" }}>
+          {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
             <Switch>
               <Route exact path="/users">
                 <UsersContainer />
@@ -56,8 +56,8 @@ function App() {
                 <VenueInfoContainer />
               </Route>
             </Switch>
-          </div>
-        </Container>
+          {/* </div> */}
+        {/* </Container> */}
       </AuthProvider>
     </div>
   );

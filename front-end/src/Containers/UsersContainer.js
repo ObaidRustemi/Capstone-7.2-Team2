@@ -39,11 +39,32 @@ const UsersContainer = () => {
   const artists = users.filter(user => user.is_artist)
  
   return (
-    <div>
-    <Switch users={users} onChange={handleToggle}/>
-    <p>{toggled 
-        ? <ul>{artists.map(artist => <li><Link to={`/users/${artist.id}`}>{artist.username}</Link></li>)} </ul>
-        :  <ul>{venues.map(venue => <li><Link to={`/users/${venue.id}`}>{venue.username}</Link></li>)}</ul>}</p>
+    <div className="users">
+      <div>
+      <Switch users={users} onChange={handleToggle}/>
+      </div>
+    <div className="user_display">
+    <div>{toggled 
+        ? <ul>{artists.map(artist => 
+            <li>
+               <Link to={`/users/${artist.id}`}>
+                  <h3>{artist.username}</h3>
+                    <p>{artist.location}</p>
+                    <p>{artist.type_of_art}</p>
+                </Link>
+            </li>)}
+         </ul>
+        : <ul>{venues.map(venue => 
+            <li>
+              <Link to={`/users/${venue.id}`}>
+                <h3>{venue.username}</h3>
+                  <p>{venue.location}</p>
+              </Link>
+            </li>)}
+          </ul>}
+      </div>
+ {/* <UserIndex users={users} /> */}
+    </div> 
     </div>
   )
 };

@@ -14,7 +14,7 @@ import ForgotPassword from "./Components/ForgotPassword";
 import UpdateProfile from "./Components/UpdateProfile";
 import UploadArtwork from "./Components/UploadArtwork";
 import UploadVenueImage from "./Components/UploadVenueImage";
-
+import VenueOwnerUpdate from "./Components/VenueOwnerUpdate";
 //DEPENDENCIES
 import React from "react";
 import { Switch, Route } from "react-router-dom";
@@ -31,32 +31,35 @@ function App() {
           className="d-flex align-items-center justify-content-center"
           style={{ minHeight: "100vh" }}
         > */}
-          {/* <main> */}
-          {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
-            <Switch>
-              <Route exact path="/users">
-                <UsersContainer />
-              </Route>
-              <Route exact path="/users/:id">
-                <UserRoutingContainer />
-              </Route>
-              <Route exact path="/" component={Index} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />{/* make a public dashboard */}
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
-              <PrivateRoute
-                path="/uploadVenueImage"
-                component={UploadVenueImage}
-              />
+        {/* <main> */}
+        {/* <div className="w-100" style={{ maxWidht: "400px" }}> */}
+        <Switch>
+          <Route exact path="/users">
+            <UsersContainer />
+          </Route>
+          <Route exact path="/users/:id">
+            <UserRoutingContainer />
+          </Route>
+          <Route exact path="/" component={Index} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          {/* make a public dashboard */}
+          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
+          <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
 
-              <Route exact path="/users/:id/venues/:venue_id">
-                <VenueInfoContainer />
-              </Route>
-            </Switch>
-          {/* </div> */}
+          <PrivateRoute
+            exact
+            path="/venueownerupdate"
+            component={VenueOwnerUpdate}
+          />
+          <Route exact path="/users/:id/venues/:venue_id">
+            <VenueInfoContainer />
+          </Route>
+        </Switch>
+        {/* </div> */}
         {/* </Container> */}
       </AuthProvider>
     </div>

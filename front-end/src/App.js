@@ -14,7 +14,7 @@ import ForgotPassword from "./Components/ForgotPassword";
 import UpdateProfile from "./Components/UpdateProfile";
 import UploadArtwork from "./Components/UploadArtwork";
 import UploadVenueImage from "./Components/UploadVenueImage";
-
+import VenueOwnerUpdate from "./Components/VenueOwnerUpdate";
 //DEPENDENCIES
 import React from "react";
 import { Switch, Route } from "react-router-dom";
@@ -47,13 +47,16 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
-              <PrivateRoute
-                path="/uploadVenueImage"
-                component={UploadVenueImage}
-              />
-
+              <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
+              <Route exact path="/users/:id">
+                <VenueOwnerContainer />
+              </Route>
+              <PrivateRoute exact path="/venueownerupdate" component={VenueOwnerUpdate}/>
               <Route exact path="/users/:id/venues/:venue_id">
                 <VenueInfoContainer />
+              </Route>
+              <Route exact path="/venuesIndex">
+                <VenuesIndexPage />
               </Route>
             </Switch>
           {/* </div> */}

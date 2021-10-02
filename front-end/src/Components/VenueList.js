@@ -3,6 +3,7 @@ import "../Styling/UserList.css";
 import "../Styling/VenuesIndex.css";
 
 const VenueList = ({ venues }) => {
+  
   return (
     <div className="venue-list-container">
       <ul className="venue-index-ul">

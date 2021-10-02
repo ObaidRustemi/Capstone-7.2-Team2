@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { apiURL } from "../util/apiURL";
-import { getUser, getVenues, getArtworks } from "../Actions/userActions";
+import { getUser, getUserVenues, getArtworks } from "../Actions/userActions";
 
 import VenueShow from "../Pages/VenueShow";
 import ArtistShow from "../Pages/ArtistShow";
@@ -29,15 +29,13 @@ const UserRoutingContainer = () => {
         if (res.data.payload.venues) {
           await setIsVenue(true);
 
-          if (!venues.length) {
-            const action = getVenues(res.data.payload.venues);
-            dispatch(action);
-          }
+          const action = getUserVenues(res.data.payload.venues);
+          dispatch(action);
         } else {
           await setIsVenue(false);
           if (artwork.length) {
             const action = getArtworks(res.data.payload.userArtwork);
-            debugger;
+
             dispatch(action);
           }
         }

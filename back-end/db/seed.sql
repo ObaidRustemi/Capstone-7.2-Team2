@@ -26,6 +26,10 @@ INSERT INTO venues ( name, venue_profile_photo, owner_id, venue_info, address) V
 
 INSERT INTO venue_images (venue_id, photo_url) VALUES   
 (1,'https://cdn.theculturetrip.com/wp-content/uploads/2019/04/feature_vertical-gallery-chicago-_-8.jpg'),
+(1,'https://www.tripsavvy.com/thmb/VPYlfEARBBZbqwu3aGl9a7VfLHg=/3000x1687/smart/filters:no_upscale()/GettyImages-472768194-5d167ebc1a634312b25a98ca5d6613f9.jpg'),
 (1,'https://d4qwptktddc5f.cloudfront.net/easy_thumbnails/thumbs_Interior-Design-American-Kennel-Club-Museum-of-the-Dog-New-York-01-0319.jpg.770x0_q95.jpg'),
+(1,'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2019/01/dg00xh.jpg'),
+(1,'https://arttoartgallery.com/wp-content/uploads/2021/01/newslide2-1.jpg'),
+(1,'https://arttoartgallery.com/wp-content/uploads/2020/07/slidehpome-1.jpg'),
 (2,'https://www.centralparktours.net/blog/content/images/2020/07/nycgallery.jpg'),
 (2,'http://thepaperbox.nyc/wp-content/uploads/2016/02/back-yard-185x185.jpg');

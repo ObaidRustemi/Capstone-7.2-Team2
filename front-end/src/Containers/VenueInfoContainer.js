@@ -14,17 +14,17 @@ const VenueInfoContainer = () => {
 
   const venueImages = useSelector((state) => state.venueImages);
   const [currentVenue, setCurrentVenue] = useState({});
+  const [selectedImg, setSelectedImg] = useState(false);
 
   useEffect(() => {
     const fetchVenue = async () => {
       try {
         let res = await axios.get(`${API}/users/${id}/venues/${venue_id}`);
-    
         setCurrentVenue(res.data.payload.singleUserVenue);
-
         const action = getVenueImages(res.data.payload.allImagesForVenue);
-
-        dispatch(action);
+        // if (!venueImages) {
+          dispatch(action);
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +33,7 @@ const VenueInfoContainer = () => {
   }, []);
 
   return (
-    <VenueInfoPage currentVenue={currentVenue} venueImages={venueImages} />
+    <VenueInfoPage selectedImg={selectedImg} setSelectedImg={setSelectedImg} currentVenue={currentVenue} venueImages={venueImages} />
   );
 };
 

@@ -1,9 +1,13 @@
 import React from 'react'
+import "../Styling/VenueInfoPage.css"
+import VenueImageList from '../Components/VenueImageList'
 
-const VenueInfoPage = () => {
+const VenueInfoPage = ({currentVenue, venueImages, selectedImg, setSelectedImg}) => {
+
     return (
         <div>
-            <h1>Venue Info</h1>
+            
+            <VenueImageList selectedImg={selectedImg} setSelectedImg={setSelectedImg} currentVenue={currentVenue} venueImages={venueImages}/>
         </div>
     )
 }

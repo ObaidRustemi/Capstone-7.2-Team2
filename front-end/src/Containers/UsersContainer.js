@@ -63,7 +63,7 @@ const UsersContainer = () => {
             </li>)}
           </ul>}
       </div>
- <UserIndex users={users} />
+ {/* <UserIndex users={users} /> */}
     </div> 
     </div>
   )

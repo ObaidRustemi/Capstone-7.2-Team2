@@ -1,6 +1,7 @@
 import {
   GET_USERS,
   GET_USER,
+  GET_USER_VENUES,
   GET_VENUES,
   GET_VENUE,
   GET_ARTWORKS,
@@ -12,6 +13,9 @@ export const getUsers = (payload) => {
 };
 export const getUser = (payload) => {
   return { type: GET_USER, payload };
+};
+export const getUserVenues = (payload) => {
+  return { type: GET_USER_VENUES, payload };
 };
 export const getVenues = (payload) => {
   return { type: GET_VENUES, payload };

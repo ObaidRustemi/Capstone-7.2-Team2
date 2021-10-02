@@ -21,6 +21,7 @@
   background-color: #ccc;
   transition: 0.4s;
   border-radius: 34px;
+  
 }
 
 .slider:before {
@@ -43,3 +44,24 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(26px);
 }
+
+.toggle_position {
+  /* border: blueviolet 1px solid ; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  
+}
+
+.toggle_position h1{
+  padding-right: 50px;
+  padding-left: 50px;
+  font-family:  ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
+

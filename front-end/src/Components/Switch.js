@@ -1,17 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
 
-export default function Switch({onChange, users }) {
-console.log(users)
-
-// const venues = users.filter(user => user.is_venue)
+export default function Switch({onChange}) {
     return (
-        <div>
+        <div className="toggle_position">
+        <h1>Find Venues</h1>
         <label className="switch">
         <input type="checkbox" onChange={onChange}/>
         <span className="slider" rounded/>
-        {/* <p>{venues.map(venue => venue.username)}</p> */}
       </label>
+        <h1>Find Artists</h1>
         </div>
     )
 }

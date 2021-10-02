@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
+import "../Styling/ArtworkIndex.css"
 
 const ArtListItem = ({ art }) => {
-  // debugger
+ 
   return (
-    <li>
-      {/* <Link to={`/users/${venue.owner_id}/artwork/${venue.id}`}> */}
-      <h2>Title of Art: {art.title}</h2>
-      {/* </Link> */}
+    <div>
+      <Link to={`/users/${art.artist_id}/artwork/${art.id}`}>
+      <p>Title of Art: {art.title}</p>
       <img src={art.image} />
-    </li>
+      </Link>
+      </div>
   );
 };
 

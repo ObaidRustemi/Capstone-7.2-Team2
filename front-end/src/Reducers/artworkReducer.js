@@ -1,4 +1,8 @@
-import { GET_ARTWORKS, GET_ARTWORK } from "../Actions/actionTypes";
+import {
+  GET_ARTWORKS,
+  GET_ARTWORK,
+  GET_USER_ARTWORK,
+} from "../Actions/actionTypes";
 
 const initialState = [];
 
@@ -14,6 +18,9 @@ const artworkReducer = (state = initialState, action) => {
     case GET_ARTWORK:
       console.log("GET_ARTWORK case");
       return [...state, action.payload.user];
+    case GET_USER_ARTWORK:
+      console.log("GET_USER_ARTWORK case");
+      return action.payload;
     default:
       return state;
   }

@@ -14,7 +14,7 @@ const API = apiURL();
 const UserRoutingContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const user = useSelector((state) => state.user);
+  
   const venues = useSelector((state) => state.venues);
   const artwork = useSelector((state) => state.artwork);
   const [isVenue, setIsVenue] = useState(false);

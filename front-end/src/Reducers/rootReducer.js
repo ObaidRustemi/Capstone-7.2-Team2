@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import users from "./usersReducer";
+import user from "./usersReducer";
 import venues from "./venuesReducer";
 import venue from "./venuesReducer";
 import artwork from "./artworkReducer";
@@ -9,6 +10,7 @@ import venueImage from "./venueImagesReducer";
 
 const appState = {
   users,
+  user,
   venues,
   venue,
   currentUser,

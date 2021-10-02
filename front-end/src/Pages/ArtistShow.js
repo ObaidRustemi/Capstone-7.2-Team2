@@ -1,13 +1,16 @@
-import "../Styling/UserIndex.css";
+import "../Styling/ArtworkIndex.css";
 
 import ArtworkList from "../Components/ArtworkList";
 
-const ArtistShow = ({ artwork }) => {
+const ArtistShow = ({ artwork, currentUser }) => {
  
   return (
     <div className="artist-show-container">
-      <h3>Artist Details</h3>
       <ArtworkList artwork={artwork} />
+      <div className="artist-details">
+        <h4>Artist Details</h4>
+     
+      </div>
     </div>
   );
 };

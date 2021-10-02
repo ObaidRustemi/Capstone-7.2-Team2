@@ -4,6 +4,7 @@ import NavBar from "./Components/NavBar";
 
 import UsersContainer from "./Containers/UsersContainer";
 import UserRoutingContainer from "./Containers/UserRoutingContainer";
+import ArtworkInfoContainer from "./Containers/ArtworkInfoContainer";
 
 import VenueInfoContainer from "./Containers/VenueInfoContainer";
 import SignUp from "./Components/SignUp";
@@ -15,6 +16,7 @@ import UpdateProfile from "./Components/UpdateProfile";
 import UploadArtwork from "./Components/UploadArtwork";
 import UploadVenueImage from "./Components/UploadVenueImage";
 import VenueOwnerUpdate from "./Components/VenueOwnerUpdate";
+
 //DEPENDENCIES
 import React from "react";
 import { Switch, Route } from "react-router-dom";
@@ -40,6 +42,9 @@ function App() {
           <Route exact path="/users/:id">
             <UserRoutingContainer />
           </Route>
+          <Route exact path="/users/:id/artwork/:artwork_id">
+            <ArtworkInfoContainer />
+          </Route>
           <Route exact path="/" component={Index} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           {/* make a public dashboard */}
@@ -49,7 +54,6 @@ function App() {
           <Route path="/forgot-password" component={ForgotPassword} />
           <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
           <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
-
           <PrivateRoute
             exact
             path="/venueownerupdate"

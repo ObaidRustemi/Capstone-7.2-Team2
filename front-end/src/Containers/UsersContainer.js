@@ -29,7 +29,7 @@ const UsersContainer = () => {
     if (users.length === 0) {
       fetchUsers();
     }
-  }, []);
+  }, [users]);
 
   const handleToggle = (e) => {
     setToggled(e.target.checked)

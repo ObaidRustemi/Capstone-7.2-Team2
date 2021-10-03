@@ -25,8 +25,10 @@ const UsersContainer = () => {
   
     debugger;
     const fetchVenues = async () => {
+
       try {
         let venueRes = await axios.get(`${API}/allvenues`);
+
         debugger;
         setAllVenues(venueRes.data.payload);
       } catch (error) {
@@ -48,8 +50,13 @@ const UsersContainer = () => {
     // if (users.length === 0) {
       fetchUsers();
       fetchVenues();
+// <<<<<<< carlohomepage
     // }
-  }, [toggled]);
+//   }, [toggled]);
+// =======
+    // }
+  },[]);
+// >>>>>>> indextestbranch
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);

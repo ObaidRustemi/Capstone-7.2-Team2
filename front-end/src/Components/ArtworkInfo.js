@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
+import "../Styling/ArtworkInfo.css"
 
-const ArtworkInfo = ({user}) => {
-    debugger
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const ArtworkInfo = ({ image }) => {
+  
 
-export default ArtworkInfo
+  return <div className="single-image-container">
+
+    {image?.image? <img src={image.image}/>: <h1>Image Not Found</h1>} 
+      
+  </div>;
+};
+
+export default ArtworkInfo;

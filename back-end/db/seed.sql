@@ -11,8 +11,10 @@ INSERT INTO users(username,firebase_uid, type_of_art, description, phone_number,
 
 
 INSERT INTO artwork (title, artist_id, image) VALUES
-('title 1', 1, 'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2012/01/hokusai.jpg'),
-('title 2', 1, 'https://image.shutterstock.com/image-illustration/seven-running-horses-wildlife-decorative-600w-1754614820.jpg'),
+('Hokkaido', 1, 'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2012/01/hokusai.jpg'),
+('93 to infinity', 1, 'https://image.shutterstock.com/image-illustration/seven-running-horses-wildlife-decorative-600w-1754614820.jpg'),
+('untitled Denver Mural', 1, 'https://images.303magazine.com/uploads/2013/08/choefeatured-768x766.jpg'),
+('Untitled Mural 1', 1, 'https://images.squarespace-cdn.com/content/v1/5554c50ee4b050c7ae08c73a/1436889054101-UAGN411WT2UAQJKHUH2H/david_choe_2.jpeg'),
 ('title 3', 3, 'https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1602889523/auctions/NY010320/8_001.jpg'),
 ('title 4', 4, 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/11/11/1415723375557/9390c5a0-ff8c-4866-be24-8dc86fb512c7-1020x1016.jpeg?width=700&quality=85&auto=format&fit=max&s=4e31578a1b6f94c0328c1d6c5316a8e0'),
 ('title 5', 5, 'https://images.squarespace-cdn.com/content/v1/591cf35d20099ed1a3cc9c94/1495073736483-WD16PW5W6Y5QFIOAENL2/XCQ8Qcr.jpg?format=750w'),

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { apiURL } from "../util/apiURL";
 import { getUsers } from "../Actions/userActions";
-import UserIndex from "../Pages/UserIndex";
+// import UserIndex from "../Pages/UserIndex";
 import axios from "axios";
 import Switch from "../Components/Switch";
 import "../Styling/Switch.css";
@@ -47,16 +47,12 @@ const UsersContainer = () => {
         console.log(error);
       }
     };
-    // if (users.length === 0) {
+    
       fetchUsers();
       fetchVenues();
-// <<<<<<< carlohomepage
-    // }
-//   }, [toggled]);
-// =======
-    // }
+
   },[]);
-// >>>>>>> indextestbranch
+
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);

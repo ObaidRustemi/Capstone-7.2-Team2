@@ -18,11 +18,11 @@ const ArtworkInfoContainer = () => {
 
   useEffect(() => {
     const fetchArtwork = async () => {
-     
       try {
         let res = await axios.get(`${API}/users/${id}/artwork/${artwork_id}`);
+        // debugger
 
-        await setImage(res.data.payload.artwork);
+        await setImage(res.data);
         // const action = getSingleArtwork(res.data.payload);
         // dispatch(action);
       } catch (error) {

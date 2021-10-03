@@ -20,25 +20,37 @@ const { getAllImagesForVenue } = require("../queries/venueImages");
 
 venues.use("/:venue_id/venue_images", venueImagesController);
 
+
 venues.get("/", async (req, res) => {
 // <<<<<<< HEAD
-  // const { owner_id } = req.params;
-  // const { id } = req.params;
-  // console.log(id)
-  // const user = await getUser(id);
-  // const ownerVenues = await getAllVenuesForUser(user.firebase_uid);
-  // res.json({ success: true, payload: ownerVenues });
+// <<<<<<< HEAD
+  const { owner_id } = req.params;
+  const { id } = req.params;
+  console.log(id)
+  const user = await getUser(id);
+  const ownerVenues = await getAllVenuesForUser(user.firebase_uid);
+  res.json({ success: true, payload: ownerVenues });
 // =======
-  const allVenues = await getAllVenues();
-  res.json({ success: true, payload: allVenues });
+  // const allVenues = await getAllVenues();
+  // res.json({ success: true, payload: allVenues });
 // >>>>>>> main
+// =======
+//   const allVenues = await getAllVenues();
+//   res.json({ success: true, payload: allVenues });
+// >>>>>>> origin/carlohomepage
 });
 
+
 // venues.get("/", async (req, res) => {
-//   const { owner_id } = req.params;
-//   const ownerVenues = await getAllVenuesForUser(owner_id);
-//   res.json({ success: true, payload: ownerVenues });
+//   const allVenues = await getAllVenues();
+//   res.json({ success: true, payload: allVenues });
 // });
+
+venues.get("/", async (req, res) => {
+  const { owner_id } = req.params;
+  const ownerVenues = await getAllVenuesForUser(owner_id);
+  res.json({ success: true, payload: ownerVenues });
+});
 
 venues.get("/:id", async (req, res) => {
   try {

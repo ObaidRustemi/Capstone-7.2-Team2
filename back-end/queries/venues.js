@@ -91,6 +91,7 @@ const updateVenue = async (id, venue) => {
 };
 
 module.exports = {
+  // getAllVenues,
   getAllVenuesForUser,
   getVenueForUser,
   newVenueForUser,

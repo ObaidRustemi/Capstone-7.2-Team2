@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "../Styling/ArtworkIndex.css"
 
 const ArtListItem = ({ art }) => {
- 
   return (
     <div>
       <Link to={`/users/${art.artist_id}/artwork/${art.id}`}>

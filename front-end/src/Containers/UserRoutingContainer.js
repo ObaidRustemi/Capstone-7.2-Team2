@@ -13,7 +13,7 @@ const API = apiURL();
 
 const UserRoutingContainer = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { firebase_uid } = useParams();
   
   const venues = useSelector((state) => state.venues);
   const artwork = useSelector((state) => state.artwork);
@@ -23,7 +23,7 @@ const UserRoutingContainer = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        let res = await axios.get(`${API}/users/${id}`);
+        let res = await axios.get(`${API}/users/${firebase_uid}`);
 
         // getting back user
         // user response has key of venues, save venues in state, render venues component

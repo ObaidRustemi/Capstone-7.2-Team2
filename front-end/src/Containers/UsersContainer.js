@@ -53,8 +53,11 @@ const UsersContainer = () => {
     //   }, [toggled]);
     // =======
     // }
-  }, []);
-  // >>>>>>> indextestbranch
+//   }, [toggled]);
+// =======
+    // }
+  },[]);
+// >>>>>>> indextestbranch
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);

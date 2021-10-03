@@ -2,48 +2,50 @@ import React, { useEffect, useState } from "react";
 import "../Styling/UserIndex.css";
 import axios from "axios"
 import VenueList from "../Components/VenueList";
+import NewVenueContainer from "../Containers/NewVenueContainer";
 import { useSelector  } from "react-redux";
 import { apiURL } from "../util/apiURL";
 
 const API = apiURL();
 
 const VenueShow = ({ venues }) => {
-  const currentUser = useSelector((state) => state.currentUser);
-  const [newVenue, setNewVenue ] = useState({
-    name: "",
-    owner_id: "",
-    venue_profile_photo: "",
-    venue_info: "",
-    address: ""
-  })
+  // const currentUser = useSelector((state) => state.currentUser);
+  // const [newVenue, setNewVenue ] = useState({
+  //   name: "",
+  //   owner_id: "",
+  //   venue_profile_photo: "",
+  //   venue_info: "",
+  //   address: ""
+  // })
 
 
-  const addNewVenue = async (newVenue) =>{
-      const newVenueObject = Object.assign({}, newVenue)
-      newVenueObject.owner_id = currentUser.uid
-      try {
-        const res = await axios.post(`${API}/users`)
-        debugger
-      } catch (error) {
-        console.log(error)
-      }
-  }
+  // const addNewVenue = async (newVenue) =>{
+  //     const newVenueObject = Object.assign({}, newVenue)
+  //     newVenueObject.owner_id = currentUser.uid
+  //     try {
+  //       const res = await axios.post(`${API}/users`)
+  //       debugger
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  // }
 
-  const handleTextChange = (e) => {
-    setNewVenue({ ...newVenue, [e.target.id]: e.target.value });
-  };
+  // const handleTextChange = (e) => {
+  //   setNewVenue({ ...newVenue, [e.target.id]: e.target.value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addNewVenue(newVenue);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   addNewVenue(newVenue);
+  // };
 
-  const { name, venue_profile_photo, venue_info, address } = newVenue;
+  // const { name, venue_profile_photo, venue_info, address } = newVenue;
   return (
     <div className="user-show-container">
       <h3>Venue Owner Details</h3>
       <VenueList venues={venues} />
-      <form onSubmit={handleSubmit}>
+      <NewVenueContainer />
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="name">Venue Name:</label>
         <input
           id="name"
@@ -81,7 +83,7 @@ const VenueShow = ({ venues }) => {
           //   required
         />
         <input type="submit" />
-      </form>
+      </form> */}
     </div>
   );
 };

@@ -22,6 +22,7 @@ venues.use("/:venue_id/venue_images", venueImagesController);
 
 venues.get("/", async (req, res) => {
 // <<<<<<< HEAD
+// <<<<<<< HEAD
   const { owner_id } = req.params;
   const { id } = req.params;
   console.log(id)
@@ -32,7 +33,11 @@ venues.get("/", async (req, res) => {
   // const allVenues = await getAllVenues();
   // res.json({ success: true, payload: allVenues });
 // >>>>>>> main
-});
+// =======
+//   const allVenues = await getAllVenues();
+//   res.json({ success: true, payload: allVenues });
+// >>>>>>> origin/carlohomepage
+// });
 
 // venues.get("/", async (req, res) => {
 //   const { owner_id } = req.params;

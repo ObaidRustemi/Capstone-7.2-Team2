@@ -25,22 +25,22 @@ users.get("/", async (req, res) => {
   res.json({ success: true, payload: allUsers });
 });
 
-users.get("/:id", async (req, res) => {
-  // const data = await getUser(id, isVenueOwner); { user: {}, venues: [{}] }
+users.get("/:firebase_uid", async (req, res) => {
+  // const data = await getUser(firebase_uid, isVenueOwner); { user: {}, venues: [{}] }
 
   try {
-    const { id } = req.params;
-    const user = await getUser(id);
-
+    const { firebase_uid } = req.params;
+    const user = await getUser(firebase_uid);
+    
     if (user?.is_venue) {
-      const venues = await getAllVenuesForUser(id);
+      const venues = await getAllVenuesForUser(user.firebase_uid);
 
       res.json({
         success: true,
         payload: { user, venues },
       });
-    } else if (user?.id) {
-      const userArtwork = await getAllArtwork(id);
+    } else if (user?.is_artist) {
+      const userArtwork = await getAllArtwork(user.firebase_uid);
 
       res.json({
         success: true,
@@ -74,10 +74,10 @@ users.post("/", async (req, res) => {
   }
 });
 
-users.put("/:id", async (req, res) => {
+users.put("/:firebase_uid", async (req, res) => {
   try {
-    const { id } = req.params;
-    const updatedUser = await editUser(req.body, id);
+    const { firebase_uid } = req.params;
+    const updatedUser = await editUser(req.body, firebase_uid);
     if (updatedUser["id"]) {
       res.json({ success: true, payload: updatedUser });
     } else {
@@ -92,10 +92,10 @@ users.put("/:id", async (req, res) => {
   // res.json(updatedUser);
 });
 
-users.delete("/:id", async (req, res) => {
+users.delete("/:firebase_uid", async (req, res) => {
   try {
-    const { id } = req.params;
-    const deletedUser = await deleteUser(id);
+    const { firebase_uid } = req.params;
+    const deletedUser = await deleteUser(firebase_uid);
     if (deletedUser["id"]) {
       res.json({ success: true, payload: deletedUser });
     } else {

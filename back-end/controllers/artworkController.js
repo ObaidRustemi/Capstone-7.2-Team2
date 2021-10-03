@@ -12,23 +12,32 @@ const {
 const { getUser } = require("../queries/users");
 
 artwork.get("/", async (req, res) => {
+  console.log(req.params)
   const { artist_id } = req.params;
   const allArtwork = await getAllArtwork(artist_id);
   res.json(allArtwork);
 });
 
-artwork.get("/:artwork_id", async (req, res) => {
-  try {
-    const { artist_id, artwork_id } = req.params;
+
+// artwork.get("/:artwork_id", async (req, res) => {
+//   try {
+//     const { artist_id, artwork_id } = req.params;
    
-    const user = await getUser(artist_id);
-    if (user?.id) {
-      const artwork = await getArtwork(artist_id, artwork_id);
-      res.json({ success: true, payload: { user, artwork } });
-    }
-  } catch (error) {
-    console.log(error);
-  }
+//     const user = await getUser(artist_id);
+//     if (user?.id) {
+//       const artwork = await getArtwork(artist_id, artwork_id);
+//       res.json({ success: true, payload: { user, artwork } });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+artwork.get("/:id", async (req, res) => {
+  console.log(req.params)
+    const { id, artist_id} = req.params;
+  const artwork = await getArtwork(id, artist_id);
+  res.json(artwork);
+
 });
 
 artwork.post("/", async (req, res) => {

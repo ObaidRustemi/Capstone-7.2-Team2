@@ -9,7 +9,7 @@ const db = require("../db/dbConfig");
 // };
 
 const getAllVenuesForUser = async (userId) => {
-  console.log("getAllVenuesForUser");
+  console.log(userId);
   try {
     const allVenuesForUser = await db.any(
       `SELECT * FROM venues WHERE owner_id = $1`,
@@ -91,6 +91,7 @@ const updateVenue = async (id, venue) => {
 };
 
 module.exports = {
+  // getAllVenues,
   getAllVenuesForUser,
   getVenueForUser,
   newVenueForUser,

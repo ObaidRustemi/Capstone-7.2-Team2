@@ -19,13 +19,11 @@ const UsersContainer = () => {
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);
   const { id, venue_id } = useParams();
-  const [artists, setArtists] = useState([])
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-  
     debugger;
     const fetchVenues = async () => {
-
       try {
         let venueRes = await axios.get(`${API}/allvenues`);
 
@@ -48,15 +46,15 @@ const UsersContainer = () => {
       }
     };
     // if (users.length === 0) {
-      fetchUsers();
-      fetchVenues();
-// <<<<<<< carlohomepage
+    fetchUsers();
+    fetchVenues();
+    // <<<<<<< carlohomepage
     // }
-//   }, [toggled]);
-// =======
-    }
-  }, [users]);
-// >>>>>>> indextestbranch
+    //   }, [toggled]);
+    // =======
+    // }
+  }, []);
+  // >>>>>>> indextestbranch
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);
@@ -65,10 +63,10 @@ const UsersContainer = () => {
   // const venues = users.filter(user => user.is_venue)
   // const allVenuesList = allVenues.map(item => item)
   // console.log(allVenuesList)
-  if(users.length === 0){
-    return null 
+  if (users.length === 0) {
+    return null;
   }
-  
+
   return (
     <div className="users">
       <div>
@@ -82,16 +80,18 @@ const UsersContainer = () => {
           <div>
             {toggled ? (
               <ul>
-                {users.filter((user) => user.is_artist).map((artist) => (
-                  <li>
-                    <Link to={`/users/${artist.id}`}>
-                      <img src={artist.image} />
-                      <h3>{artist.username}</h3>
-                      <h4>{artist.type_of_art}</h4>
-                      <h5>{artist.location}</h5>
-                    </Link>
-                  </li>
-                ))}
+                {users
+                  .filter((user) => user.is_artist)
+                  .map((artist) => (
+                    <li>
+                      <Link to={`/users/${artist.id}`}>
+                        <img src={artist.image} />
+                        <h3>{artist.username}</h3>
+                        <h4>{artist.type_of_art}</h4>
+                        <h5>{artist.location}</h5>
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             ) : (
               <ul>

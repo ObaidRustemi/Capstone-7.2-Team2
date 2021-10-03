@@ -19,52 +19,40 @@ const UsersContainer = () => {
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);
   const { id, venue_id } = useParams();
-  const [artists, setArtists] = useState([])
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-  
-    debugger;
     const fetchVenues = async () => {
-
       try {
         let venueRes = await axios.get(`${API}/allvenues`);
-
-        debugger;
         setAllVenues(venueRes.data.payload);
       } catch (error) {
         console.log(error);
       }
     };
+
     const fetchUsers = async () => {
       try {
         let res = await axios.get(`${API}/users`);
         const action = getUsers(res.data.payload);
-        debugger;
         console.log("about to dispatch:::", action);
         await dispatch(action);
-        debugger;
       } catch (error) {
         console.log(error);
       }
     };
-    
-      fetchUsers();
-      fetchVenues();
-
-  },[]);
-
+    fetchUsers();
+    fetchVenues();
+  }, []);
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);
   };
 
-  // const venues = users.filter(user => user.is_venue)
-  // const allVenuesList = allVenues.map(item => item)
-  // console.log(allVenuesList)
-  if(users.length === 0){
-    return null 
+  if (users.length === 0) {
+    return null;
   }
-  
+
   return (
     <div className="users">
       <div>
@@ -78,26 +66,29 @@ const UsersContainer = () => {
           <div>
             {toggled ? (
               <ul>
-                {users.filter((user) => user.is_artist).map((artist) => (
-                  <li>
-                    <Link to={`/users/${artist.id}`}>
-                      <img src={artist.image} />
-                      <h3>{artist.username}</h3>
-                      <h4>{artist.type_of_art}</h4>
-                      <h5>{artist.location}</h5>
-                    </Link>
-                  </li>
-                ))}
+                {users
+                  .filter((user) => user.is_artist)
+                  .map((artist) => (
+                    <li>
+                      <Link to={`/users/${artist.id}`}>
+                        <img src={artist.image} />
+                        <h3>{artist.username}</h3>
+                        <h4>{artist.type_of_art}</h4>
+                        <h5>{artist.location}</h5>
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             ) : (
               <ul>
                 {allVenues.map((venue) => (
                   <li key={venue.id}>
                     <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
-                      <Card style={{ width: "250px" }}>
+                      <Card style={{ width: "350px" }}>
                         <Card.Img
                           variant="top"
                           src={venue.venue_profile_photo}
+                          className="venue_img"
                         />
                         <Card.Body>
                           <Card.Text>

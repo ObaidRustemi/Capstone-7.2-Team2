@@ -21,6 +21,7 @@ export default function SignUp() {
     firebase_uid: null,
     phone_number: null,
     is_venue: null,
+    is_artist: null
   });
   // const [uid, setUid] = useState(null)
 
@@ -45,11 +46,11 @@ export default function SignUp() {
 
       // setNewUser({...newUser, firebase_uid: uid})
       const newUserTest = Object.assign({}, newUser);
+      newUserTest.is_venue = true
+      newUserTest.is_artist = false
       newUserTest.firebase_uid = uid;
-      const res = await axios.post(`${API}/users`, newUser);
-      console.log(newUserTest);
-      // debugger
-      // history.push("/dashboard");
+      const res = await axios.post(`${API}/users`, newUserTest);
+      history.push("/dashboard");
     } catch {
       setError("Failed to create account");
     }
@@ -57,7 +58,6 @@ export default function SignUp() {
   }
 
   const handleNewUser = (e) => {
-    // debugger
     setNewUser({ ...newUser, [e.target.id]: e.target.value });
   };
 

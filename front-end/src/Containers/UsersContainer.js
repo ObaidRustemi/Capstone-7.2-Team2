@@ -47,7 +47,7 @@ const UsersContainer = () => {
       fetchUsers();
       fetchVenues();
     }
-  }, []);
+  }, [users]);
 
   const handleToggle = (e) => {
     setToggled(e.target.checked)

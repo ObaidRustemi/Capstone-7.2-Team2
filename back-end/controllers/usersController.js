@@ -31,16 +31,16 @@ users.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const user = await getUser(id);
-
+    
     if (user?.is_venue) {
-      const venues = await getAllVenuesForUser(id);
+      const venues = await getAllVenuesForUser(user.firebase_uid);
 
       res.json({
         success: true,
         payload: { user, venues },
       });
     } else if (user?.id) {
-      const userArtwork = await getAllArtwork(id);
+      const userArtwork = await getAllArtwork(user.firebase_uid);
 
       res.json({
         success: true,

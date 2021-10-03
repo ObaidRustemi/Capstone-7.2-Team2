@@ -12,13 +12,26 @@ const {
   updateVenue,
 } = require("../queries/venues");
 
+const {
+  getUser
+} = require("../queries/users")
+
 const { getAllImagesForVenue } = require("../queries/venueImages");
 
 venues.use("/:venue_id/venue_images", venueImagesController);
 
 venues.get("/", async (req, res) => {
+// <<<<<<< HEAD
+  // const { owner_id } = req.params;
+  // const { id } = req.params;
+  // console.log(id)
+  // const user = await getUser(id);
+  // const ownerVenues = await getAllVenuesForUser(user.firebase_uid);
+  // res.json({ success: true, payload: ownerVenues });
+// =======
   const allVenues = await getAllVenues();
   res.json({ success: true, payload: allVenues });
+// >>>>>>> main
 });
 
 // venues.get("/", async (req, res) => {
@@ -29,7 +42,10 @@ venues.get("/", async (req, res) => {
 
 venues.get("/:id", async (req, res) => {
   try {
+
+
     const { id } = req.params;
+
     const singleUserVenue = await getVenueForUser(id);
     const allImagesForVenue = await getAllImagesForVenue(id);
 

@@ -5,10 +5,11 @@ const getAllVenues = async () => {
     try {
       const allVenues = await db.any("SELECT * FROM venues");
       return allVenues;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   module.exports = {
     getAllVenues,
-   
   };

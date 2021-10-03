@@ -7,8 +7,9 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS:
       console.log("GET_USERS case");
-      return [...state].concat(action.payload);
+      // return [...state].concat(action.payload);
     // or return [...state, ...action.payload]
+    return action.payload;
     case GET_USER:
       console.log("GET_USER case");
       // action.payload = { user: {}, venues: {} }

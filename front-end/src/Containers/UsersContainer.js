@@ -54,8 +54,8 @@ const UsersContainer = () => {
     // }
 //   }, [toggled]);
 // =======
-    }
-  }, [users]);
+    // }
+  },[]);
 // >>>>>>> indextestbranch
 
   const handleToggle = (e) => {

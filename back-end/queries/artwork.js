@@ -15,11 +15,11 @@ const getAllArtwork = async (userId) => {
   }
 };
 
-const getArtwork = async (id) => {
+const getArtwork = async (id, artist_id) => {
   console.log("getArtwork");
 
   try {
-    const user = await db.one("SELECT * FROM artwork WHERE id = $1", id);
+    const user = await db.one("SELECT * FROM artwork WHERE id = $1 and artist_id = $2", [id, artist_id]);
     return user;
   } catch (error) {
     console.log("you have hit an error");

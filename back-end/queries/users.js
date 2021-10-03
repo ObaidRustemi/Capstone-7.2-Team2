@@ -11,11 +11,11 @@ const getAllUsers = async () => {
   }
 };
 
-const getUser = async (id) => {
+const getUser = async (firebase_uid) => {
   console.log("getUser");
 
   try {
-    const data = await db.one("SELECT * FROM users WHERE id = $1", id);
+    const data = await db.one("SELECT * FROM users WHERE firebase_uid = $1", firebase_uid);
     return data;
   } catch (error) {
     console.log("you have hit an error");
@@ -57,7 +57,7 @@ const postUser = async (newUser) => {
   }
 };
 
-const editUser = async (user, id) => {
+const editUser = async (user, fb_uid) => {
   const {
     username,
     firebase_uid,
@@ -83,7 +83,7 @@ const editUser = async (user, id) => {
         location,
         is_venue,
         is_artist,
-        id,
+        fb_uid,
       ]
     );
     return updatedUser;
@@ -93,11 +93,11 @@ const editUser = async (user, id) => {
   }
 };
 
-const deleteUser = async (id) => {
+const deleteUser = async (firebase_uid) => {
   try {
     const deletedUser = await db.one(
-      "DELETE FROM users WHERE id= $1 RETURNING *",
-      id
+      "DELETE FROM users WHERE firebase_uid= $1 RETURNING *",
+      firebase_uid
     );
     return deletedUser;
   } catch (error) {

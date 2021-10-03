@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS artwork;
 CREATE TABLE artwork(
     id SERIAL PRIMARY KEY, 
     title TEXT,
-    artist_id INT REFERENCES users(id)
+    artist_id TEXT REFERENCES users(firebase_uid)
         ON DELETE CASCADE,
     image TEXT
 );
@@ -47,7 +47,7 @@ CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 
     name TEXT,
     venue_profile_photo TEXT,
-    owner_id INT REFERENCES users(id),
+    owner_id TEXT REFERENCES users(firebase_uid),
     venue_info TEXT,
     address TEXT
     -- ON DELETE CASCADE

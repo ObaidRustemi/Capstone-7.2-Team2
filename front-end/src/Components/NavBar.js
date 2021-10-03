@@ -24,6 +24,9 @@ const NavBar = () => {
             <p>
               <NavLink to="/uploadArtwork"> Upload </NavLink>
             </p>
+            <p>
+              <NavLink to="/users"> Index Page </NavLink>
+            </p>
           </div>
         ) : (
           <div className="nav">
@@ -32,6 +35,9 @@ const NavBar = () => {
             </p>
             <p>
               <NavLink to="/login"> Log In </NavLink>
+            </p>
+            <p>
+              <NavLink to="/users"> Index Page </NavLink>
             </p>
           </div>
         )}

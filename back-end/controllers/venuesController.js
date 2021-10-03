@@ -37,7 +37,7 @@ venues.get("/", async (req, res) => {
 //   const allVenues = await getAllVenues();
 //   res.json({ success: true, payload: allVenues });
 // >>>>>>> origin/carlohomepage
-// });
+});
 
 // venues.get("/", async (req, res) => {
 //   const { owner_id } = req.params;

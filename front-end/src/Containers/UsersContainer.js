@@ -23,7 +23,7 @@ const UsersContainer = () => {
   useEffect(() => {
     const fetchVenues = async () => {
       try { 
-        let venueRes = await axios.get(`${API}/venues`)
+        let venueRes = await axios.get(`${API}/allvenues`)
         debugger;
         setAllVenues(venueRes.data.payload)
       } catch (error) {

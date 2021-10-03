@@ -18,8 +18,8 @@ const UsersContainer = () => {
   const dispatch = useDispatch();
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);
-  const { id, venue_id } = useParams();
   const [artists, setArtists] = useState([]);
+  const { id, venue_id } = useParams();
 
   useEffect(() => {
     const fetchVenues = async () => {
@@ -53,6 +53,7 @@ const UsersContainer = () => {
     return null;
   }
 
+  // debugger
   return (
     <div className="users">
       <div>
@@ -70,7 +71,7 @@ const UsersContainer = () => {
                   .filter((user) => user.is_artist)
                   .map((artist) => (
                     <li>
-                      <Link to={`/users/${artist.id}`}>
+                      <Link to={`/users/${artist.firebase_uid}`}>
                         <img src={artist.image} />
                         <h3>{artist.username}</h3>
                         <h4>{artist.type_of_art}</h4>

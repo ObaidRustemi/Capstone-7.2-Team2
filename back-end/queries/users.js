@@ -27,6 +27,7 @@ const postUser = async (newUser) => {
   const {
     username,
     firebase_uid,
+    image,
     type_of_art,
     description,
     phone_number,
@@ -36,10 +37,11 @@ const postUser = async (newUser) => {
   } = newUser;
   try {
     const user = await db.one(
-      "INSERT INTO users(username, firebase_uid, type_of_art, description, phone_number, location, is_venue, is_artist) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      "INSERT INTO users(username, firebase_uid, image, type_of_art, description, phone_number, location, is_venue, is_artist) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
       [
         username,
         firebase_uid,
+        image,
         type_of_art,
         description,
         phone_number,
@@ -59,6 +61,7 @@ const editUser = async (user, id) => {
   const {
     username,
     firebase_uid,
+    image,
     type_of_art,
     description,
     phone_number,
@@ -69,10 +72,11 @@ const editUser = async (user, id) => {
   user;
   try {
     const updatedUser = await db.one(
-      "UPDATE users SET username = $1, firebase_uid= $2, type_of_art = $3, description = $4, phone_number = $5, location = $6, is_venue= $7, is_artist= $8 WHERE id = $9 RETURNING *",
+      "UPDATE users SET username = $1, firebase_uid= $2, image = $3 type_of_art = $4, description = $5, phone_number = $6, location = $7, is_venue= $8, is_artist= $9 WHERE id = $10 RETURNING *",
       [
         username,
         firebase_uid,
+        image,
         type_of_art,
         description,
         phone_number,

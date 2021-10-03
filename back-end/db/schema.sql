@@ -10,6 +10,7 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username TEXT,
     firebase_uid TEXT,
+    image TEXT,
     type_of_art TEXT, 
     description TEXT,
     phone_number INT,

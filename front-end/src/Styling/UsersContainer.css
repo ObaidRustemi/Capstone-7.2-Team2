@@ -7,11 +7,35 @@ ul {
   text-align: center;
 }
 
-ul li{
-    padding: 25px;
+ul li {
+  align-items: center;
+  padding: 25px;
+  font-family: ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+  /* max-width: 250px; */
 }
 
- ul a{
-    text-decoration: none;
-    color: black;
+ul li h3 {
+  font-family: ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
+ul li p {
+  font-family: ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
+ul a {
+  text-decoration: none;
+  color: black;
+}
+
+ul li img {
+  max-width: 250px;
 }

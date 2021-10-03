@@ -1,27 +1,47 @@
 const express = require("express");
 
-const artwork = express.Router({mergeParams: true});
+const artwork = express.Router({ mergeParams: true });
 
-const { getAllArtwork, getArtwork, postArtwork, editArtwork, deleteArtwork } = require("../queries/artwork");
+const {
+  getAllArtwork,
+  getArtwork,
+  postArtwork,
+  editArtwork,
+  deleteArtwork,
+} = require("../queries/artwork");
+const { getUser } = require("../queries/users");
 
 artwork.get("/", async (req, res) => {
   console.log(req.params)
   const { artist_id } = req.params;
-  console.log(artist_id)
   const allArtwork = await getAllArtwork(artist_id);
-  console.log(allArtwork)
   res.json(allArtwork);
 });
+
+
+// artwork.get("/:artwork_id", async (req, res) => {
+//   try {
+//     const { artist_id, artwork_id } = req.params;
+   
+//     const user = await getUser(artist_id);
+//     if (user?.id) {
+//       const artwork = await getArtwork(artist_id, artwork_id);
+//       res.json({ success: true, payload: { user, artwork } });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
 
 artwork.get("/:id", async (req, res) => {
   console.log(req.params)
     const { id, artist_id} = req.params;
   const artwork = await getArtwork(id, artist_id);
   res.json(artwork);
+
 });
 
 artwork.post("/", async (req, res) => {
-  const {artist_id} = req.params;
+  const { artist_id } = req.params;
   const newArtwork = await postArtwork(req.body, artist_id);
   res.json(newArtwork);
 });

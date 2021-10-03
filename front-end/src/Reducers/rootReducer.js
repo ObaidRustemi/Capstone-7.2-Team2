@@ -4,6 +4,7 @@ import user from "./usersReducer";
 import venues from "./venuesReducer";
 import venue from "./venuesReducer";
 import artwork from "./artworkReducer";
+import singleArtwork from "./artworkReducer";
 import currentUser from "./currentuser";
 import venueImages from "./venueImagesReducer";
 import venueImage from "./venueImagesReducer";
@@ -15,6 +16,7 @@ const appState = {
   venue,
   currentUser,
   artwork,
+  singleArtwork,
   venueImage, 
   venueImages,
   

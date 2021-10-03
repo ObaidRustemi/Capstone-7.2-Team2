@@ -1,3 +1,4 @@
+const artwork = require("../controllers/artworkController");
 const db = require("../db/dbConfig");
 
 const getAllArtwork = async (userId) => {
@@ -15,11 +16,21 @@ const getAllArtwork = async (userId) => {
   }
 };
 
-const getArtwork = async (id, artist_id) => {
-  console.log("getArtwork");
 
+// const getArtwork = async (artist_id, id) => {
+
+const getArtwork = async (id, artist_id) => {
+
+  console.log("getArtwork");
+  console.log("artist id:", artist_id)
+  console.log(id)
+debugger
   try {
+
+//     const user = await db.one("SELECT * FROM artwork WHERE artist_id = $1 AND id =$2", [artist_id, id]);
+
     const user = await db.one("SELECT * FROM artwork WHERE id = $1 and artist_id = $2", [id, artist_id]);
+
     return user;
   } catch (error) {
     console.log("you have hit an error");

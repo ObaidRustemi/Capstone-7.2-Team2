@@ -20,6 +20,7 @@ const { getAllImagesForVenue } = require("../queries/venueImages");
 
 venues.use("/:venue_id/venue_images", venueImagesController);
 
+
 venues.get("/", async (req, res) => {
 // <<<<<<< HEAD
 // <<<<<<< HEAD
@@ -39,11 +40,17 @@ venues.get("/", async (req, res) => {
 // >>>>>>> origin/carlohomepage
 });
 
+
 // venues.get("/", async (req, res) => {
-//   const { owner_id } = req.params;
-//   const ownerVenues = await getAllVenuesForUser(owner_id);
-//   res.json({ success: true, payload: ownerVenues });
+//   const allVenues = await getAllVenues();
+//   res.json({ success: true, payload: allVenues });
 // });
+
+venues.get("/", async (req, res) => {
+  const { owner_id } = req.params;
+  const ownerVenues = await getAllVenuesForUser(owner_id);
+  res.json({ success: true, payload: ownerVenues });
+});
 
 venues.get("/:id", async (req, res) => {
   try {

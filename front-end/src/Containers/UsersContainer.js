@@ -18,18 +18,16 @@ const UsersContainer = () => {
   const dispatch = useDispatch();
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);
+  const [artists, setArtists] = useState([]);
   const { id, venue_id } = useParams();
-  const [artists, setArtists] = useState([])
 
   useEffect(() => {
-  
-    debugger;
+    // debugger;
     const fetchVenues = async () => {
-
       try {
         let venueRes = await axios.get(`${API}/allvenues`);
 
-        debugger;
+        // debugger;
         setAllVenues(venueRes.data.payload);
       } catch (error) {
         console.log(error);
@@ -39,18 +37,21 @@ const UsersContainer = () => {
       try {
         let res = await axios.get(`${API}/users`);
         const action = getUsers(res.data.payload);
-        debugger;
+        // debugger;
         console.log("about to dispatch:::", action);
         await dispatch(action);
-        debugger;
+        // debugger;
       } catch (error) {
         console.log(error);
       }
     };
     // if (users.length === 0) {
-      fetchUsers();
-      fetchVenues();
-// <<<<<<< carlohomepage
+    fetchUsers();
+    fetchVenues();
+    // <<<<<<< carlohomepage
+    // }
+    //   }, [toggled]);
+    // =======
     // }
 //   }, [toggled]);
 // =======
@@ -65,10 +66,11 @@ const UsersContainer = () => {
   // const venues = users.filter(user => user.is_venue)
   // const allVenuesList = allVenues.map(item => item)
   // console.log(allVenuesList)
-  if(users.length === 0){
-    return null 
+  if (users.length === 0) {
+    return null;
   }
-  
+
+  // debugger
   return (
     <div className="users">
       <div>
@@ -82,16 +84,18 @@ const UsersContainer = () => {
           <div>
             {toggled ? (
               <ul>
-                {users.filter((user) => user.is_artist).map((artist) => (
-                  <li>
-                    <Link to={`/users/${artist.id}`}>
-                      <img src={artist.image} />
-                      <h3>{artist.username}</h3>
-                      <h4>{artist.type_of_art}</h4>
-                      <h5>{artist.location}</h5>
-                    </Link>
-                  </li>
-                ))}
+                {users
+                  .filter((user) => user.is_artist)
+                  .map((artist) => (
+                    <li>
+                      <Link to={`/users/${artist.firebase_uid}`}>
+                        <img src={artist.image} />
+                        <h3>{artist.username}</h3>
+                        <h4>{artist.type_of_art}</h4>
+                        <h5>{artist.location}</h5>
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             ) : (
               <ul>

@@ -39,7 +39,7 @@ function App() {
           <Route exact path="/users">
             <UsersContainer />
           </Route>
-          <Route exact path="/users/:id">
+          <Route exact path="/users/:firebase_uid">
             <UserRoutingContainer />
           </Route>
           <Route exact path="/users/:id/artwork/:artwork_id">

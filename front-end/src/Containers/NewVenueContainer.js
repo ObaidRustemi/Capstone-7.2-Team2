@@ -20,8 +20,10 @@ const NewVenueContainer = () => {
     const newVenueObject = Object.assign({}, newVenue);
     newVenueObject.owner_id = currentUser.uid;
     try {
-      const res = await axios.post(`${API}/users`, newVenueObject);
-      debugger;
+       
+      const res = await axios.post(`${API}/users/${currentUser.uid}/venues`, newVenueObject);
+    debugger
+      debugger
     } catch (error) {
       console.log(error);
     }
@@ -53,16 +55,16 @@ const NewVenueContainer = () => {
           value={venue_profile_photo}
           type="text"
           onChange={handleTextChange}
-          placeholder="Enter venue address"
+          placeholder="Enter a URL"
           //   required
         />
-        <label htmlFor="venue_info">Describe The Place:</label>
-        <input
+        <label htmlFor="venue_info">Description:</label>
+        <textarea
           id="venue_info"
           value={venue_info}
           type="text"
           onChange={handleTextChange}
-          placeholder="Enter venue venue_info"
+          placeholder="Enter venue information"
           //   required
         />
         <label htmlFor="address">Address:</label>

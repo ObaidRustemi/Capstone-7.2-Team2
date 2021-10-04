@@ -23,7 +23,7 @@ const getAllVenuesForUser = async (userId) => {
 };
 
 const getVenueForUser = async (id) => {
-  console.log("getSingleVenueForUser");
+  console.log("getVenueForUser");
   try {
     const singleVenueForUser = await db.one(
       `SELECT * FROM venues WHERE id = $1`,
@@ -37,15 +37,15 @@ const getVenueForUser = async (id) => {
 
 const newVenueForUser = async (venue, userId) => {
   console.log("newVenueForUser");
-  const { name, address, venue_profile_photo } = venue;
+  const { name, address, venue_profile_photo, venue_info, owner_id} = venue;
   try {
     const newVenue = await db.one(
       `
-          INSERT INTO venues (name,venue_profile_photo, address,  owner_id) 
-          VALUES ($1, $2, $3, $4)
+          INSERT INTO venues (name, venue_profile_photo, owner_id, venue_info, address) 
+          VALUES ($1, $2, $3, $4, $5)
           RETURNING *
       `,
-      [name, venue_profile_photo, address, userId]
+      [name, venue_profile_photo, owner_id, venue_info, address, userId]
     );
 
     return newVenue;

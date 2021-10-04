@@ -19,12 +19,10 @@ const { getAllImagesForVenue } = require("../queries/venueImages");
 venues.use("/:venue_id/venue_images", venueImagesController);
 
 venues.get("/", async (req, res) => {
-
-  
-  const { id } = req.params;
-  console.log(id);
-  const user = await getUser(id);
-  const ownerVenues = await getAllVenuesForUser(id);
+  const { owner_id } = req.params;
+console.log("this is the owner_id: ", owner_id)
+  const user = await getUser(owner_id);
+  const ownerVenues = await getAllVenuesForUser(owner_id);
   res.json({ success: true, payload: ownerVenues });
   // =======
   // const allVenues = await getAllVenues();
@@ -73,16 +71,16 @@ venues.post("/", async (req, res) => {
   try {
     const { owner_id } = req.params;
     const createdVenue = await newVenueForUser(req.body, owner_id);
-    const updatedVenueList = await getAllVenuesForUser(owner_id)
-    console.log(updatedVenueList)
-    console.log(createdVenue)
-    console.log(owner_id)
+    const updatedVenueList = await getAllVenuesForUser(owner_id);
+    console.log(updatedVenueList);
+    console.log(createdVenue);
+    console.log(owner_id);
     if (owner_id) {
-      console.log("venue created")
+      console.log("venue created");
       res.json({ success: true, payload: updatedVenueList });
-      console.log(createdVenue)
+      console.log(createdVenue);
     } else {
-      console.log("post error")
+      console.log("post error");
       throw createdVenue;
     }
   } catch (error) {

@@ -14,17 +14,20 @@ const API = apiURL();
 const UserRoutingContainer = () => {
   const dispatch = useDispatch();
   const { firebase_uid } = useParams();
-  
+
   const venues = useSelector((state) => state.venues);
   const artwork = useSelector((state) => state.artwork);
   const [isVenue, setIsVenue] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [showAddVenue, setShowAddVenue] = useState(null);
+
+  const fetchVenues = () => {};
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         let res = await axios.get(`${API}/users/${firebase_uid}`);
-
+        debugger;
         // getting back user
         // user response has key of venues, save venues in state, render venues component
         // passing down venues state into it
@@ -37,7 +40,7 @@ const UserRoutingContainer = () => {
           await setIsVenue(false);
           setCurrentUser(res.data.payload.user);
           const action = getUserArtwork(res.data.payload.userArtwork);
-          const action2 = getUser(res.data.payload)
+          const action2 = getUser(res.data.payload);
           dispatch(action);
           dispatch(action2);
         }
@@ -53,7 +56,12 @@ const UserRoutingContainer = () => {
       <ArtistShow currentUser={currentUser} artwork={artwork} />
     </div>
   ) : (
-    <VenueShow currentUser={currentUser} venues={venues} />
+    <VenueShow
+      currentUser={currentUser}
+      venues={venues}
+      showAddVenue={showAddVenue}
+      setShowAddVenue={setShowAddVenue}
+    />
   );
 };
 

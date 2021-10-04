@@ -1,56 +1,61 @@
 import React, { useEffect, useState } from "react";
-import "../Styling/UserIndex.css";
+import { useParams } from "react-router";
+import "../Styling/VenueInfoPage.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { apiURL } from "../util/apiURL";
 
 const API = apiURL();
 
-const NewVenueContainer = ({setShowHideButton}) => {
+const VenueEditContainer = () => {
+  const { venue_id } = useParams();
   const currentUser = useSelector((state) => state.currentUser);
-  const [newVenue, setNewVenue] = useState({
+  const [editedVenue, setEditedVenue] = useState({
     name: "",
     owner_id: "",
     venue_profile_photo: "",
     venue_info: "",
     address: "",
   });
-  const [postSuccess, setPostSuccess] = useState(null);
-  
-  useEffect(()=> {
-    setShowHideButton(true)
-  },[])
+  const [editPostSuccess, setEditPostSuccess] = useState(null);
 
-  const addNewVenue = async (newVenue) => {
-    const newVenueObject = Object.assign({}, newVenue);
-    // newVenueObject.owner_id = currentUser.uid;
-    newVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42"
+  // useEffect(()=> {
+  //     setShowHideButton(true)
+  //   },[])
+
+  const editVenue = async (venue) => {
+    const editVenueObject = Object.assign({}, editedVenue);
+    // editVenueObject.owner_id = currentUser.uid;
+    editVenueObject.owner_id = 'C8QFbExthBMvPkGZ2CtM13bcWoi1'
     try {
-      const res = await axios.post(
-        `${API}/users/${currentUser.uid}/venues`,
-        newVenueObject
+      const res = await axios.put(
+        `${API}/users/${currentUser.uid}/venues/${venue_id}`,
+        editVenueObject
       );
+      debugger
       if (res.data.success) {
-        setPostSuccess(true);
+        setEditPostSuccess(true);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNewVenue(newVenue);
-   
+    editVenue(editedVenue);
   };
+
   const handleTextChange = (e) => {
-    setNewVenue({ ...newVenue, [e.target.id]: e.target.value });
-    setPostSuccess(null);
+    setEditedVenue({ ...editedVenue, [e.target.id]: e.target.value });
+    setEditPostSuccess(null);
   };
-  const { name, venue_profile_photo, venue_info, address } = newVenue;
+
+  const { name, venue_profile_photo, venue_info, address } = editedVenue;
   return (
-    <div className="new-venue-container">
-      <h2>Add Venue</h2>
-      <form className="forms-container" onSubmit={handleSubmit}>
+    <div className="edit-venue-container">
+      <h2>Edit Venue</h2>
+      <form className="edit-forms-container" onSubmit={handleSubmit}>
         <label htmlFor="name">Venue Name:</label>
         <input
           id="name"
@@ -89,9 +94,9 @@ const NewVenueContainer = ({setShowHideButton}) => {
         />
         <input type="submit" />
       </form>
-      {postSuccess ? <h4>Venue Added</h4> : null}
+      {editPostSuccess ? <h4>Venue Edit Complete</h4> : null}
     </div>
   );
 };
 
-export default NewVenueContainer;
+export default VenueEditContainer;

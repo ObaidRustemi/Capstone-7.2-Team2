@@ -24,6 +24,13 @@ ul li h3 {
   letter-spacing: -0.02em;
 }
 
+ul li h5 {
+  font-family: ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
 ul li p {
   font-family: ll-unica78, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;

@@ -72,10 +72,20 @@ const UsersContainer = () => {
                   .map((artist) => (
                     <li>
                       <Link to={`/users/${artist.firebase_uid}`}>
-                        <img src={artist.image} />
-                        <h3>{artist.username}</h3>
-                        <h4>{artist.type_of_art}</h4>
-                        <h5>{artist.location}</h5>
+                        <Card style={{ width: "250px" }}>
+                          <Card.Img
+                            variant="top"
+                            src={artist.image}
+                            className="artist_img"
+                          />
+                          <Card.Body>
+                            <Card.Text>
+                              <h3>{artist.username}</h3>
+                              <h5>{artist.type_of_art}</h5>
+                              <p>{artist.location}</p>
+                            </Card.Text>
+                          </Card.Body>
+                        </Card>
                       </Link>
                     </li>
                   ))}
@@ -99,16 +109,6 @@ const UsersContainer = () => {
                         </Card.Body>
                       </Card>
                     </Link>
-                    {/* <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
-                    <img src={venue.venue_profile_photo} />
-                    <h3>{venue.name}</h3>
-                    <p>{venue.address}</p>
-                  </Link> */}
-
-                    {/* <Link to={`/users/${venue.id}`}>
-                <h3>{venue.username}</h3>
-                  <p>{venue.location}</p>
-              </Link> */}
                   </li>
                 ))}
               </ul>

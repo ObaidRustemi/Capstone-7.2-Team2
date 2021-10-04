@@ -10,18 +10,18 @@ const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
   return (
-    <Navbar collapseOnSelect
-    expand="xl"
-    bg="dark"
-    variant="dark"
-    sticky>
+    <Navbar id="nav-main-div"
+    expand="xxl"
+        bg="dark"
+        variant="light">
       {/* <div> */}
         <Navbar.Brand href="/"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
       {/* </div> */}
       {/* <div class="right" id="links"> */}
+      
         {currentUser ? (
-          <Nav className="navbar-item" >
-            <p className="hello"> Hello {currentUser.email}!</p>
+          <Nav className="mr-auto" >
+            <p> Hello {currentUser.email}!</p>
             {/* <p> */}
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
             {/* </p> */}

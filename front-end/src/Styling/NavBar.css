@@ -1,22 +1,30 @@
 #nav-main-div {
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row; */
-  /* display: flex;
-  flex-direction: row; */
+    /* justify-content: space-evenly; */
+    flex-direction: row;
+  
 }
 
+.navbar{
+    background-color: yellow;
+}
 .navbar-item {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   margin-left: 30px;
-  /* color: inherit;
+    /* color: inherit;
   text-decoration: inherit;
   text-transform: uppercase;
-  outline: none; */
+  outline: none;  */
+}
+
+
+.nav-items {
+    background-color: white;
+    /* justify-content: right; */
 }
 .left {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -26,7 +34,7 @@
   max-width: 200px;
 }
 
-.hello {
+#hello {
     color: white;
 }
 

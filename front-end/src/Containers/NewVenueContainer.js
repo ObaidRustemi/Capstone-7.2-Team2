@@ -24,6 +24,7 @@ const NewVenueContainer = () => {
       const res = await axios.post(`${API}/users/${currentUser.uid}/venues`, newVenueObject);
     debugger
       debugger
+
     } catch (error) {
       console.log(error);
     }
@@ -55,6 +56,7 @@ const NewVenueContainer = () => {
           value={venue_profile_photo}
           type="text"
           onChange={handleTextChange}
+
           placeholder="Enter a URL"
           //   required
         />

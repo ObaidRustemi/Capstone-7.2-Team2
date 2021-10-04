@@ -1,15 +1,25 @@
-import React from 'react'
-import "../Styling/VenueInfoPage.css"
-import VenueImageList from '../Components/VenueImageList'
+import React from "react";
+import "../Styling/VenueInfoPage.css";
+import VenueImageList from "../Components/VenueImageList";
+import VenueEditContainer from "../Containers/VenueEditContainer"
 
-const VenueInfoPage = ({currentVenue, venueImages, selectedImg, setSelectedImg}) => {
+const VenueInfoPage = ({
+  currentVenue,
+  venueImages,
+  selectedImg,
+  setSelectedImg,
+}) => {
+  return (
+    <div>
+      <VenueImageList
+        selectedImg={selectedImg}
+        setSelectedImg={setSelectedImg}
+        currentVenue={currentVenue}
+        venueImages={venueImages}
+      />
+      <VenueEditContainer/>
+    </div>
+  );
+};
 
-    return (
-        <div>
-            
-            <VenueImageList selectedImg={selectedImg} setSelectedImg={setSelectedImg} currentVenue={currentVenue} venueImages={venueImages}/>
-        </div>
-    )
-}
-
-export default VenueInfoPage
+export default VenueInfoPage;

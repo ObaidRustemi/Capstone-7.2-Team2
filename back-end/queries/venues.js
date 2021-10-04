@@ -73,12 +73,12 @@ const deleteVenue = async (id) => {
 
 const updateVenue = async (id, venue) => {
   console.log("updateVenue");
-  const { name, address, owner_id } = venue;
+  const { name, address, venue_profile_photo, venue_info, owner_id} = venue;
   try {
     const updatedVenue = await db.one(
       `
           UPDATE venues
-          SET name = $1, address = $2, owner_id = $3
+          SET name = $1, address = $2, venue_profile_photo = $3, owner_id = $3
           WHERE id = $4
           RETURNING * 
       `,

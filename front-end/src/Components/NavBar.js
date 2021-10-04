@@ -19,10 +19,9 @@ const NavBar = () => {
         <Navbar.Brand href="/"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
       {/* </div> */}
       {/* <div class="right" id="links"> */}
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         {currentUser ? (
           <Nav className="navbar-item" >
-            <p> Hello {currentUser.email}!</p>
+            <p className="hello"> Hello {currentUser.email}!</p>
             {/* <p> */}
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
             {/* </p> */}

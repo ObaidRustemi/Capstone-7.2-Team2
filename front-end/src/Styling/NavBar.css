@@ -1,23 +1,32 @@
-#nav-main-div{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+#nav-main-div {
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;
+    flex-direction: row; */
+  /* display: flex;
+  flex-direction: row; */
 }
 
-.left{
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.navbar-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 30px;
+  /* color: inherit;
+  text-decoration: inherit;
+  text-transform: uppercase;
+  outline: none; */
+}
+.left {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-.title {
-    color: black;
+.logo {
+  max-width: 200px;
 }
-/* .right{
 
-} */
-
-.nav{
+/* .nav{
     align-items: center;
 }
 .nav p {
@@ -28,4 +37,4 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 .nav a {
     text-decoration: none;
     color: black
-}
+} */

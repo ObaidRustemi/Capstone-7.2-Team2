@@ -12,50 +12,43 @@ const {
   updateVenue,
 } = require("../queries/venues");
 
-const {
-  getUser
-} = require("../queries/users")
+const { getUser } = require("../queries/users");
 
 const { getAllImagesForVenue } = require("../queries/venueImages");
 
 venues.use("/:venue_id/venue_images", venueImagesController);
 
-
 venues.get("/", async (req, res) => {
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-  const { owner_id } = req.params;
+
+  
   const { id } = req.params;
-  console.log(id)
+  console.log(id);
   const user = await getUser(id);
-  const ownerVenues = await getAllVenuesForUser(user.firebase_uid);
+  const ownerVenues = await getAllVenuesForUser(id);
   res.json({ success: true, payload: ownerVenues });
-// =======
+  // =======
   // const allVenues = await getAllVenues();
   // res.json({ success: true, payload: allVenues });
-// >>>>>>> main
-// =======
-//   const allVenues = await getAllVenues();
-//   res.json({ success: true, payload: allVenues });
-// >>>>>>> origin/carlohomepage
+  // >>>>>>> main
+  // =======
+  //   const allVenues = await getAllVenues();
+  //   res.json({ success: true, payload: allVenues });
+  // >>>>>>> origin/carlohomepage
 });
-
 
 // venues.get("/", async (req, res) => {
 //   const allVenues = await getAllVenues();
 //   res.json({ success: true, payload: allVenues });
 // });
 
-venues.get("/", async (req, res) => {
-  const { owner_id } = req.params;
-  const ownerVenues = await getAllVenuesForUser(owner_id);
-  res.json({ success: true, payload: ownerVenues });
-});
+// venues.get("/", async (req, res) => {
+//   const { owner_id } = req.params;
+//   const ownerVenues = await getAllVenuesForUser(owner_id);
+//   res.json({ success: true, payload: ownerVenues });
+// });
 
 venues.get("/:id", async (req, res) => {
   try {
-
-
     const { id } = req.params;
 
     const singleUserVenue = await getVenueForUser(id);
@@ -79,12 +72,17 @@ venues.get("/:id", async (req, res) => {
 venues.post("/", async (req, res) => {
   try {
     const { owner_id } = req.params;
-
     const createdVenue = await newVenueForUser(req.body, owner_id);
-
+    const updatedVenueList = await getAllVenuesForUser(owner_id)
+    console.log(updatedVenueList)
+    console.log(createdVenue)
+    console.log(owner_id)
     if (owner_id) {
-      res.json({ success: true, payload: createdVenue });
+      console.log("venue created")
+      res.json({ success: true, payload: updatedVenueList });
+      console.log(createdVenue)
     } else {
+      console.log("post error")
       throw createdVenue;
     }
   } catch (error) {

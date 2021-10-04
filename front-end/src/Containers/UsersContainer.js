@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { apiURL } from "../util/apiURL";
 import { getUsers } from "../Actions/userActions";
-import UserIndex from "../Pages/UserIndex";
+// import UserIndex from "../Pages/UserIndex";
 import axios from "axios";
 import Switch from "../Components/Switch";
 import "../Styling/Switch.css";
@@ -22,50 +22,33 @@ const UsersContainer = () => {
   const { id, venue_id } = useParams();
 
   useEffect(() => {
-    // debugger;
     const fetchVenues = async () => {
       try {
         let venueRes = await axios.get(`${API}/allvenues`);
-
-        // debugger;
         setAllVenues(venueRes.data.payload);
       } catch (error) {
         console.log(error);
       }
     };
+
     const fetchUsers = async () => {
       try {
         let res = await axios.get(`${API}/users`);
         const action = getUsers(res.data.payload);
-        // debugger;
         console.log("about to dispatch:::", action);
         await dispatch(action);
-        // debugger;
       } catch (error) {
         console.log(error);
       }
     };
-    // if (users.length === 0) {
     fetchUsers();
     fetchVenues();
-    // <<<<<<< carlohomepage
-    // }
-    //   }, [toggled]);
-    // =======
-    // }
-//   }, [toggled]);
-// =======
-    // }
-  },[]);
-// >>>>>>> indextestbranch
+  }, []);
 
   const handleToggle = (e) => {
     setToggled(e.target.checked);
   };
 
-  // const venues = users.filter(user => user.is_venue)
-  // const allVenuesList = allVenues.map(item => item)
-  // console.log(allVenuesList)
   if (users.length === 0) {
     return null;
   }
@@ -89,10 +72,20 @@ const UsersContainer = () => {
                   .map((artist) => (
                     <li>
                       <Link to={`/users/${artist.firebase_uid}`}>
-                        <img src={artist.image} />
-                        <h3>{artist.username}</h3>
-                        <h4>{artist.type_of_art}</h4>
-                        <h5>{artist.location}</h5>
+                        <Card style={{ width: "250px" }}>
+                          <Card.Img
+                            variant="top"
+                            src={artist.image}
+                            className="artist_img"
+                          />
+                          <Card.Body>
+                            <Card.Text>
+                              <h3>{artist.username}</h3>
+                              <h5>{artist.type_of_art}</h5>
+                              <p>{artist.location}</p>
+                            </Card.Text>
+                          </Card.Body>
+                        </Card>
                       </Link>
                     </li>
                   ))}
@@ -102,10 +95,11 @@ const UsersContainer = () => {
                 {allVenues.map((venue) => (
                   <li key={venue.id}>
                     <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
-                      <Card style={{ width: "250px" }}>
+                      <Card style={{ width: "350px" }}>
                         <Card.Img
                           variant="top"
                           src={venue.venue_profile_photo}
+                          className="venue_img"
                         />
                         <Card.Body>
                           <Card.Text>
@@ -115,16 +109,6 @@ const UsersContainer = () => {
                         </Card.Body>
                       </Card>
                     </Link>
-                    {/* <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
-                    <img src={venue.venue_profile_photo} />
-                    <h3>{venue.name}</h3>
-                    <p>{venue.address}</p>
-                  </Link> */}
-
-                    {/* <Link to={`/users/${venue.id}`}>
-                <h3>{venue.username}</h3>
-                  <p>{venue.location}</p>
-              </Link> */}
                   </li>
                 ))}
               </ul>

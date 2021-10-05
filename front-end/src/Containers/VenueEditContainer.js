@@ -7,7 +7,7 @@ import { apiURL } from "../util/apiURL";
 
 const API = apiURL();
 
-const VenueEditContainer = () => {
+const VenueEditContainer = ({setShowHideButton}) => {
   const { venue_id } = useParams();
   const currentUser = useSelector((state) => state.currentUser);
   const [editedVenue, setEditedVenue] = useState({
@@ -19,14 +19,14 @@ const VenueEditContainer = () => {
   });
   const [editPostSuccess, setEditPostSuccess] = useState(null);
 
-  // useEffect(()=> {
-  //     setShowHideButton(true)
-  //   },[])
+  useEffect(()=> {
+      setShowHideButton(true)
+    },[])
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
     // editVenueObject.owner_id = currentUser.uid;
-    editVenueObject.owner_id = 'C8QFbExthBMvPkGZ2CtM13bcWoi1'
+    editVenueObject.owner_id = '70h6u5TsjRajXyEiEc7uilMENQ42'
     try {
       const res = await axios.put(
         `${API}/users/${currentUser.uid}/venues/${venue_id}`,

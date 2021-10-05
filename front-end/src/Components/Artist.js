@@ -39,6 +39,7 @@ const Artist = () => {
   return (
     <div>
       <h1> artist page </h1>
+      <UploadForm />
     </div>
   );
 };

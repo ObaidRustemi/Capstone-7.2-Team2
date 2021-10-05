@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styling/VenueInfoPage.css";
 import VenueImageList from "../Components/VenueImageList";
-import VenueEditContainer from "../Containers/VenueEditContainer"
+import VenueEditContainer from "../Containers/VenueEditContainer";
 
 const VenueInfoPage = ({
   currentVenue,
@@ -10,14 +10,13 @@ const VenueInfoPage = ({
   setSelectedImg,
 }) => {
   return (
-    <div>
+    <div className="venue-show-container">
       <VenueImageList
         selectedImg={selectedImg}
         setSelectedImg={setSelectedImg}
         currentVenue={currentVenue}
         venueImages={venueImages}
       />
-      <VenueEditContainer/>
     </div>
   );
 };

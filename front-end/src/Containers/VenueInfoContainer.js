@@ -15,6 +15,7 @@ const VenueInfoContainer = () => {
   const venueImages = useSelector((state) => state.venueImages);
   const [currentVenue, setCurrentVenue] = useState({});
   const [selectedImg, setSelectedImg] = useState(false);
+  const [venueChange, setVenueChange] = useState(null)
 
   useEffect(() => {
     const fetchVenue = async () => {
@@ -30,10 +31,17 @@ const VenueInfoContainer = () => {
       }
     };
     fetchVenue();
-  }, []);
+  }, [venueChange]);
 
   return (
-    <VenueInfoPage selectedImg={selectedImg} setSelectedImg={setSelectedImg} currentVenue={currentVenue} venueImages={venueImages} />
+    <VenueInfoPage 
+    selectedImg={selectedImg} 
+    setSelectedImg={setSelectedImg} 
+    currentVenue={currentVenue} 
+    venueImages={venueImages} 
+    setVenueChange={setVenueChange}
+    venueChange={venueChange}
+    />
   );
 };
 

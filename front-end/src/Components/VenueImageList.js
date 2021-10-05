@@ -10,6 +10,8 @@ const VenueImageList = ({
   venueImages,
   selectedImg,
   setSelectedImg,
+  setVenueChange,
+  venueChange,
 }) => {
   const [editVenue, setEditVenue] = useState(null);
   const [showHideButton, setShowHideButton] = useState(null);
@@ -43,7 +45,12 @@ const VenueImageList = ({
         )}
         <div className="button-and-form-container">
           {editVenue ? (
-            <VenueEditContainer setShowHideButton={setShowHideButton} />
+            <VenueEditContainer 
+            setVenueChange={setVenueChange} 
+            currentVenue={currentVenue} 
+            setShowHideButton={setShowHideButton} 
+            venueChange={venueChange}
+            />
           ) : null}
           {showHideButton ? null : (
             <button className="show-edit-button" onClick={() => setEditVenue(true)}>Edit Venue</button>

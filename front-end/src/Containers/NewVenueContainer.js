@@ -3,6 +3,7 @@ import "../Styling/UserIndex.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { apiURL } from "../util/apiURL";
+import UploadForm from "../Components/UploadForm";
 
 const API = apiURL();
 
@@ -69,6 +70,7 @@ const NewVenueContainer = ({setShowHideButton}) => {
           placeholder="Enter a URL"
           //   required
         />
+        <UploadForm />
         <label htmlFor="venue_info">Description:</label>
         <textarea
           id="venue_info"

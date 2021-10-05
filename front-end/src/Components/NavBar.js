@@ -21,7 +21,7 @@ const NavBar = () => {
       {/* <div class="right" id="links"> */}
         {currentUser ? (
           <Nav className="navbar-item" >
-            <p> Hello {currentUser.email}!</p>
+            <p className="hello">  Hello {currentUser.email}!</p>
             {/* <p> */}
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
             {/* </p> */}

@@ -5,6 +5,7 @@ import VenueList from "../Components/VenueList";
 import NewVenueContainer from "../Containers/NewVenueContainer";
 import { useSelector } from "react-redux";
 import { apiURL } from "../util/apiURL";
+import UploadForm from "../Components/UploadForm"
 
 const API = apiURL();
 
@@ -15,6 +16,7 @@ const VenueShow = ({ venues, showAddVenue, setShowAddVenue }) => {
       <div>
         <h3>Venue Owner Details</h3>
         <VenueList venues={venues} />
+        <UploadForm />
       </div>
       {showAddVenue ? <NewVenueContainer setShowHideButton={setShowHideButton}/> : null}
      {showHideButton? null: <button onClick={() => setShowAddVenue(true)}>Add Venue</button>}

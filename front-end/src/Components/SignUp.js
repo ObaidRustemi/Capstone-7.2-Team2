@@ -20,8 +20,8 @@ export default function SignUp() {
     username: null,
     firebase_uid: null,
     phone_number: null,
-    is_venue: null,
-    is_artist: null
+    is_venue: false,
+    is_artist: true,
   });
   // const [uid, setUid] = useState(null)
 
@@ -46,9 +46,10 @@ export default function SignUp() {
 
       // setNewUser({...newUser, firebase_uid: uid})
       const newUserTest = Object.assign({}, newUser);
-      newUserTest.is_venue = true
-      newUserTest.is_artist = false
+      // newUserTest.is_venue = false;
+      // newUserTest.is_artist = false;
       newUserTest.firebase_uid = uid;
+      debugger;
       const res = await axios.post(`${API}/users`, newUserTest);
       history.push("/dashboard");
     } catch {
@@ -60,6 +61,25 @@ export default function SignUp() {
   const handleNewUser = (e) => {
     setNewUser({ ...newUser, [e.target.id]: e.target.value });
   };
+
+  const handleRadioClick = (e) => {
+    console.log("IS ARTISTTT");
+    debugger;
+    if (e.target.id === "is_artist") {
+      setNewUser({ ...newUser, is_artist: true, is_venue: false });
+    } else {
+      setNewUser({ ...newUser, is_artist: false, is_venue: true });
+    }
+
+    // debugger
+  };
+  // debugger;
+
+  // const handleRadioClickVenues = () => {
+  //   console.log("IS VENUE")
+  //   debugger
+  //   setNewUser({...newUser, is_venue: !newUser.is_venue})
+  // }
 
   return (
     <>
@@ -90,6 +110,28 @@ export default function SignUp() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
+            <div>
+              <Form.Group>
+                <Form.Check
+                  inline
+                  label="I am an aritst"
+                  id="is_artist"
+                  onClick={handleRadioClick}
+                  name="group1"
+                  type="radio"
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Check
+                  inline
+                  label="I own a venue"
+                  id="is_venue"
+                  onClick={handleRadioClick}
+                  name="group1"
+                  type="radio"
+                />
+              </Form.Group>
+            </div>
             <Button
               variant="secondary"
               disabled={loading}

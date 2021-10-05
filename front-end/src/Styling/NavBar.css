@@ -7,9 +7,7 @@
   
 }
 
-.navbar{
-    background-color: yellow;
-}
+
 .navbar-item {
   display: flex;
   justify-content: center;

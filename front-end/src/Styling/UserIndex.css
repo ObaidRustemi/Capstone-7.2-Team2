@@ -7,7 +7,7 @@
 
 .user-show-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -18,3 +18,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+

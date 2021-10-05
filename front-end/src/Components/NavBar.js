@@ -18,10 +18,9 @@ const NavBar = () => {
         <Navbar.Brand href="/"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
       {/* </div> */}
       {/* <div class="right" id="links"> */}
-      
         {currentUser ? (
-          <Nav className="mr-auto" >
-            <p> Hello {currentUser.email}!</p>
+          <Nav className="mr-auto" > 
+            <p className="hello">  Hello {currentUser.email}!</p>
             {/* <p> */}
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
             {/* </p> */}

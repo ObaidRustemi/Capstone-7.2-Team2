@@ -78,11 +78,11 @@ const updateVenue = async (id, venue) => {
     const updatedVenue = await db.one(
       `
           UPDATE venues
-          SET name = $1, address = $2, venue_profile_photo = $3, owner_id = $3
-          WHERE id = $4
+          SET name = $1, address = $2, venue_profile_photo = $3, venue_info = $4, owner_id = $5
+          WHERE id = $6
           RETURNING * 
       `,
-      [name, address, owner_id, id]
+      [name, address, venue_profile_photo, venue_info, owner_id, id]
     );
     return updatedVenue;
   } catch (error) {

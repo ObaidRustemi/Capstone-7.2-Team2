@@ -8,6 +8,10 @@
   flex-direction: row; */
 }
 
+.hello{
+    color: white;
+}
+
 .navbar-item {
   display: flex;
   justify-content: left;

@@ -10,3 +10,4 @@ export const GET_ARTWORK = "GET_ARTWORK";
 export const GET_VENUE_IMAGES = "GET_VENUE_IMAGES";
 export const GET_VENUE_IMAGE = "GET_VENUE_IMAGE";
 export const NEW_USER = "NEW_USER"
+export const ADD_USER = "ADD_USER"

@@ -30,4 +30,38 @@ export default rootReducer;
 
 // create rootReducer using by passing an object with our posts to combineReducers
 
-// export rootReducer
+
+
+// usersReducer 
+// dispatch({ type: 'ADD_USER', payload: {} });
+// case(ADD_USER) {
+//    return { ...state, action.payload };
+// }
+
+// {
+//   users: {
+//     'skdjfiu23iwuebf': {
+//       id: 'skdjfiu23iwuebf',
+//       name: 'mashu',
+//     }
+//   }, 
+//   currentUser: {
+//     id: 'sdfsdfsdfsdf',
+//     email: 'sdfsdfsdfsdf',
+//   },
+//   venues: {},
+//   venue: {},
+//   artwork: {},
+//   singleArtwork: {},
+//   venueImage: {}, 
+//   venueImages: {},
+// }
+
+// const currentUser = useSelector(state => {
+//   const currentUserId = state.currentUser.id;
+//   const user = state.users.filter(user => {
+//     return user.id === currentUserId;
+//   });
+//   return user[0];
+//   return state.users[state.currentUser.id]
+// })

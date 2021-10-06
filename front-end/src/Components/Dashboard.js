@@ -10,6 +10,12 @@ export default function Dashboard() {
   const currentUser = useSelector((state) => state.currentUser);
   const history = useHistory();
 
+  if(currentUser) {
+    debugger
+    console.log(currentUser.displayName)
+    debugger
+  }
+
   async function handleLogout() {
     setError("");
     try {

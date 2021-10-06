@@ -16,8 +16,15 @@ export function AuthProvider({ children }) {
   const { currentUser } = entireState;
   const dispatch = useDispatch();
 
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  function signup(email, password, displayName) {
+    return auth.createUserWithEmailAndPassword(email, password).then((userCredentials)=>{
+      if(userCredentials.user){
+        userCredentials.user.updateProfile({
+          displayName: 'Elon'
+        })
+      }
+  })
+;
   }
 
   function login(email, password) {

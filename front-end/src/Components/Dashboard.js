@@ -25,7 +25,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await currentUser.username
+        const res = await newUser.username
         debugger;
       } catch (error) {
         console.log(error)

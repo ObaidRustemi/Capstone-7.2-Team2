@@ -4,11 +4,12 @@ import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
+import { useDispatch } from "react-redux";
+import { newUser } from "../Actions/userActions";
 
 const API = apiURL();
 
 export default function SignUp() {
-  // const usernameRef = useRef()
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -16,14 +17,16 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const [newUser, setNewUser] = useState({
+  const [user, setUser] = useState({
     username: null,
     firebase_uid: null,
     phone_number: null,
     is_venue: false,
     is_artist: true,
   });
-  // const [uid, setUid] = useState(null)
+
+  debugger;
+  const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,18 +42,12 @@ export default function SignUp() {
         emailRef.current.value,
         passwordRef.current.value
       );
-
-      // setNewUser( )
-      // debugger
       const uid = userSignUpPromise.user.uid;
-
-      // setNewUser({...newUser, firebase_uid: uid})
-      const newUserTest = Object.assign({}, newUser);
-      // newUserTest.is_venue = false;
-      // newUserTest.is_artist = false;
+      const newUserTest = Object.assign({}, user);
       newUserTest.firebase_uid = uid;
-      debugger;
-      const res = await axios.post(`${API}/users`, newUserTest);
+      await axios.post(`${API}/users`, newUserTest);
+      const action = newUser(user);
+      dispatch(action);
       history.push("/dashboard");
     } catch {
       setError("Failed to create account");
@@ -58,28 +55,15 @@ export default function SignUp() {
     setLoading(false);
   }
 
-  const handleNewUser = (e) => {
-    setNewUser({ ...newUser, [e.target.id]: e.target.value });
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.id]: e.target.value });
   };
 
   const handleRadioClick = (e) => {
-    console.log("IS ARTISTTT");
     debugger;
-    if (e.target.id === "is_artist") {
-      setNewUser({ ...newUser, is_artist: true, is_venue: false });
-    } else {
-      setNewUser({ ...newUser, is_artist: false, is_venue: true });
-    }
-
-    // debugger
+    const is_artist = e.target.id === "is_artist";
+    setUser({ ...user, is_artist, is_venue: !is_artist });
   };
-  // debugger;
-
-  // const handleRadioClickVenues = () => {
-  //   console.log("IS VENUE")
-  //   debugger
-  //   setNewUser({...newUser, is_venue: !newUser.is_venue})
-  // }
 
   return (
     <>
@@ -92,9 +76,9 @@ export default function SignUp() {
               <Form.Label>User Name</Form.Label>
               <Form.Control
                 type="name"
-                value={newUser.username}
+                value={user.username}
                 id="username"
-                onChange={handleNewUser}
+                onChange={handleChange}
                 required
               />
             </Form.Group>

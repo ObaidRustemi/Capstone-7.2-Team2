@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { apiURL } from "../util/apiURL";
+
+const API = apiURL();
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const currentUser = useSelector((state) => state.currentUser);
+  const newUser = useSelector((state) => state.new)
   const history = useHistory();
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const result = await axios.get(`${API}/users/`);
+        
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCurrentUser()
+  },[]);
 
   async function handleLogout() {
     setError("");

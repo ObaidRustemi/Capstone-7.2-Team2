@@ -10,41 +10,26 @@ const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
   return (
-    <Navbar id="nav-main-div"
-    expand="xxl"
+    <Navbar 
+        id="nav-main-div"
+        expand="xxl"
         bg="dark"
         variant="light">
-      {/* <div> */}
         <Navbar.Brand href="/"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
-      {/* </div> */}
-      {/* <div class="right" id="links"> */}
         {currentUser ? (
-          <Nav className="mr-auto" > 
-            <p className="hello">  Hello {currentUser.email}!</p>
-            {/* <p> */}
+          <div className="navbar-item" > 
+            <NavLink className="navbar-item" to="/dashboard">  Hello {currentUser.email}!</NavLink>
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
-            {/* </p> */}
-            {/* <p> */}
               <NavLink className="navbar-item" to="/uploadArtwork"> Upload </NavLink>
-            {/* </p> */}
-            {/* <p> */}
               <NavLink className="navbar-item" to="/users"> Index Page </NavLink>
-            {/* </p> */}
-          </Nav>
+          </div>
         ) : (
-          <Nav className="navbar-item" >
-            {/* <p> */}
+          <div >
               <NavLink className="navbar-item" to="/signup"> Register </NavLink>
-            {/* </p> */}
-            {/* <p> */}
               <NavLink  className="navbar-item" to="/login"> Log In </NavLink>
-            {/* </p> */}
-            {/* <p> */}
-              <NavLink className="navbar-item" to="/users"> Index Page </NavLink>
-            {/* </p> */}
-          </Nav>
+              {/* <NavLink className="navbar-item" to="/users"> Index Page </NavLink> */}
+          </div>
         )}
-      {/* </div> */}
     </Navbar>
   );
 };

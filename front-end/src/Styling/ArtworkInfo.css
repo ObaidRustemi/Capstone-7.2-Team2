@@ -6,6 +6,17 @@
 
 .single-image-container {
     display: flex;
+    flex-direction: column;
+   
     justify-content: center;
     align-items: center;
+    border: 2px solid red;
+}
+
+.single-image-container h4 {
+    font-size: 3rem;
+}
+
+.single-image-container img {
+    max-width: 800px;
 }

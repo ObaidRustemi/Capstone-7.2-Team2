@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 // import UseStorage from "../Components/UseStorage";
 import { storage } from "../firebase/Firebase";
+import "../Styling/UserIndex.css";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -67,7 +68,7 @@ const UploadForm = () => {
       <div>
         <button onClick={handleUpload}>upload</button>
       </div>
-      {url && <img src={url} alt="file pic" />}
+      {url && <img src={url} alt="file pic" className="upload-preview-image" />}
       <p>{progress && progress}</p>
     </div>
   );

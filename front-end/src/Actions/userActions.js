@@ -10,6 +10,7 @@ import {
   GET_ARTWORK,
   GET_VENUE_IMAGES,
   GET_VENUE_IMAGE,
+  NEW_USER
 } from "./actionTypes";
 
 export const getUsers = (payload) => {
@@ -42,3 +43,7 @@ export const getVenueImages = (payload) => {
 export const getVenueImage = (payload) => {
   return { type: GET_VENUE_IMAGE, payload };
 };
+export const newUser = (payload) => {
+  return { type: NEW_USER, payload };
+};
+

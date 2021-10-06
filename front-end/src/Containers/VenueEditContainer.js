@@ -7,7 +7,12 @@ import { apiURL } from "../util/apiURL";
 
 const API = apiURL();
 
-const VenueEditContainer = ({setShowHideButton}) => {
+const VenueEditContainer = ({
+  setShowHideButton,
+  currentVenue,
+  setVenueChange,
+  venueChange,
+}) => {
   const { venue_id } = useParams();
   const currentUser = useSelector((state) => state.currentUser);
   const [editedVenue, setEditedVenue] = useState({
@@ -19,31 +24,43 @@ const VenueEditContainer = ({setShowHideButton}) => {
   });
   const [editPostSuccess, setEditPostSuccess] = useState(null);
 
-  useEffect(()=> {
-      setShowHideButton(true)
-    },[])
+  useEffect(async () => {
+    const setCurrentUser = async (editedVenue) => {
+      await setEditedVenue(Object.assign(currentVenue, editedVenue));
+    };
+    setCurrentUser();
+    setShowHideButton(true);
+    setVenueChange(null);
+  }, []);
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
     // editVenueObject.owner_id = currentUser.uid;
-    editVenueObject.owner_id = '70h6u5TsjRajXyEiEc7uilMENQ42'
+    editVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
       const res = await axios.put(
         `${API}/users/${currentUser.uid}/venues/${venue_id}`,
         editVenueObject
       );
-      debugger
+      debugger;
       if (res.data.success) {
         setEditPostSuccess(true);
+        setTimeout(() => {
+          setEditPostSuccess(false);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     editVenue(editedVenue);
+    setVenueChange(true)
+    setTimeout(()=> {
+        setVenueChange(false)
+    }, 1000)
   };
 
   const handleTextChange = (e) => {

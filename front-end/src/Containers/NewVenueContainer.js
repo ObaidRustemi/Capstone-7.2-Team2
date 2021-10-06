@@ -7,7 +7,7 @@ import UploadForm from "../Components/UploadForm";
 
 const API = apiURL();
 
-const NewVenueContainer = ({setShowHideButton}) => {
+const NewVenueContainer = ({setShowHideButton, newVenueAdded, setNewVenueAdded}) => {
   const currentUser = useSelector((state) => state.currentUser);
   const [newVenue, setNewVenue] = useState({
     name: "",
@@ -33,6 +33,9 @@ const NewVenueContainer = ({setShowHideButton}) => {
       );
       if (res.data.success) {
         setPostSuccess(true);
+        setTimeout(()=> {
+          setPostSuccess(null)
+        },2000)
       }
     } catch (error) {
       console.log(error);
@@ -41,6 +44,10 @@ const NewVenueContainer = ({setShowHideButton}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addNewVenue(newVenue);
+    setNewVenueAdded(true)
+    setTimeout(()=> {
+      setNewVenueAdded(null)
+    }, 1000)
    
   };
   const handleTextChange = (e) => {

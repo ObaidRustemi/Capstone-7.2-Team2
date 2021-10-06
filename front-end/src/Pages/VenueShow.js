@@ -9,16 +9,16 @@ import UploadForm from "../Components/UploadForm"
 
 const API = apiURL();
 
-const VenueShow = ({ venues, showAddVenue, setShowAddVenue }) => {
+const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNewVenueAdded }) => {
   const [showHideButton, setShowHideButton] = useState(null)
   return (
     <div className="user-show-container">
       <div>
         <h3>Venue Owner Details</h3>
         <VenueList venues={venues} />
-        <UploadForm />
+        {/* <UploadForm /> */}
       </div>
-      {showAddVenue ? <NewVenueContainer setShowHideButton={setShowHideButton}/> : null}
+      {showAddVenue ? <NewVenueContainer setShowHideButton={setShowHideButton} newVenueAdded={newVenueAdded} setNewVenueAdded={setNewVenueAdded}/> : null}
      {showHideButton? null: <button onClick={() => setShowAddVenue(true)}>Add Venue</button>}
       {showHideButton? <button onClick={() => {
         setShowAddVenue(false)

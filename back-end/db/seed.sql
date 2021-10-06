@@ -12,7 +12,7 @@ INSERT INTO users(username,firebase_uid, image, type_of_art, description, phone_
 
 
 
-INSERT INTO artwork (title, artist_id, image) VALUES
+INSERT INTO artwork (title, artist_id,  image) VALUES
 
 -- ('Hokkaido', 1, 'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2012/01/hokusai.jpg'),
 -- ('93 to infinity', 1, 'https://image.shutterstock.com/image-illustration/seven-running-horses-wildlife-decorative-600w-1754614820.jpg'),

@@ -17,8 +17,15 @@ export function AuthProvider({ children }) {
   const { currentUser } = entireState;
   const dispatch = useDispatch();
 
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  function signup(email, password, displayName) {
+    return auth.createUserWithEmailAndPassword(email, password).then((userCredentials)=>{
+      if(userCredentials.user){
+        userCredentials.user.updateProfile({
+          displayName: 'Elon'
+        })
+      }
+  })
+;
   }
 
   function login(email, password) {
@@ -44,10 +51,16 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       // setCurrentUser(user);
+      console.log('DO WE HIT THIS????');
       dispatch({
         type: "CURRENT_USER",
         currentUser: user,
       });
+
+      // dispatch({ type: 'ADD_USER', payload: {} });
+      // 1. fetch the rest of the user --- axios to fetch the user info
+      // 2. dispatch an action to add the user to newUser slice 
+      // 3. then you can always read from newUser ... 
     });
     return unsubscribe;
   }, []);

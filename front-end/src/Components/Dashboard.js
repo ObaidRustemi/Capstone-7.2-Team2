@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
@@ -14,6 +14,27 @@ export default function Dashboard() {
   const currentUser = useSelector((state) => state.currentUser);
   const newUser = useSelector((state) => state.new)
   const history = useHistory();
+  const { id } = useParams();
+
+  // if(currentUser) {
+  //   debugger
+  //   console.log(currentUser.displayName)
+  //   debugger
+  // }
+
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await newUser.username
+        debugger;
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchUser()
+  }, [])
+  
 
   useEffect(() => {
     const fetchCurrentUser = async () => {

@@ -21,7 +21,7 @@ const NavBar = () => {
           <div className="navbar-item" > 
             <NavLink className="navbar-item" to={`/users/${currentUser.uid}`}>  Hello {currentUser.email}!</NavLink>
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
-              <NavLink className="navbar-item" to="/uploadArtwork"> Upload </NavLink>
+              {/* <NavLink className="navbar-item" to="/uploadArtwork"> Upload </NavLink> */}
               {/* <NavLink className="navbar-item" to="/users"> Index Page </NavLink> */}
           </div>
         ) : (

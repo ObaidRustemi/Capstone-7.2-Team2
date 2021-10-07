@@ -8,6 +8,7 @@ import singleArtwork from "./artworkReducer";
 import currentUser from "./currentuser";
 import venueImages from "./venueImagesReducer";
 import venueImage from "./venueImagesReducer";
+import uploadUrl from "./venueImagesReducer"
 import newUser from "./newUserReducer";
 
 const appState = {
@@ -20,6 +21,7 @@ const appState = {
   singleArtwork,
   venueImage, 
   venueImages,
+  uploadUrl,
   newUser,
 };
 

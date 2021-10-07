@@ -29,15 +29,17 @@ const VenueImageList = ({
             <p>{currentVenue.address}</p>
           </div>
           <div className="venue-image-list-container">
-            {venueImages.map((image) => {
-              return (
-                <VenueImageListItem
-                  key={image.id}
-                  setSelectedImg={setSelectedImg}
-                  image={image}
-                />
-              );
-            })}
+            {venueImages.length > 0
+              ? venueImages.map((image) => {
+                  return (
+                    <VenueImageListItem
+                      key={image.id}
+                      setSelectedImg={setSelectedImg}
+                      image={image}
+                    />
+                  );
+                })
+              : null}
           </div>
         </div>
         {selectedImg && (
@@ -45,18 +47,24 @@ const VenueImageList = ({
         )}
         <div className="button-and-form-container">
           {editVenue ? (
-            <VenueEditContainer 
-            setVenueChange={setVenueChange} 
-            currentVenue={currentVenue} 
-            setShowHideButton={setShowHideButton} 
-            venueChange={venueChange}
+            <VenueEditContainer
+              setVenueChange={setVenueChange}
+              currentVenue={currentVenue}
+              setShowHideButton={setShowHideButton}
+              venueChange={venueChange}
             />
           ) : null}
           {showHideButton ? null : (
-            <button className="show-edit-button" onClick={() => setEditVenue(true)}>Edit Venue</button>
+            <button
+              className="show-edit-button"
+              onClick={() => setEditVenue(true)}
+            >
+              Edit Venue
+            </button>
           )}
           {showHideButton ? (
-            <button className="hide-button"
+            <button
+              className="hide-button"
               onClick={() => {
                 setEditVenue(false);
                 setShowHideButton(false);

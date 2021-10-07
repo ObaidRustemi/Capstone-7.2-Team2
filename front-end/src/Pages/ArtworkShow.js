@@ -5,7 +5,7 @@ import "../Styling/ArtworkInfo.css"
 const ArtworkShow = ({image}) => {
     return (
         <div>
-            <h1>Artwork Details</h1>
+            {/* <h1>Artwork Details</h1> */}
             <ArtworkInfo image={image} />
         </div>
     )

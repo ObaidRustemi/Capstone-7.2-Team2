@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import UseStorage from "../Components/UseStorage";
 import { storage } from "../firebase/Firebase";
 import "../Styling/UserIndex.css";
+import { setUploadUrl } from "../Actions/userActions";
 
 const UploadForm = () => {
+  const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
   const [url, setUrl] = useState(null);
   const currentUser = useSelector((state) => state.currentUser);
+  const uploadUrl = useSelector((state) => state.uploadUrl);
 
   const types = ["image/png", "image/jpeg"];
   const changeHandler = (e) => {
@@ -26,8 +29,10 @@ const UploadForm = () => {
 
   const handleUpload = () => {
     if (file) {
-      debugger
-      const uploadTask = storage.ref(`/${currentUser.uid}/${file.name}`).put(file);
+      
+      const uploadTask = storage
+        .ref(`/${currentUser.uid}/${file.name}`)
+        .put(file);
 
       uploadTask.on(
         "state_changed",
@@ -44,6 +49,8 @@ const UploadForm = () => {
             .ref(`/${currentUser.uid}/${file.name}`)
             .getDownloadURL();
           if (url) {
+            const action = setUploadUrl(url);
+            dispatch(action);
             setUrl(url);
           } else {
             setUrl(null);

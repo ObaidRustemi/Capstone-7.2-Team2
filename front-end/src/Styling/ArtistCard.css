@@ -23,12 +23,17 @@ body {
     padding-top:6rem;
 }
 
-.card-img-top {
+.img-top {
     transform: scale(1);
     max-width: 325px;
     padding-top: 20px;
+    margin-top: 20px;
 }
 
-.card-img-top:hover {
+/* .card-img-top:hover {
     transform: scale(1.3);
+} */
+
+.body-text-dark {
+  padding: 15px;
 }

@@ -38,3 +38,6 @@ max-width: 400px;
     width: 60vw;
 }
 
+.single-art-container img {
+    max-width: 300px;
+}

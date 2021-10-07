@@ -22,13 +22,13 @@ const NavBar = () => {
             <NavLink className="navbar-item" to={`/users/${currentUser.uid}`}>  Hello {currentUser.email}!</NavLink>
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
               <NavLink className="navbar-item" to="/uploadArtwork"> Upload </NavLink>
-              <NavLink className="navbar-item" to="/users"> Index Page </NavLink>
+              {/* <NavLink className="navbar-item" to="/users"> Index Page </NavLink> */}
           </div>
         ) : (
           <div >
               <NavLink className="navbar-item" to="/signup"> Register </NavLink>
               <NavLink  className="navbar-item" to="/login"> Log In </NavLink>
-              <NavLink className="navbar-item" to="/users"> Index Page </NavLink>
+              {/* <NavLink className="navbar-item" to="/users"> Index Page </NavLink> */}
           </div>
         )}
     </Navbar>

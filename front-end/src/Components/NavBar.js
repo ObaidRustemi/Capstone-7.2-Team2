@@ -15,10 +15,11 @@ const NavBar = () => {
         expand="xxl"
         bg="dark"
         variant="light">
-        <Navbar.Brand href="/"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
+
+        <Navbar.Brand href="/users"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
         {currentUser ? (
           <div className="navbar-item" > 
-            <NavLink className="navbar-item" to="/dashboard">  Hello {currentUser.email}!</NavLink>
+            <NavLink className="navbar-item" to={`/users/${currentUser.uid}`}>  Hello {currentUser.email}!</NavLink>
               <NavLink className="navbar-item" to="/dashboard"> Account Info </NavLink>
               <NavLink className="navbar-item" to="/uploadArtwork"> Upload </NavLink>
               <NavLink className="navbar-item" to="/users"> Index Page </NavLink>

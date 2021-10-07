@@ -10,15 +10,17 @@
 
 
 .navbar-item {
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  margin: 20px;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 25px;
   color: whitesmoke;
-  text-decoration: inherit;
-  text-transform: uppercase;
-  outline: none;  
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  outline: none;
+
 }
 
 .left {

@@ -59,9 +59,7 @@ function App() {
             path="/venueownerupdate"
             component={VenueOwnerUpdate}
           />
-          <Route exact path="/users/:id/venues/:venue_id">
-            <VenueInfoContainer />
-          </Route>
+          <Route exact path="/users/:firebase_uid/venues/:venue_id" component={VenueInfoContainer} />
         </Switch>
         {/* </div> */}
         {/* </Container> */}

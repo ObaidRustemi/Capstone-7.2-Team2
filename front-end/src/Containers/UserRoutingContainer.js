@@ -9,6 +9,7 @@ import ArtistShow from "../Pages/ArtistShow";
 import axios from "axios";
 import "../Styling/ArtworkIndex.css";
 
+
 const API = apiURL();
 
 const UserRoutingContainer = () => {
@@ -20,14 +21,15 @@ const UserRoutingContainer = () => {
   const [isVenue, setIsVenue] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [showAddVenue, setShowAddVenue] = useState(null);
+  const [newVenueAdded, setNewVenueAdded] = useState(null)
 
-  const fetchVenues = () => {};
+  // const fetchVenues = () => {};
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         let res = await axios.get(`${API}/users/${firebase_uid}`);
-        debugger;
+        
         // getting back user
         // user response has key of venues, save venues in state, render venues component
         // passing down venues state into it
@@ -49,7 +51,7 @@ const UserRoutingContainer = () => {
       }
     };
     fetchUser();
-  }, []);
+  }, [newVenueAdded]);
 
   return isVenue === false ? (
     <div className="artist-show-page">
@@ -61,6 +63,8 @@ const UserRoutingContainer = () => {
       venues={venues}
       showAddVenue={showAddVenue}
       setShowAddVenue={setShowAddVenue}
+      newVenueAdded={newVenueAdded}
+      setNewVenueAdded={setNewVenueAdded}
     />
   );
 };

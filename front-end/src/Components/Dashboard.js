@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const currentUser = useSelector((state) => state.currentUser);
+  const newUser = useSelector((state) => state.new)
   const history = useHistory();
   const { id } = useParams();
 
@@ -34,6 +35,19 @@ export default function Dashboard() {
     fetchUser()
   }, [])
   
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const result = await axios.get(`${API}/users/`);
+        
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCurrentUser()
+  },[]);
 
   async function handleLogout() {
     setError("");

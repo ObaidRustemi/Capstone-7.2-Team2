@@ -8,6 +8,8 @@ const VenueInfoPage = ({
   venueImages,
   selectedImg,
   setSelectedImg,
+  setVenueChange,
+  venueChange,
 }) => {
   return (
     <div className="venue-show-container">
@@ -16,6 +18,8 @@ const VenueInfoPage = ({
         setSelectedImg={setSelectedImg}
         currentVenue={currentVenue}
         venueImages={venueImages}
+        setVenueChange={setVenueChange}
+        venueChange={venueChange}
       />
     </div>
   );

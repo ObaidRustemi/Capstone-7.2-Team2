@@ -10,6 +10,8 @@ import {
   GET_ARTWORK,
   GET_VENUE_IMAGES,
   GET_VENUE_IMAGE,
+  NEW_USER,
+  SET_UPLOAD_URL,
 } from "./actionTypes";
 
 export const getUsers = (payload) => {
@@ -22,11 +24,11 @@ export const getUserVenues = (payload) => {
   return { type: GET_USER_VENUES, payload };
 };
 export const getUserArtwork = (payload) => {
-  return { type: GET_USER_ARTWORK, payload}
-}
+  return { type: GET_USER_ARTWORK, payload };
+};
 export const getSingleArtwork = (payload) => {
-  return { type: GET_SINGLE_ARTWORK, payload}
-}
+  return { type: GET_SINGLE_ARTWORK, payload };
+};
 export const getVenues = (payload) => {
   return { type: GET_VENUES, payload };
 };
@@ -41,4 +43,10 @@ export const getVenueImages = (payload) => {
 };
 export const getVenueImage = (payload) => {
   return { type: GET_VENUE_IMAGE, payload };
+};
+export const newUser = (payload) => {
+  return { type: NEW_USER, payload };
+};
+export const setUploadUrl = (payload) => {
+  return { type: SET_UPLOAD_URL, payload };
 };

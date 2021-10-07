@@ -48,7 +48,7 @@ export default function SignUp() {
       await axios.post(`${API}/users`, newUserTest);
       const action = newUser(user);
       dispatch(action);
-      history.push("/dashboard");
+      history.push(`/users/${uid}`);
     } catch {
       setError("Failed to create account");
     }

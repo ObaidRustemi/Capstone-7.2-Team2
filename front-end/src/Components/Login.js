@@ -3,10 +3,12 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const currentUser = useSelector((state) => state.currentUser);
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/dashboard");
+      history.push(`/users/${currentUser.uid}`);
     } catch {
       setError("Failed to sign in");
     }

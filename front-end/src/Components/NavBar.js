@@ -15,6 +15,7 @@ const NavBar = () => {
         expand="xxl"
         bg="dark"
         variant="light">
+
         <Navbar.Brand href="/users"><img className="logo" src={Logo} alt="logo"/></Navbar.Brand>
         {currentUser ? (
           <div className="navbar-item" > 

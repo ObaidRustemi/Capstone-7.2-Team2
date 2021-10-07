@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Login() {
   const emailRef = useRef();

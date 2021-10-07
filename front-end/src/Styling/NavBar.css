@@ -17,10 +17,11 @@
   justify-content: left;
   align-items: center;
   margin-left: 30px;
-  /* color: inherit;
-  text-decoration: inherit;
-  text-transform: uppercase;
-  outline: none; */
+  margin-right: 25px;
+  color: whitesmoke;
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  outline: none;
 }
 .left {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;

@@ -7,8 +7,13 @@ import UploadForm from "../Components/UploadForm";
 
 const API = apiURL();
 
-const NewVenueContainer = ({setShowHideButton, newVenueAdded, setNewVenueAdded}) => {
+const NewVenueContainer = ({
+  setShowHideButton,
+  newVenueAdded,
+  setNewVenueAdded,
+}) => {
   const currentUser = useSelector((state) => state.currentUser);
+  const uploadUrl = useSelector((state) => state.uploadUrl);
   const [newVenue, setNewVenue] = useState({
     name: "",
     owner_id: "",
@@ -17,15 +22,15 @@ const NewVenueContainer = ({setShowHideButton, newVenueAdded, setNewVenueAdded})
     address: "",
   });
   const [postSuccess, setPostSuccess] = useState(null);
-  
-  useEffect(()=> {
-    setShowHideButton(true)
-  },[])
+
+  useEffect(() => {
+    setShowHideButton(true);
+  }, []);
 
   const addNewVenue = async (newVenue) => {
     const newVenueObject = Object.assign({}, newVenue);
     // newVenueObject.owner_id = currentUser.uid;
-    newVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42"
+    newVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
       const res = await axios.post(
         `${API}/users/${currentUser.uid}/venues`,
@@ -33,25 +38,27 @@ const NewVenueContainer = ({setShowHideButton, newVenueAdded, setNewVenueAdded})
       );
       if (res.data.success) {
         setPostSuccess(true);
-        setTimeout(()=> {
-          setPostSuccess(null)
-        },2000)
+        setTimeout(() => {
+          setPostSuccess(null);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setNewVenue({ ...newVenue, venue_profile_photo: uploadUrl });
     addNewVenue(newVenue);
-    setNewVenueAdded(true)
-    setTimeout(()=> {
-      setNewVenueAdded(null)
-    }, 1000)
-   
+    setNewVenueAdded(true);
+    setTimeout(() => {
+      setNewVenueAdded(null);
+    }, 1000);
   };
   const handleTextChange = (e) => {
     setNewVenue({ ...newVenue, [e.target.id]: e.target.value });
+    
+
     setPostSuccess(null);
   };
   const { name, venue_profile_photo, venue_info, address } = newVenue;
@@ -96,8 +103,8 @@ const NewVenueContainer = ({setShowHideButton, newVenueAdded, setNewVenueAdded})
           placeholder="Enter city + state"
           //   required
         />
-        <input type="submit" />
       </form>
+        <button onClick={handleSubmit}>Submit</button>
       {postSuccess ? <h4>Venue Added</h4> : null}
     </div>
   );

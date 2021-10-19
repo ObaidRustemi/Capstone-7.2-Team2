@@ -14,7 +14,7 @@ import { Image, Card, Container } from "react-bootstrap";
 const API = apiURL();
 
 const UsersContainer = () => {
-  const users = useSelector((state) => state.users);
+  const users = useSelector((state) => console.log(state))
   const dispatch = useDispatch();
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);

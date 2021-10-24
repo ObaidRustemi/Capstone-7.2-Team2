@@ -38,11 +38,11 @@ const VenueEditContainer = ({
     // editVenueObject.owner_id = currentUser.uid;
     editVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
+      debugger;
       const res = await axios.put(
         `${API}/users/${currentUser.uid}/venues/${venue_id}`,
         editVenueObject
-      );
-      debugger;
+        );
       if (res.data.success) {
         setEditPostSuccess(true);
         setTimeout(() => {
@@ -55,6 +55,7 @@ const VenueEditContainer = ({
   };
 
   const handleSubmit = async (e) => {
+    console.log("hello")
     e.preventDefault();
     editVenue(editedVenue);
     setVenueChange(true)

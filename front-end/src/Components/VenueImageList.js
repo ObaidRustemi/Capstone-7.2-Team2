@@ -54,7 +54,7 @@ const VenueImageList = ({
               venueChange={venueChange}
             />
           ) : null}
-          {/* {showHideButton ? null : (
+          {showHideButton ? null : (
             <button
               className="show-edit-button"
               onClick={() => setEditVenue(true)}
@@ -72,7 +72,7 @@ const VenueImageList = ({
             >
               Hide
             </button>
-          ) : null} */}
+          ) : null}
         </div>
       </div>
     </div>

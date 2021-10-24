@@ -16,8 +16,8 @@ export default function Login() {
   const history = useHistory();
   
   useEffect(() => {
-    if (currentUser?.uid ) { //current user and current user uid
-      history.push(`/users/${currentUser.uid}`);
+    if (currentUser?.firebase_uid ) { //current user and current user uid
+      history.push(`/users/${currentUser.firebase_uid}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
@@ -31,7 +31,7 @@ export default function Login() {
       setLoading(true);
       debugger;
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push(`/users/${currentUser.firebase_uid}`);
+      // history.push(`/users/${currentUser.firebase_uid}`);
     } catch (e) {
       console.log(e);
       setError("Failed to log in");

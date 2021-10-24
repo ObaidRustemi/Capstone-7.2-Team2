@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ArtworkShow from "../Pages/ArtworkShow";
-import { useSelector, useDispatch } from "react-redux";
 import { apiURL } from "../util/apiURL";
-import { getSingleArtwork } from "../Actions/userActions";
 import axios from "axios";
 import "../Styling/ArtworkInfo.css";
 
 const API = apiURL();
-
+      
 const ArtworkInfoContainer = () => {
   // const dispatch = useDispatch();
   const { id, artwork_id } = useParams();
@@ -30,6 +28,7 @@ const ArtworkInfoContainer = () => {
       }
     };
     fetchArtwork();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

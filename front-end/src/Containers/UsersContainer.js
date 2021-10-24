@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router";
 import { apiURL } from "../util/apiURL";
 import { getUsers } from "../Actions/userActions";
-// import UserIndex from "../Pages/UserIndex";
 import axios from "axios";
 import Switch from "../Components/Switch";
 import "../Styling/Switch.css";
 import "../Styling/UsersContainer.css";
 import { Link } from "react-router-dom";
-import { Image, Card, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 
 const API = apiURL();
 
 const UsersContainer = () => {
-  const users = useSelector((state) => state.users);
+  const users = useSelector(({ users }) => users);
+
+  // const currentUser = useCurrentUser()
+
   const dispatch = useDispatch();
   const [toggled, setToggled] = useState(false);
   const [allVenues, setAllVenues] = useState([]);
-  const [artists, setArtists] = useState([]);
-  const { id, venue_id } = useParams();
+  
 
   useEffect(() => {
     const fetchVenues = async () => {
@@ -43,6 +43,7 @@ const UsersContainer = () => {
     };
     fetchUsers();
     fetchVenues();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleToggle = (e) => {
@@ -70,7 +71,7 @@ const UsersContainer = () => {
                 {users
                   .filter((user) => user.is_artist)
                   .map((artist) => (
-                    <li>
+                    <li key={artist.firebase_uid}>
                       <Link to={`/users/${artist.firebase_uid}`}>
                         <Card style={{ width: "250px" }}>
                           <Card.Img
@@ -80,9 +81,9 @@ const UsersContainer = () => {
                           />
                           <Card.Body>
                             <Card.Text>
-                              <h3>{artist.username}</h3>
-                              <h5>{artist.type_of_art}</h5>
-                              <p>{artist.location}</p>
+                              {artist.username}
+                              {artist.type_of_art}
+                              {artist.location}
                             </Card.Text>
                           </Card.Body>
                         </Card>
@@ -103,8 +104,8 @@ const UsersContainer = () => {
                         />
                         <Card.Body>
                           <Card.Text>
-                            <h3>{venue.name}</h3>
-                            <p>{venue.address}</p>
+                            {venue.name}
+                            {venue.address}
                           </Card.Text>
                         </Card.Body>
                       </Card>

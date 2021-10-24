@@ -4,15 +4,16 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { apiURL } from "../util/apiURL";
 import UploadForm from "../Components/UploadForm";
+import useCurrentUser from "../util/useCurrentUser";
 
 const API = apiURL();
 
 const NewVenueContainer = ({
   setShowHideButton,
   newVenueAdded,
-  setNewVenueAdded,
+  setNewVenueAdded, 
 }) => {
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useCurrentUser()
   const uploadUrl = useSelector((state) => state.uploadUrl);
   const [newVenue, setNewVenue] = useState({
     name: "",
@@ -25,15 +26,16 @@ const NewVenueContainer = ({
 
   useEffect(() => {
     setShowHideButton(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+ 
   const addNewVenue = async (newVenue) => {
     const newVenueObject = Object.assign({}, newVenue);
     // newVenueObject.owner_id = currentUser.uid;
     newVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
       const res = await axios.post(
-        `${API}/users/${currentUser.uid}/venues`,
+        `${API}/users/${currentUser.firebase_uid}/venues`,
         newVenueObject
       );
       if (res.data.success) {

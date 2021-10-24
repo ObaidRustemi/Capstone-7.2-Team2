@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Styling/VenueInfo.css";
 import Modal from "./Modal";
 import VenueImageListItem from "./VenueImageListItem";
 import VenueEditContainer from "../Containers/VenueEditContainer";
-import { motion } from "framer-motion";
 
 const VenueImageList = ({
   currentVenue,
@@ -21,6 +20,7 @@ const VenueImageList = ({
       <img
         className="venue-profile-photo"
         src={currentVenue.venue_profile_photo}
+        alt=""
       />
       <div className="venue-bottom-container">
         <div className="combined-image-blurb-container">

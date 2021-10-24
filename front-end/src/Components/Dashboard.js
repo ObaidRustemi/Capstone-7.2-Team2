@@ -1,53 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { apiURL } from "../util/apiURL";
+import { Link, useHistory } from "react-router-dom";
+import useCurrentUser from "../util/useCurrentUser";
 
-const API = apiURL();
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
-  const currentUser = useSelector((state) => state.currentUser);
-  const newUser = useSelector((state) => state.new)
+  // const currentUser = useSelector(({ users, currentUserUid}) => {
+  //   return users.find(user => user.firebase_uid === currentUserUid);
+  // });
+  const currentUser = useCurrentUser()
+  console.log("DASH", currentUser)
   const history = useHistory();
-  const { id } = useParams();
-
-  // if(currentUser) {
-  //   debugger
-  //   console.log(currentUser.displayName)
-  //   debugger
-  // }
-
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await newUser.username
-        debugger;
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchUser()
-  }, [])
   
-
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        const result = await axios.get(`${API}/users/`);
-        
-
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCurrentUser()
-  },[]);
 
   async function handleLogout() {
     setError("");
@@ -64,8 +31,9 @@ export default function Dashboard() {
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <strong>UID:</strong> {currentUser.uid}
+          <strong>Email:</strong> {currentUser.username || currentUser.email}
+          <strong>UID:</strong> {currentUser.firebase_uid}
+
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>

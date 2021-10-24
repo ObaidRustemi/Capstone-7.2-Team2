@@ -8,22 +8,13 @@ import {
 const initialState = [];
 
 const artworkReducer = (state = initialState, action) => {
-  console.log("TOP LEVEL IN ARTWORK REDUCER");
-
   switch (action.type) {
     case GET_ARTWORKS:
-      console.log("GET_ARTWORKS case");
-      
       return [...state].concat(action.payload);
-    // or return [...state, ...action.payload]
     case GET_ARTWORK:
-      console.log("GET_ARTWORK case");
       return [...state, action.payload.user];
     case GET_USER_ARTWORK:
-      console.log("GET_USER_ARTWORK case");
-      return action.payload;
     case GET_SINGLE_ARTWORK:
-      console.log("GET_SINGLE_ARTWORK case")
       return action.payload;
     default:
       return state;

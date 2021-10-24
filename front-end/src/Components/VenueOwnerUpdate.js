@@ -1,13 +1,8 @@
-import { useState, useEffect } from "react";
-import { useSelector  } from "react-redux";
-// import UploadForm from "./UploadForm";
+import { useState} from "react";
+import useCurrentUser from "../util/useCurrentUser";
+
 
 export default function VenueOwnerUpdate() {
-  //    const [name, setName] = useState({})
-  //    const [preference, setPreference] = useState({})
-  //    const [description, setDescription] = useState({})
-  //    const [phoneNumber, setPhoneNumber] = useState({})
-  //    const [location, setLocation] = useState({})
 
   const [updatedInfo, setUpdatedInfo] = useState({
     name: "",
@@ -17,7 +12,8 @@ export default function VenueOwnerUpdate() {
     location: "",
   });
 
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useCurrentUser()
+  
 
   const updateVenueOwner = async (updatedInfo) => {
     try {

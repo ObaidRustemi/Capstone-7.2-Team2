@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import useCurrentUser from "../util/useCurrentUser";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useCurrentUser();
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  
+  useEffect(() => {
+    if (currentUser?.uid ) { //current user and current user uid
+      history.push(`/users/${currentUser.uid}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser]);
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,10 +29,12 @@ export default function Login() {
     try {
       setError("");
       setLoading(true);
+      debugger;
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push(`/users/${currentUser.uid}`);
-    } catch {
-      setError("Failed to sign in");
+      history.push(`/users/${currentUser.firebase_uid}`);
+    } catch (e) {
+      console.log(e);
+      setError("Failed to log in");
     }
     setLoading(false);
   }

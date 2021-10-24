@@ -4,7 +4,7 @@ const Venue = ({ venue }) => {
   return (
     <li>
       <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
-        <img src={venue.venue_profile_photo} />
+        <img src={venue.venue_profile_photo} alt="" />
         <p>{venue.name}</p>
       </Link>
     </li>

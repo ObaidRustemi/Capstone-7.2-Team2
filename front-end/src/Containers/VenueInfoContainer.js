@@ -6,9 +6,12 @@ import axios from "axios";
 import { getVenueImages } from "../Actions/userActions";
 
 import VenueInfoPage from "../Pages/VenueInfoPage";
+// import useCurrentUser from "../util/useCurrentUser";
 const API = apiURL();
 
 const VenueInfoContainer = () => {
+  // const currentUser = useCurrentUser()
+  // const firebase_uid = currentUser.firebase_uid
   const dispatch = useDispatch();
   const { id, venue_id } = useParams();
 
@@ -31,6 +34,7 @@ const VenueInfoContainer = () => {
       }
     };
     fetchVenue();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venueChange]);
 
   return (

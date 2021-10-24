@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../Styling/UserIndex.css";
-import axios from "axios";
 import VenueList from "../Components/VenueList";
 import NewVenueContainer from "../Containers/NewVenueContainer";
-import { useSelector } from "react-redux";
-import { apiURL } from "../util/apiURL";
-import UploadForm from "../Components/UploadForm"
 
-const API = apiURL();
 
 const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNewVenueAdded }) => {
   const [showHideButton, setShowHideButton] = useState(null)

@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
-import { useSelector  } from "react-redux";
-import axios from "axios"
-// import UploadForm from "./UploadForm";
+import useCurrentUser from "../util/useCurrentUser";
 
 export default function VenueOwnerShow() {
-  //    const [name, setName] = useState({})
-  //    const [preference, setPreference] = useState({})
-  //    const [description, setDescription] = useState({})
-  //    const [phoneNumber, setPhoneNumber] = useState({})
-  //    const [location, setLocation] = useState({})
-  const currentUser = useSelector((state) => state.currentUser);
+  
+  const currentUser = useCurrentUser()
 
   const [updatedInfo, setUpdatedInfo] = useState({
     name: "",

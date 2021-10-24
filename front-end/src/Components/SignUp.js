@@ -25,7 +25,6 @@ export default function SignUp() {
     is_artist: true,
   });
 
-  debugger;
   const dispatch = useDispatch();
 
   async function handleSubmit(e) {
@@ -49,7 +48,8 @@ export default function SignUp() {
       const action = newUser(user);
       dispatch(action);
       history.push(`/users/${uid}`);
-    } catch {
+    } catch (e) {
+      console.log(e);
       setError("Failed to create account");
     }
     setLoading(false);
@@ -60,7 +60,6 @@ export default function SignUp() {
   };
 
   const handleRadioClick = (e) => {
-    debugger;
     const is_artist = e.target.id === "is_artist";
     setUser({ ...user, is_artist, is_venue: !is_artist });
   };

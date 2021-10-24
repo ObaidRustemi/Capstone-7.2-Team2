@@ -1,8 +1,6 @@
-import { apiURL } from "../util/apiURL";
 import ArtListItem from "./ArtListItem";
 import "../Styling/ArtworkIndex.css";
 
-const API = apiURL();
 
 const ArtworkList = ({ artwork }) => {
   return (

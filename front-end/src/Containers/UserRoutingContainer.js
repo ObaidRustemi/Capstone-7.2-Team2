@@ -19,7 +19,7 @@ const UserRoutingContainer = () => {
   const venues = useSelector((state) => state.venues);
   const artwork = useSelector((state) => state.artwork);
   const [isVenue, setIsVenue] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [userObj, setUserObj] = useState({});
   const [showAddVenue, setShowAddVenue] = useState(null);
   const [newVenueAdded, setNewVenueAdded] = useState(null)
 
@@ -30,17 +30,14 @@ const UserRoutingContainer = () => {
       try {
         let res = await axios.get(`${API}/users/${firebase_uid}`);
         
-        // getting back user
-        // user response has key of venues, save venues in state, render venues component
-        // passing down venues state into it
         if (res.data.payload.venues) {
           await setIsVenue(true);
-          setCurrentUser(res.data.payload.user);
+          setUserObj(res.data.payload.user);
           const action = getUserVenues(res.data.payload.venues);
           dispatch(action);
         } else {
           await setIsVenue(false);
-          setCurrentUser(res.data.payload.user);
+          setUserObj(res.data.payload.user);
           const action = getUserArtwork(res.data.payload.userArtwork);
           const action2 = getUser(res.data.payload);
           dispatch(action);
@@ -51,15 +48,15 @@ const UserRoutingContainer = () => {
       }
     };
     fetchUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newVenueAdded]);
 
   return isVenue === false ? (
     <div className="artist-show-page">
-      <ArtistShow currentUser={currentUser} artwork={artwork} />
+      <ArtistShow userObj={userObj} artwork={artwork} />
     </div>
   ) : (
     <VenueShow
-      currentUser={currentUser}
       venues={venues}
       showAddVenue={showAddVenue}
       setShowAddVenue={setShowAddVenue}

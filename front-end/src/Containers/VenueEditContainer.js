@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "../Styling/VenueInfoPage.css";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { apiURL } from "../util/apiURL";
+import useCurrentUser from "../util/useCurrentUser";
 
 const API = apiURL();
 
@@ -14,7 +14,7 @@ const VenueEditContainer = ({
   venueChange,
 }) => {
   const { venue_id } = useParams();
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useCurrentUser()
   const [editedVenue, setEditedVenue] = useState({
     name: "",
     owner_id: "",
@@ -24,13 +24,14 @@ const VenueEditContainer = ({
   });
   const [editPostSuccess, setEditPostSuccess] = useState(null);
 
-  useEffect(async () => {
+  useEffect( () => {
     const setCurrentUser = async (editedVenue) => {
       await setEditedVenue(Object.assign(currentVenue, editedVenue));
     };
     setCurrentUser();
     setShowHideButton(true);
     setVenueChange(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const editVenue = async (venue) => {
@@ -39,7 +40,7 @@ const VenueEditContainer = ({
     editVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
       const res = await axios.put(
-        `${API}/users/${currentUser.uid}/venues/${venue_id}`,
+        `${API}/users/${currentUser.firebase_uid}/venues/${venue_id}`,
         editVenueObject
       );
       debugger;

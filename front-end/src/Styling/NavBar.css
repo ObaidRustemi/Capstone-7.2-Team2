@@ -23,4 +23,13 @@
     color: white;
 }
 
+#register {
+  background-color: darkorange;
+  padding: 10px;
+  border-radius: 10px;
+}
 
+.signup {
+  display: flex;
+  flex-direction: row;
+}

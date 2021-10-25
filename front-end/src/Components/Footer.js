@@ -5,7 +5,7 @@ import { Instagram, Facebook, Twitter, Twitch } from "react-feather";
 function FooterDetails() {
   return (
     <footer className="footer">
-      <div class="l-footer">
+      <div className="l-footer">
         <h1>
         <img className="footer-logo" src={Logo} alt="logo" />
           {/* <img src="https://i.postimg.cc/y62wcLBq/logo.png" alt="" /> */}
@@ -17,43 +17,43 @@ function FooterDetails() {
           recusandae.
         </p> */}
       </div>
-      <ul class="r-footer">
+      <ul className="r-footer">
         <li>
           <h2>Social</h2>
-          <ul class="box">
+          <ul className="box">
             <li>
-              <a href="#">
+              <a href="https://www.facebook.com/">
                 <Facebook />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://twitter.com/?lang=en">
                 <Twitter />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.instagram.com/">
                 <Instagram />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.twitch.tv/">
                 <Twitch />
               </a>
             </li>
           </ul>
         </li>
-        <li class="features">
+        <li className="features">
           <h2>Information</h2>
-          <ul class="box h-box">
+          <ul className="box h-box">
             <li>
-              <a href="#">Blog</a>
+              <a href="https://sneeit.com/spotdummy-blogger-demo-data-generator-for-template-developers/">Blog</a>
             </li>
             <li>
-              <a href="#">Press</a>
+              <a href="https://www.artnews.com/">Press</a>
             </li>
             <li>
-              <a href="#">Jobs</a>
+              <a href="https://www.indeed.com/">Jobs</a>
             </li>
             <li>
               <a href="#">Contact</a>
@@ -62,17 +62,17 @@ function FooterDetails() {
         </li>
         <li>
           <h2>Legal</h2>
-          <ul class="box">
+          <ul className="box">
             <li>
-              <a href="#">Privacy Policy</a>
+              <a href="https://www.termsfeed.com/live/a13f01fd-0a39-4fdc-a1fd-fcdd00a5baf6">Privacy Policy</a>
             </li>
             <li>
-              <a href="#">Terms of Use</a>
+              <a href="https://www.termsfeed.com/live/eef4950c-0956-49b1-ab1d-17dd4f83cda1">Terms of Use</a>
             </li>
           </ul>
         </li>
       </ul>
-      <div class="b-footer">
+      <div className="b-footer">
         <span className="footer-span">
           {" "}
           &copy; {new Date().getFullYear()} All rights reserved by ©OnlyArt.{" "}

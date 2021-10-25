@@ -36,15 +36,16 @@ const VenueEditContainer = ({
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
-    // editVenueObject.owner_id = currentUser.uid;
-    editVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
+    editVenueObject.owner_id = currentUser.firebase_uid
+
+    // editVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
     try {
-      debugger;
       const res = await axios.put(
         `${API}/users/${currentUser.firebase_uid}/venues/${venue_id}`,
         editVenueObject
         );
-      if (res.data.success) {
+        if (res.data.success) {
+        debugger;
         setEditPostSuccess(true);
         setTimeout(() => {
           setEditPostSuccess(false);

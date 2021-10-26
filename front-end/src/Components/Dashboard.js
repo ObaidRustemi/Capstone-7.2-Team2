@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import useCurrentUser from "../util/useCurrentUser";
 import "../Styling/Dashboard.css";
 
+
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
@@ -15,6 +16,7 @@ export default function Dashboard() {
   // debugger;
   console.log("DASH", currentUser);
   const history = useHistory();
+
 
   async function handleLogout() {
     setError("");

@@ -1,12 +1,16 @@
 // import React from "react";
 // import { useParams } from "react-router";
 import "../Styling/ArtworkInfo.css";
-// import { apiURL } from "../util/apiURL";
+import { apiURL } from "../util/apiURL";
+import useCurrentUser from "../util/useCurrentUser";
 
 // const API = apiURL();
 
-const ArtistEditContainer = ({setArtistEdit, currentUser}) => {
-    // const { artist_id } = useParams();
+const ArtistEditContainer = ({setArtistEdit}) => {
+
+  const currentUser = useCurrentUser()
+  // debugger
+    
     // const [editedVenue, setEditedVenue] = useState({
     //     name: "",
     //     owner_id: "",
@@ -14,8 +18,6 @@ const ArtistEditContainer = ({setArtistEdit, currentUser}) => {
     //     venue_info: "", 
     //     address: "",
     //   });
-
-    //   debugger
     return (
         <div>
           <h4>Edit Artist</h4>  

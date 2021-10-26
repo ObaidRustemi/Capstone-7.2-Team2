@@ -111,6 +111,7 @@ venues.delete("/:id", async (req, res) => {
 venues.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id)
     const updatedVenue = await updateVenue(id, req.body);
     if (updatedVenue["id"]) {
       res.json({ success: true, payload: updatedVenue });
@@ -118,6 +119,7 @@ venues.put("/:id", async (req, res) => {
       throw updatedVenue;
     }
   } catch (error) {
+    console.log(error)
     res
       .status(422)
       .json({ success: false, payload: "Must enter valid data", error: error });

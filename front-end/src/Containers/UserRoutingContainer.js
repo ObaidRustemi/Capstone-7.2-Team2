@@ -22,8 +22,9 @@ const UserRoutingContainer = () => {
   const [userObj, setUserObj] = useState({});
   const [showAddVenue, setShowAddVenue] = useState(null);
   const [newVenueAdded, setNewVenueAdded] = useState(null)
+  const [showEditArtist, setShowEditArtist] = useState(null)
 
-  // const fetchVenues = () => {};
+  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -53,7 +54,7 @@ const UserRoutingContainer = () => {
 
   return isVenue === false ? (
     <div className="artist-show-page">
-      <ArtistShow userObj={userObj} artwork={artwork} />
+      <ArtistShow userObj={userObj} artwork={artwork} showEditArtist={showEditArtist} setShowEditArtist={setShowEditArtist}/>
     </div>
   ) : (
     <VenueShow

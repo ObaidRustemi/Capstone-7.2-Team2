@@ -12,7 +12,7 @@ export default function Dashboard() {
   //   return users.find(user => user.firebase_uid === currentUserUid);
   // });
   const currentUser = useCurrentUser();
-  debugger;
+  // debugger;
   console.log("DASH", currentUser);
   const history = useHistory();
 

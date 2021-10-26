@@ -54,11 +54,7 @@ const UserRoutingContainer = () => {
 
   return isVenue === false ? (
     <div className="artist-show-page">
-<<<<<<< HEAD
-      <ArtistShow userObj={userObj} artwork={artwork} />
-=======
       <ArtistShow userObj={userObj} artwork={artwork} showEditArtist={showEditArtist} setShowEditArtist={setShowEditArtist}/>
->>>>>>> main
     </div>
   ) : (
     <VenueShow

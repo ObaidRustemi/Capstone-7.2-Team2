@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import "../Styling/ArtworkIndex.css";
-<<<<<<< HEAD
-
-
-import ArtworkList from "../Components/ArtworkList";
-import ArtistInfoCard from "../Components/ArtistInfoCard";
-
-
-const ArtistShow = ({ artwork, userObj }) => {
-
-=======
 import ArtistEditContainer from "../Containers/ArtistEditContainer";
 import ArtworkList from "../Components/ArtworkList";
 import ArtistInfoCard from "../Components/ArtistInfoCard";
->>>>>>> main
 
 const ArtistShow = ({
   artwork,
@@ -26,14 +15,6 @@ const ArtistShow = ({
       {/* <h2>Artist Details</h2> */}
       <ArtworkList artwork={artwork} />
       <div className="artist-details">
-<<<<<<< HEAD
-   
-     <div className="card">
-       <ArtistInfoCard userObj={userObj} />
-       {/* <ArtistEditContainer currentUser={currentUser} setArtistEdit={setArtistEdit}/> */}
-    
-     </div>
-=======
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
           {showEditArtist ? <ArtistEditContainer /> : null}
@@ -41,7 +22,6 @@ const ArtistShow = ({
             Edit
           </button>
         </div>
->>>>>>> main
       </div>
     </div>
   );

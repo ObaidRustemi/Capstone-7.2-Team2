@@ -17,7 +17,6 @@ const ArtistShow = ({
       <div className="artist-details">
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
-
           {showEditArtist ? <ArtistEditContainer /> : null}
           <button onClick={() => showEditArtist? setShowEditArtist(null): setShowEditArtist(true)}>
             Edit

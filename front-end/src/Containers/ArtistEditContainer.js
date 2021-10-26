@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+// import React from "react";
+// import { useParams } from "react-router";
 import "../Styling/ArtworkInfo.css";
 import { apiURL } from "../util/apiURL";
 import useCurrentUser from "../util/useCurrentUser";
 
-const API = apiURL();
+// const API = apiURL();
 
 const ArtistEditContainer = ({setArtistEdit}) => {
 
@@ -18,8 +18,6 @@ const ArtistEditContainer = ({setArtistEdit}) => {
     //     venue_info: "", 
     //     address: "",
     //   });
-
-  
     return (
         <div>
           <h4>Edit Artist</h4>  

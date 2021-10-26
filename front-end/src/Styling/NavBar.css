@@ -1,14 +1,3 @@
-#nav-main-div {
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: space-evenly; */
-    /* flex-direction: row; */
-    /* background-color: yellow; */
-  
-}
-
-
 .navbar-item {
 
   display: flex;
@@ -18,7 +7,6 @@
   margin-right: 25px;
   color: whitesmoke;
   text-decoration: none;
-  /* text-transform: uppercase; */
   outline: none;
 
 }
@@ -35,4 +23,13 @@
     color: white;
 }
 
+#register {
+  background-color: darkorange;
+  padding: 10px;
+  border-radius: 10px;
+}
 
+.signup {
+  display: flex;
+  flex-direction: row;
+}

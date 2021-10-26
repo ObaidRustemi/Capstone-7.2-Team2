@@ -19,7 +19,8 @@ const NavBar = () => {
             className="navbar-item"
             to={`/users/${currentUser.firebase_uid}`}
           >
-            Hello {currentUser.username || currentUser.email}!
+            {/* Hello {currentUser.username || currentUser.email}! */}
+            Hello {currentUser.username}!
           </NavLink>
           <NavLink className="navbar-item" to="/dashboard">
             {" "}
@@ -27,8 +28,8 @@ const NavBar = () => {
           </NavLink>
         </div>
       ) : (
-        <div>
-          <NavLink className="navbar-item" to="/signup">
+        <div className="signup">
+          <NavLink className="navbar-item" id="register" to="/signup">
             {" "}
             Register{" "}
           </NavLink>

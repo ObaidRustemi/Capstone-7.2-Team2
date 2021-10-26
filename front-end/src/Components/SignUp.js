@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
 import { useDispatch } from "react-redux";
 import { newUser } from "../Actions/userActions";
+import "../Styling/SignUp.css";
 
 const API = apiURL();
 
@@ -65,70 +66,72 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="username">
-              <Form.Label>User Name</Form.Label>
-              <Form.Control
-                type="name"
-                value={user.username}
-                id="username"
-                onChange={handleChange}
-                required
+    <Container
+    // className="d-flex align-items-center justify-content-center"
+    // style={{ minHeight: "50vh" }}
+    >
+      <div className="w-100" style={{ maxWidht: "200px" }}>
+        <h2 className="text-center mb-4">Sign Up</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
+          <Form.Group id="username">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              type="name"
+              value={user.username}
+              id="username"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group id="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" ref={emailRef} required />
+          </Form.Group>
+          <Form.Group id="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" ref={passwordRef} required />
+          </Form.Group>
+          <Form.Group id="password-confirm">
+            <Form.Label>Password Confirmation</Form.Label>
+            <Form.Control type="password" ref={passwordConfirmRef} required />
+          </Form.Group>
+          <div>
+            <Form.Group>
+              <Form.Check
+                inline
+                label="I am an aritst"
+                id="is_artist"
+                onClick={handleRadioClick}
+                name="group1"
+                type="radio"
               />
             </Form.Group>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+            <Form.Group>
+              <Form.Check
+                inline
+                label="I own a venue"
+                id="is_venue"
+                onClick={handleRadioClick}
+                name="group1"
+                type="radio"
+              />
             </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <div>
-              <Form.Group>
-                <Form.Check
-                  inline
-                  label="I am an aritst"
-                  id="is_artist"
-                  onClick={handleRadioClick}
-                  name="group1"
-                  type="radio"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Check
-                  inline
-                  label="I own a venue"
-                  id="is_venue"
-                  onClick={handleRadioClick}
-                  name="group1"
-                  type="radio"
-                />
-              </Form.Group>
-            </div>
-            <Button
-              variant="secondary"
-              disabled={loading}
-              className="w-100"
-              type="submit"
-            >
-              Sign Up
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login"> Log In </Link>
+          </div>
+          <Button
+            variant="secondary"
+            disabled={loading}
+            className="w-100"
+            type="submit"
+            id="submit-btn"
+          >
+            Sign Up
+          </Button>
+        </Form>
+        <div className="w-100 text-center mt-2" id="login-in-signup">
+          Already have an account? <Link to="/login"> Log In </Link>
+        </div>
       </div>
-    </>
+    </Container>
   );
 }

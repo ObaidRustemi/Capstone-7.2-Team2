@@ -1,0 +1,12 @@
+.card-login {
+    display: flex;
+    flex-direction: column;
+    padding: 20px
+}
+
+#login-btn{
+    background-color: black;
+    margin-top: 20px;
+
+}
+

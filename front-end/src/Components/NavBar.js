@@ -21,7 +21,6 @@ const NavBar = () => {
           >
             {/* Hello {currentUser.username || currentUser.email}! */}
             Hello {currentUser.username}!
-
           </NavLink>
           <NavLink className="navbar-item" to="/dashboard">
             {" "}

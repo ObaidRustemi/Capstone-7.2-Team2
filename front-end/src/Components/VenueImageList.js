@@ -19,19 +19,21 @@ const VenueImageList = ({
   const [showEditButton, setShowEditButton] = useState(null);
   const currentUser = useCurrentUser();
   const { firebase_uid } = useParams();
-  console.log(currentUser.firebase_uid);
-  console.log(firebase_uid);
+  // console.log(currentUser.firebase_uid);
+  // console.log(firebase_uid);
 
   useEffect(() => {
     const checkEditAuth = async () => {
-      (await currentUser.firebase_uid) === firebase_uid
-        ? setShowEditButton(true)
-        : setShowEditButton(null);
+      if (!currentUser?.firebase_uid) {
+        return;
+      } else {
+        (await currentUser.firebase_uid) === firebase_uid
+          ? setShowEditButton(true)
+          : setShowEditButton(null);
+        return;
+      }
     };
-    //   (await "ZE6t5nOcxwMMhFxtaanEMBSWlYn2") === firebase_uid
-    //     ? setShowEditButton(true)
-    //     : setShowEditButton(null);
-    // };
+
     checkEditAuth();
   }, []);
   return (

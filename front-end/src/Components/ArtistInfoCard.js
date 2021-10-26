@@ -12,6 +12,7 @@ const ArtistInfoCard = ({ userObj }) => {
         </div>
         <div className="body-text-dark">
           <h4 className="title">{userObj.username}</h4>
+          <p>Art Style: {userObj.type_of_art}</p>
           <p className="text-secondary">{userObj.description}</p>
           {/* <a href="#" className="btn btn-outline-sucess">Edit</a>
           <a href="#" className="btn btn-outline-sucess">Add Image</a> */}

@@ -10,6 +10,7 @@ const ArtistShow = ({
   showEditArtist,
   setShowEditArtist,
 }) => {
+
   return (
     <div className="artist-show-container">
       {/* <h2>Artist Details</h2> */}
@@ -17,7 +18,7 @@ const ArtistShow = ({
       <div className="artist-details">
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
-          {showEditArtist ? <ArtistEditContainer /> : null}
+          {showEditArtist ? <ArtistEditContainer userObj={userObj}/> : null}
           <button onClick={() => showEditArtist? setShowEditArtist(null): setShowEditArtist(true)}>
             Edit
           </button>

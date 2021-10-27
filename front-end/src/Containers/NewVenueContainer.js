@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import "../Styling/UserIndex.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -11,9 +12,9 @@ const API = apiURL();
 const NewVenueContainer = ({
   setShowHideButton,
   newVenueAdded,
-  setNewVenueAdded, 
+  setNewVenueAdded,
 }) => {
-  const currentUser = useCurrentUser()
+  const currentUser = useCurrentUser();
   const uploadUrl = useSelector((state) => state.uploadUrl);
   const [newVenue, setNewVenue] = useState({
     name: "",
@@ -23,19 +24,21 @@ const NewVenueContainer = ({
     address: "",
   });
   const [postSuccess, setPostSuccess] = useState(null);
+  const { firebase_uid } = useParams();
 
   useEffect(() => {
     setShowHideButton(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
- 
+
   const addNewVenue = async (newVenue) => {
     const newVenueObject = Object.assign({}, newVenue);
-    // newVenueObject.owner_id = currentUser.uid;
-    newVenueObject.owner_id = "70h6u5TsjRajXyEiEc7uilMENQ42";
+    newVenueObject.owner_id = firebase_uid;
+    debugger;
+
     try {
       const res = await axios.post(
-        `${API}/users/${currentUser.firebase_uid}/venues`,
+        `${API}/users/${firebase_uid}/venues`,
         newVenueObject
       );
       if (res.data.success) {
@@ -43,6 +46,13 @@ const NewVenueContainer = ({
         setTimeout(() => {
           setPostSuccess(null);
         }, 2000);
+        setNewVenue({
+          name: "",
+          owner_id: "",
+          venue_profile_photo: "",
+          venue_info: "",
+          address: "",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -59,7 +69,6 @@ const NewVenueContainer = ({
   };
   const handleTextChange = (e) => {
     setNewVenue({ ...newVenue, [e.target.id]: e.target.value });
-    
 
     setPostSuccess(null);
   };
@@ -86,7 +95,6 @@ const NewVenueContainer = ({
           placeholder="Enter a URL"
           //   required
         />
-        <UploadForm />
         <label htmlFor="venue_info">Description:</label>
         <textarea
           id="venue_info"
@@ -106,8 +114,10 @@ const NewVenueContainer = ({
           //   required
         />
       </form>
-        <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
       {postSuccess ? <h4>Venue Added</h4> : null}
+
+      <UploadForm />
     </div>
   );
 };

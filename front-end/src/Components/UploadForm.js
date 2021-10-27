@@ -65,7 +65,7 @@ const UploadForm = () => {
   return (
     <div>
       <form>
-        <label>title</label>
+        <label>Upload Venue Profile Photo</label>
         <input type="file" onChange={changeHandler} />
         <div>
           {error && <div> {error} </div>}

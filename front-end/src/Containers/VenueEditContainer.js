@@ -44,8 +44,8 @@ const VenueEditContainer = ({
         `${API}/users/${currentUser.firebase_uid}/venues/${venue_id}`,
         editVenueObject
         );
+       
         if (res.data.success) {
-        debugger;
         setEditPostSuccess(true);
         setTimeout(() => {
           setEditPostSuccess(false);

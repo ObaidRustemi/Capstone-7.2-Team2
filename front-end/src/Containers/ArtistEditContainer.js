@@ -28,10 +28,27 @@ const ArtistEditContainer = ({ setArtistEdit, userObj }) => {
     // setVenueChange(null);
   }, []);
 
-  const editArtist = async (venue) => {
+  const editArtist = async (editedArtist) => {
     const editArtistObject = Object.assign({}, editedArtist);
-    debugger
     // editVenueObject.owner_id = currentUser.firebase_uid
+
+  
+    try {
+      const res = await axios.put(
+        `${API}/users/${currentUser.firebase_uid}`,
+        editArtistObject
+      );
+
+      //   if (res.data.success) {
+      //   debugger;
+      //   setEditPostSuccess(true);
+      //   setTimeout(() => {
+      //     setEditPostSuccess(false);
+      //   }, 2000);
+      // }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -46,7 +63,7 @@ const ArtistEditContainer = ({ setArtistEdit, userObj }) => {
 
   const handleTextChange = (e) => {
     setEditedArtist({ ...editedArtist, [e.target.id]: e.target.value });
-    // setEditPostSuccess(null);
+    setEditArtistSuccess(null);
   };
 
   const { username, image, type_of_art, description, location } = editedArtist;

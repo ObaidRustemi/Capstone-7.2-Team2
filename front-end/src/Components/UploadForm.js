@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { storage } from "../firebase/Firebase";
 import "../Styling/UserIndex.css";
 import { setUploadUrl } from "../Actions/userActions";
@@ -10,9 +10,13 @@ const UploadForm = () => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
-  const [url, setUrl] = useState(null);
-  const currentUser = useCurrentUser()
+  const [url, setUrl] = useState("");
+  const currentUser = useCurrentUser();
   // const uploadUrl = useSelector((state) => state.uploadUrl);
+
+  useEffect(() => {
+    setUrl(null);
+  }, []);
 
   const types = ["image/png", "image/jpeg"];
   const changeHandler = (e) => {
@@ -29,7 +33,6 @@ const UploadForm = () => {
 
   const handleUpload = () => {
     if (file) {
-      
       const uploadTask = storage
         .ref(`/${currentUser.firebase_uid}/${file.name}`)
         .put(file);
@@ -49,9 +52,10 @@ const UploadForm = () => {
             .ref(`/${currentUser.firebase_uid}/${file.name}`)
             .getDownloadURL();
           if (url) {
+          
+            setUrl(url);
             const action = setUploadUrl(url);
             dispatch(action);
-            setUrl(url);
           } else {
             setUrl(null);
           }
@@ -75,8 +79,8 @@ const UploadForm = () => {
       <div>
         <button onClick={handleUpload}>upload</button>
       </div>
-      {url && <img src={url} alt="file pic" className="upload-preview-image" />}
       <p>{progress && progress}</p>
+     {url && <img src={url} alt="file pic" className="upload-preview-image" />}
     </div>
   );
 };

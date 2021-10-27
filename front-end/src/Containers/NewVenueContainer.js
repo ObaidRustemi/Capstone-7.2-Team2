@@ -16,6 +16,7 @@ const NewVenueContainer = ({
 }) => {
   const currentUser = useCurrentUser();
   const uploadUrl = useSelector((state) => state.uploadUrl);
+
   const [newVenue, setNewVenue] = useState({
     name: "",
     owner_id: "",
@@ -28,13 +29,13 @@ const NewVenueContainer = ({
 
   useEffect(() => {
     setShowHideButton(true);
+    setNewVenue({ ...newVenue, venue_profile_photo: uploadUrl });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [uploadUrl]);
 
   const addNewVenue = async (newVenue) => {
     const newVenueObject = Object.assign({}, newVenue);
     newVenueObject.owner_id = firebase_uid;
-    debugger;
 
     try {
       const res = await axios.post(
@@ -60,7 +61,8 @@ const NewVenueContainer = ({
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setNewVenue({ ...newVenue, venue_profile_photo: uploadUrl });
+
+    // setNewVenue({ ...newVenue, venue_profile_photo: uploadUrl });
     addNewVenue(newVenue);
     setNewVenueAdded(true);
     setTimeout(() => {

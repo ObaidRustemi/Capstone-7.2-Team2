@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../Styling/Login.css"
+import "../Styling/Login.css";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 // import {  FloatingLabel } from "react-bootstrap";
 import { useRef } from "react";
@@ -15,14 +15,14 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  
+
   useEffect(() => {
-    if (currentUser?.uid ) { //current user and current user uid
+    if (currentUser?.uid) {
+      //current user and current user uid
       history.push(`/users/${currentUser.uid}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
-
 
   useEffect(() => {
     if (currentUser?.firebase_uid) {
@@ -70,24 +70,26 @@ export default function Login() {
               <div>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
-              {/* <FloatingLabel label="email"> */}
+                  {/* <FloatingLabel label="email"> */}
                   <Form.Control type="email" ref={emailRef} required />
-                {/* </FloatingLabel> */}
+                  {/* </FloatingLabel> */}
                 </Form.Group>
                 <Form.Group id="password">
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" ref={passwordRef} required />
                 </Form.Group>
               </div>
-              <Button
-                variant="secondary"
-                disabled={loading}
-                className="w-100"
-                type="submit"
-                id="login-btn"
-              >
-                Log In
-              </Button>
+              <div className="div-btn">
+                <Button
+                  variant="secondary"
+                  disabled={loading}
+                  className="w-100"
+                  type="submit"
+                  id="login-btn"
+                >
+                  Log In
+                </Button>
+              </div>
             </Form>
             <div className="w-100 text-center mt-3">
               <Link to="/forgot-password">Forgot Password?</Link>

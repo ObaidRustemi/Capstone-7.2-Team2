@@ -16,21 +16,21 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  useEffect(() => {
-    if (currentUser?.uid) {
-      //current user and current user uid
-      history.push(`/users/${currentUser.uid}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser?.uid) {
+  //     //current user and current user uid
+  //     history.push(`/users/${currentUser.uid}`);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [currentUser]);
 
-  useEffect(() => {
-    if (currentUser?.firebase_uid) {
-      //current user and current user uid
-      history.push(`/users/${currentUser.firebase_uid}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser?.firebase_uid) {
+  //     //current user and current user uid
+  //     history.push(`/users/${currentUser.firebase_uid}`);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [currentUser]);
 
   useEffect(() => {
     if (currentUser?.firebase_uid) {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 
 export default function ProfileCard({ username, image, description }) {
   return (
@@ -10,8 +9,9 @@ export default function ProfileCard({ username, image, description }) {
             <button class="btn btn-secondary">
               <img
                 src={image}
-                // height="150"
-                // width="150"
+                height="150"
+                width="150"
+                alt=""
               />
             </button>
             <span class="name mt-3">{username}</span>

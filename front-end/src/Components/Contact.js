@@ -146,7 +146,8 @@ const Contact = () => {
                 {/* Row 3 of form */}
                 <div className="row formRow">
                   <div className="col">
-                    <textarea
+                    <Form.Control as="textarea"
+                    // <textarea as="textarea"
                       rows={3}
                       name="message"
                       {...register("message", {
@@ -154,7 +155,7 @@ const Contact = () => {
                       })}
                       className="form-control formInput"
                       placeholder="Message"
-                    ></textarea>
+                    />
                     {errors.message && (
                       <span className="errorMessage">
                         Please enter a message

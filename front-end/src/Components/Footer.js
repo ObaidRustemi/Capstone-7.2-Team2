@@ -1,5 +1,5 @@
 import "../Styling/Footer.css";
-import Logo from "../Logo/OnlyArt-logos_transparent.png";
+import Logo from "../Logo/OnlyArt-logos_white.png";
 import { Instagram, Facebook, Twitter, Twitch } from "react-feather";
 
 

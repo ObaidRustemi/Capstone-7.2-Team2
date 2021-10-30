@@ -1,4 +1,3 @@
-
 INSERT INTO users(username,firebase_uid, image, type_of_art, description, phone_number, location, is_venue, is_artist) VALUES
 ('Kaws', 'PYKsxQioabZRlt0f0aHtAu6tl1j1', 'https://www.christies.com/media-library/images/features/articles/2019/03/19/10-things-to-know-about-kaws/kaws_briandonnelly_by_hye-ryoungmin-hero-880i.jpg', 'Pop Art', 'Brian Donnelly, known professionally as Kaws, is an American artist and designer.', 12345678, 'NY,USA', false, true),
 ('Takashi Murakami','rKuKNL30PYVxQDn5yLDliTWmjCf2', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS67Y4gvW3UQbpAWcTafjzigvRjy_7pDj0YTA&usqp=CAU', 'Contemporary', 'Takashi Murakami is a Japanese contemporary artist. He works in fine arts media as well as commercial and is known for blurring the line between high and low arts.', 12345678, 'Tokyo, Japan', false, true),

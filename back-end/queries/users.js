@@ -37,10 +37,11 @@ const postUser = async (newUser) => {
     location,
     is_venue,
     is_artist,
+    status
   } = newUser;
   try {
     const user = await db.one(
-      "INSERT INTO users(username, firebase_uid, image, type_of_art, description, phone_number, location, is_venue, is_artist) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+      "INSERT INTO users(username, firebase_uid, image, type_of_art, description, phone_number, location, is_venue, is_artist, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
       [
         username,
         firebase_uid,
@@ -51,6 +52,7 @@ const postUser = async (newUser) => {
         location,
         is_venue,
         is_artist,
+        status
       ]
     );
     return user;
@@ -74,12 +76,12 @@ const editUser = async (user, id) => {
     location,
     is_venue,
     is_artist,
+    status,
   } = user;
-  // console.log(typeof(firebase_uid))
   try {
   
     const updatedUser = await db.one(
-      "UPDATE users SET username = $1, firebase_uid = $2, image = $3, type_of_art = $4, description = $5, phone_number = $6, location = $7, is_venue= $8, is_artist= $9 WHERE id = $10 RETURNING *",
+      "UPDATE users SET username = $1, firebase_uid = $2, image = $3, type_of_art = $4, description = $5, phone_number = $6, location = $7, is_venue= $8, is_artist= $9, status = $10 WHERE id = $11 RETURNING *",
 
       [
         username,
@@ -91,7 +93,7 @@ const editUser = async (user, id) => {
         location,
         is_venue,
         is_artist,
-        // fb_uid,
+        status,
         id,
       ]
     );

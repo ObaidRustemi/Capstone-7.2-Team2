@@ -26,7 +26,7 @@ const ArtistEditContainer = ({ editArtistSuccess, setEditArtistSuccess, userObj 
       await setEditedArtist(Object.assign(userObj, editedArtist));
     };
     setCurrentUser();
-  }, []);
+  }, []);    
 
   const editArtist = async (editedArtist) => {
    

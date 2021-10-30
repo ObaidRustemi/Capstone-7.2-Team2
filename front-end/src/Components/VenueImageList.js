@@ -94,7 +94,6 @@ const VenueImageList = ({
             </button> 
           )}
           <button onClick={() => {contact()}}>Contact</button>
-         
           {showHideButton ? (
             <button
             className="hide-button"

@@ -1,58 +1,187 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+// import useCurrentUser from "../util/useCurrentUser";
+
+// export default function VenueOwnerShow() {
+  
+//   const currentUser = useCurrentUser()
+
+//   const [updatedInfo, setUpdatedInfo] = useState({
+//     name: "",
+//     preference: "",
+//     description: "",
+//     phoneNumber: 0,
+//     location: "",
+//     is_venue: "",
+//     is_artist: ""
+//   });
+
+
+//   const updateVenueOwner = async (updatedInfo) => {
+//     try {
+//         // currentUser
+//         // debugger
+//         console.log(currentUser)
+//     //   await axios.put(`${API}/info/${id}`, updatedInfo);
+//     //   history.push(`/songs/${id}`);
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   };
+
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+   
+//   };
+
+
+//   useEffect(() => {
+      
+//   }, [])
+
+//   const { name, preference, description, phoneNumber, location } = updatedInfo;
+
+//   return (
+//     <div>
+//       <div>
+//           <div> LOGO</div>
+//           <p>Name</p>
+//           <section>
+//               <p>Preferred</p>
+//               <p>Description</p>
+//               <p>Number</p>
+//               <p>location</p>
+//           </section>
+//       </div>
+//     </div>
+//   );
+// }
+
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import "../Styling/VenueInfoPage.css";
+import axios from "axios";
+import { apiURL } from "../util/apiURL";
 import useCurrentUser from "../util/useCurrentUser";
 
-export default function VenueOwnerShow() {
-  
-  const currentUser = useCurrentUser()
+const API = apiURL();
 
-  const [updatedInfo, setUpdatedInfo] = useState({
-    name: "",
-    preference: "",
+const VenueOwnerShow = ({
+ userObj
+}) => {
+  const { venue_id } = useParams();
+  const currentUser = useCurrentUser()
+  const [editOwnerSuccess, setEditOwnerSuccess] = useState()
+  const [editedOwner, setEditedOwner] = useState({
+    username: "",
+    image: "",
     description: "",
-    phoneNumber: 0,
+    phone_number: 0,
     location: "",
     is_venue: "",
     is_artist: ""
   });
+  const [editPostSuccess, setEditPostSuccess] = useState(null);
 
+  useEffect( () => {
+    const setCurrentOwner = async (editedOwner) => {
+      await setEditedOwner(Object.assign(userObj, editedOwner));
+    };
+    setCurrentOwner();
+    // setShowHideButton(true);
+    // setVenueChange(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const updateVenueOwner = async (updatedInfo) => {
+  const editOwner = async (editedOwner) => {
+
+    const editOwnerObject = await Object.assign({}, editedOwner);
+    
+    // editOwnerObject.owner_id = currentUser?.firebase_uid
+    editOwnerObject.id = userObj.id
     try {
-        // currentUser
-        // debugger
-        console.log(currentUser)
-    //   await axios.put(`${API}/info/${id}`, updatedInfo);
-    //   history.push(`/songs/${id}`);
-    } catch (e) {
-      console.log(e);
+      const res = await axios.put(
+        `${API}/users/${currentUser.firebase_uid}`,
+        editOwnerObject
+        );
+       
+        if (res.data.success) {
+        setEditOwnerSuccess(true);
+        setTimeout(() => {
+          setEditOwnerSuccess(false);
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("hello")
     e.preventDefault();
-   
+    debugger;
+    editOwner(editedOwner);
+
+    // setVenueChange(true)
+    // setTimeout(()=> {
+    //     setVenueChange(false)
+    // }, 1000)
   };
 
+  const handleTextChange = (e) => {
+    
+    setEditedOwner({ ...editedOwner, [e.target.id]: e.target.value });
+    // setEditPostSuccess(null);
+  };
 
-  useEffect(() => {
-      
-  }, [])
+  
 
-  const { name, preference, description, phoneNumber, location } = updatedInfo;
-
+  const { username, image, phone_number, description, location } = editedOwner;
   return (
-    <div>
-      <div>
-          <div> LOGO</div>
-          <p>Name</p>
-          <section>
-              <p>Preferred</p>
-              <p>Description</p>
-              <p>Number</p>
-              <p>location</p>
-          </section>
-      </div>
+    <div className="edit-venue-container">
+      <h2>Edit My Profile</h2>
+      <form className="edit-forms-container" onSubmit={handleSubmit}>
+        <label htmlFor="username">User Name:</label>
+        <input
+          id="username"
+          value={username}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="User name"
+          //   required
+        />
+        <label htmlFor="image">Profile Photo:</label>
+        <input
+          id="image"
+          value={image}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Enter a URL"
+          //   required
+        />
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Enter venue information"
+          //   required
+        />
+        <label htmlFor="location">Location:</label>
+        <input
+          id="location"
+          value={location}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Enter city + state"
+          //   required
+        />
+        <input type="submit" />
+      </form>
+      {editOwnerSuccess ? <h4>Profile Edit Complete</h4> : null}
     </div>
   );
-}
+};
+
+export default VenueOwnerShow;

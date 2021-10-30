@@ -2,7 +2,6 @@ import "../Styling/Footer.css";
 import Logo from "../Logo/OnlyArt-logos_transparent.png";
 import { Instagram, Facebook, Twitter, Twitch } from "react-feather";
 
-
 function FooterDetails() {
   return (
     <footer className="footer">

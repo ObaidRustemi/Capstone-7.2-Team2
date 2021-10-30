@@ -37,7 +37,11 @@ INSERT INTO artwork (title, artist_id,  image) VALUES
 INSERT INTO venues ( name, venue_profile_photo, owner_id, venue_info, address) VALUES  
 ('Emerson Art Exhibitions', 'https://media.timeout.com/images/105439629/image.jpg', 'ZE6t5nOcxwMMhFxtaanEMBSWlYn2','Emerson art exhibitions are designed to provoke thought, broaden understanding of the world and spark curiosity and imagination. The Emerson encourages appreciation of the visual arts by curating and hosting art exhibitions of significant community value. The Emerson seeks exhibitions that interpret not only regional topics, but also touch upon national and international issues.' ,'2453 Broadway, New York NY 10043'),
 ('The Paper Box', 'http://thepaperbox.nyc/wp-content/uploads/2016/02/IMG_3348-950x713.jpg', 'ZE6t5nOcxwMMhFxtaanEMBSWlYn2', 'The Paper Box is an independently owned music and arts complex in East Williamsburg, Brooklyn. We value artistic expression in all its forms and have hosted a multitude of events since Summer 2012, including live music shows, DJ parties, theater performances, and label showcases. We’ve also hosted many private events including; weddings, bar mitzvahs corporate events, and baby showers. We are a licensed venue with a full bar and certificate of public assembly and Insurance.' ,'17 Meadow St. Brooklyn, NY 11206'),
-('Bogart House', 'https://i.ticketweb.com//i/venue/436405_Venue.jpg?v=2', 'SItsbxhHWLTDxvQ1wrQQwnSlnES2', 'Multiple spaces, indoor space and outdoor rooftop, Funktion-One Sound System, Full Bar, Speakeasy Vibes','230 Bogart St, Brooklyn, NY 11206');
+('Bogart House', 'https://i.ticketweb.com//i/venue/436405_Venue.jpg?v=2', 'SItsbxhHWLTDxvQ1wrQQwnSlnES2', 'Multiple spaces, indoor space and outdoor rooftop, Funktion-One Sound System, Full Bar, Speakeasy Vibes','230 Bogart St, Brooklyn, NY 11206'),
+('The Bronx Brewery', 'https://vinepair.com/wp-content/uploads/2020/06/microsite_bronxbrewery_header3.jpg', 'SItsbxhHWLTDxvQ1wrQQwnSlnES2', 'Outdoor space is great for vending', '856 E 136th St, Bronx, NY 10454'),
+('Mon Amour Coffee & Wine Bar', 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/121962026_956581248199997_481543841988055427_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=Nr-TcqwhovUAX8O-wdO&_nc_ht=scontent-lga3-1.xx&oh=5f0173dc5650f64d2c08c826391e89a8&oe=61A1C504', 'SItsbxhHWLTDxvQ1wrQQwnSlnES2', 'Cozy, French-inspired coffee shop in the Bronx', '234 W 238th St, Bronx, NY 10463'),
+('Port Morris Distillery', 'https://static01.nyt.com/images/2015/04/22/nyregion/DISTILLERYweb4/DISTILLERYweb4-articleLarge.jpg?quality=75&auto=webp&disable=upscale', 'SItsbxhHWLTDxvQ1wrQQwnSlnES2', 'Pitorro distillery in the South Bronx', '780 E 133rd St, Bronx, NY 10454'),
+('Nighthawk Cinema', 'https://images.adsttc.com/media/images/55f7/2f4f/fd5f/d3e8/0e00/0090/slideshow/caliper-theatre-15.jpg?1442262834', 'ZE6t5nOcxwMMhFxtaanEMBSWlYn2', 'Old-school cinema in Brooklyn', '136 Metropolitan Ave, Brooklyn, NY 11249');
 
 
 INSERT INTO venue_images (venue_id, photo_url) VALUES   
@@ -55,4 +59,7 @@ INSERT INTO venue_images (venue_id, photo_url) VALUES
 (3,'https://eventective-media.azureedge.net/2831936_lg.jpg'),
 (3,'https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fpartyslate.imgix.net%2Fcompanies%2F24352%2Fcover-image-a3eae026-5b9c-4fa8-af19-78ae3cbcba51.jpg%3Fixlib%3Djs-2.3.2%26w%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dfaces%252Cedges'),
 (3,'https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fscontent-lga3-1.xx.fbcdn.net%2Fv%2Ft1.18169-9%2F14462948_1152292251473791_2209580590703423669_n.jpg%3F_nc_cat%3D110%26ccb%3D1-5%26_nc_sid%3D9267fe%26_nc_ohc%3DqIavN6HxDngAX84BAvv%26_nc_ht%3Dscontent-lga3-1.xx%26oh%3D37cb116efff26514cefd0e3628f94036%26oe%3D61858E99'),
-(3,'https://fever.imgix.net/plan/photo/7a5b9d32-dea4-11e9-bf03-06551cb39bc6.jpg?w=550&h=550&auto=format&fm=jpg');
+(3,'https://fever.imgix.net/plan/photo/7a5b9d32-dea4-11e9-bf03-06551cb39bc6.jpg?w=550&h=550&auto=format&fm=jpg'),
+(4, 'https://thebronxbrewery.com/wp-content/uploads/2021/09/Backyard-people-e1632154409984-665x1024.jpg'),
+(5, 'https://images.squarespace-cdn.com/content/v1/54ad93f9e4b06a324abc18f1/1453307686618-09XA4APXCEDJPDXJX292/image-asset.jpeg'),
+(5, 'https://s3-media3.fl.yelpcdn.com/bphoto/AbLi4bUCt0lVHKvxHFxaaw/348s.jpg');

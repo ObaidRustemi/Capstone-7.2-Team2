@@ -24,26 +24,7 @@ console.log("this is the owner_id: ", owner_id)
   const user = await getUser(owner_id);
   const ownerVenues = await getAllVenuesForUser(owner_id);
   res.json({ success: true, payload: ownerVenues });
-  // =======
-  // const allVenues = await getAllVenues();
-  // res.json({ success: true, payload: allVenues });
-  // >>>>>>> main
-  // =======
-  //   const allVenues = await getAllVenues();
-  //   res.json({ success: true, payload: allVenues });
-  // >>>>>>> origin/carlohomepage
 });
-
-// venues.get("/", async (req, res) => {
-//   const allVenues = await getAllVenues();
-//   res.json({ success: true, payload: allVenues });
-// });
-
-// venues.get("/", async (req, res) => {
-//   const { owner_id } = req.params;
-//   const ownerVenues = await getAllVenuesForUser(owner_id);
-//   res.json({ success: true, payload: ownerVenues });
-// });
 
 venues.get("/:id", async (req, res) => {
   try {

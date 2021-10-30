@@ -37,15 +37,15 @@ const getVenueForUser = async (id) => {
 
 const newVenueForUser = async (venue, userId) => {
   console.log("newVenueForUser");
-  const { name, address, venue_profile_photo, venue_info, owner_id} = venue;
+  const { name, address, venue_profile_photo, venue_info, owner_id, price} = venue;
   try {
     const newVenue = await db.one(
       `
-          INSERT INTO venues (name, venue_profile_photo, owner_id, venue_info, address) 
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO venues (name, venue_profile_photo, owner_id, venue_info, address, price) 
+          VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING *
       `,
-      [name, venue_profile_photo, owner_id, venue_info, address, userId]
+      [name, venue_profile_photo, owner_id, venue_info, address, price, userId]
     );
 
     return newVenue;
@@ -73,16 +73,16 @@ const deleteVenue = async (id) => {
 
 const updateVenue = async (id, venue) => {
   console.log("updateVenue");
-  const { name, address, venue_profile_photo, venue_info, owner_id} = venue;
+  const { name, address, venue_profile_photo, venue_info, owner_id, price} = venue;
   try {
     const updatedVenue = await db.one(
       `
           UPDATE venues
-          SET name = $1, address = $2, venue_profile_photo = $3, venue_info = $4, owner_id = $5
-          WHERE id = $6
+          SET name = $1, address = $2, venue_profile_photo = $3, venue_info = $4, owner_id = $5, price = $6
+          WHERE id = $7
           RETURNING * 
       `,
-      [name, address, venue_profile_photo, venue_info, owner_id, id]
+      [name, address, venue_profile_photo, venue_info, owner_id, price, id]
     );
     return updatedVenue;
   } catch (error) {

@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import "../Styling/UserIndex.css";
 import VenueList from "../Components/VenueList";
 import NewVenueContainer from "../Containers/NewVenueContainer";
+import VenueOwnerShow from "../Components/VenueOwnerShow"
+import ProfileCard from "../Components/ProfileCard"
 
 
-const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNewVenueAdded }) => {
+const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNewVenueAdded, userObj }) => {
   const [showHideButton, setShowHideButton] = useState(null)
   return (
     <div className="user-show-container">
       <div>
-        <h3>Venue Owner Details</h3>
+        <ProfileCard userObj={userObj} />
+        <VenueOwnerShow userObj={userObj}/>
+        <h3>My Venues</h3>
         <VenueList venues={venues} />
         {/* <UploadForm /> */}
       </div>

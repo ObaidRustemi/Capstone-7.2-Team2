@@ -10,8 +10,8 @@ CREATE TABLE users(
     phone_number INT,
     location TEXT,
     is_venue BOOLEAN,
-    is_artist BOOLEAN
-    -- profile_img_firebase TEXT
+    is_artist BOOLEAN,
+    status TEXT
 );
 
 DROP TABLE IF EXISTS artwork;

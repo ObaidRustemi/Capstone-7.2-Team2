@@ -21,7 +21,7 @@ const ArtistShow = ({
   useEffect(() => {
     console.log(userObj)
     const checkEditAuth = async (userObj) => {
-      if (currentUser.firebase_uid === userObj?.firebase_uid) {
+      if (currentUser?.firebase_uid === userObj?.firebase_uid) {
         await setShowEditButton(true);
       } else if (!currentUser?.firebase_uid) {
         return;

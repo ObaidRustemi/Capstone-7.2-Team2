@@ -19,7 +19,8 @@ const VenueImageList = ({
   const [showEditButton, setShowEditButton] = useState(null);
   const currentUser = useCurrentUser();
   const { firebase_uid } = useParams();
-  console.log(currentUser.firebase_uid);
+  console.log(currentUser?.firebase_uid);
+  debugger;
   console.log(firebase_uid);
 
   useEffect(() => {

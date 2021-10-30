@@ -1,12 +1,16 @@
-#submit-btn {
-  background-color: brown;
-  justify-content: auto;
+.card-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* .container {
-  max-width: 300px;
-  padding-bottom: 50px;
-  padding-top: 50px;
-  padding-left: 100px;
-  padding-right: 100px;
-} */
+.div-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#signup-btn {
+  background-color: black;
+}

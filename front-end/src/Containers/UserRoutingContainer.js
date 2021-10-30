@@ -63,6 +63,7 @@ const UserRoutingContainer = () => {
     </div>
   ) : (
     <VenueShow
+      userObj={userObj}
       venues={venues}
       showAddVenue={showAddVenue}
       setShowAddVenue={setShowAddVenue}

@@ -80,11 +80,10 @@ const UsersContainer = () => {
                             className="artist_img"
                           />
                           <Card.Body>
-                            {/* <Card.Text> */}
                               <h4>{artist.username}</h4>
                               <h5>{artist.type_of_art}</h5>
                               <p>{artist.location}</p>
-                            {/* </Card.Text> */}
+                            {artist.status === "Available" ? <p style={{color:"green"}}>{artist.status}</p>: <p style={{color:"red"}}>{artist.status} </p>}
                           </Card.Body>
                         </Card>
                       </Link>
@@ -106,6 +105,7 @@ const UsersContainer = () => {
                           <Card.Text>
                             <h4>{venue.name}</h4>
                             <p>{venue.address}</p>
+                            <p><strong>Price:</strong> ${venue.price.toLocaleString()}</p>
                           </Card.Text>
                         </Card.Body>
                       </Card>

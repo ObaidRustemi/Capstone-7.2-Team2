@@ -9,7 +9,6 @@ import ArtistShow from "../Pages/ArtistShow";
 import axios from "axios";
 import "../Styling/ArtworkIndex.css";
 
-
 const API = apiURL();
 
 const UserRoutingContainer = () => {
@@ -21,23 +20,22 @@ const UserRoutingContainer = () => {
   const [isVenue, setIsVenue] = useState(false);
   const [userObj, setUserObj] = useState({});
   const [showAddVenue, setShowAddVenue] = useState(null);
-  const [newVenueAdded, setNewVenueAdded] = useState(null)
-  const [showEditArtist, setShowEditArtist] = useState(null)
-
-  
+  const [newVenueAdded, setNewVenueAdded] = useState(null);
+  const [showEditArtist, setShowEditArtist] = useState(null);
+  const [editArtistSuccess, setEditArtistSuccess] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         let res = await axios.get(`${API}/users/${firebase_uid}`);
-        
+
         if (res.data.payload.venues) {
-          await setIsVenue(true);
-          setUserObj(res.data.payload.user);
+          setIsVenue(true);
+          await setUserObj(res.data.payload.user);
           const action = getUserVenues(res.data.payload.venues);
           dispatch(action);
         } else {
-          await setIsVenue(false);
+          setIsVenue(false);
           setUserObj(res.data.payload.user);
           const action = getUserArtwork(res.data.payload.userArtwork);
           const action2 = getUser(res.data.payload);
@@ -50,11 +48,18 @@ const UserRoutingContainer = () => {
     };
     fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newVenueAdded]);
+  }, [newVenueAdded, editArtistSuccess]);
 
   return isVenue === false ? (
     <div className="artist-show-page">
-      <ArtistShow userObj={userObj} artwork={artwork} showEditArtist={showEditArtist} setShowEditArtist={setShowEditArtist}/>
+      <ArtistShow
+        userObj={userObj}
+        artwork={artwork}
+        showEditArtist={showEditArtist}
+        setShowEditArtist={setShowEditArtist}
+        editArtistSuccess={editArtistSuccess}
+        setEditArtistSuccess={setEditArtistSuccess}
+      />
     </div>
   ) : (
     <VenueShow

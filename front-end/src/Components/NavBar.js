@@ -2,7 +2,7 @@ import "../Styling/NavBar.css";
 import { NavLink } from "react-router-dom";
 import "../index.css";
 import { Navbar } from "react-bootstrap";
-import Logo from "../Logo/OnlyArt-logos_transparent.png";
+import Logo from "../Logo/OnlyArt-logos_white.png";
 import useCurrentUser from "../util/useCurrentUser";
 
 const NavBar = () => {

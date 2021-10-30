@@ -80,11 +80,11 @@ const UsersContainer = () => {
                             className="artist_img"
                           />
                           <Card.Body>
-                            <Card.Text>
-                              {artist.username}
-                              {artist.type_of_art}
-                              {artist.location}
-                            </Card.Text>
+                            {/* <Card.Text> */}
+                              <h4>{artist.username}</h4>
+                              <h5>{artist.type_of_art}</h5>
+                              <p>{artist.location}</p>
+                            {/* </Card.Text> */}
                           </Card.Body>
                         </Card>
                       </Link>
@@ -104,8 +104,8 @@ const UsersContainer = () => {
                         />
                         <Card.Body>
                           <Card.Text>
-                            {venue.name}
-                            {venue.address}
+                            <h4>{venue.name}</h4>
+                            <p>{venue.address}</p>
                           </Card.Text>
                         </Card.Body>
                       </Card>

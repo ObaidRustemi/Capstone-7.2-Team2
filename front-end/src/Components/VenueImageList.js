@@ -25,7 +25,7 @@ const VenueImageList = ({
 
   useEffect(() => {
     const checkEditAuth = async () => {
-      (await currentUser.firebase_uid) === firebase_uid
+      (await currentUser?.firebase_uid) === firebase_uid
         ? setShowEditButton(true)
         : setShowEditButton(null);
     };

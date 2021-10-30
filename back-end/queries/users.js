@@ -63,6 +63,7 @@ const postUser = async (newUser) => {
 const editUser = async (user, id) => {
   console.log("editUser");
   console.log(user);
+  console.log("this is your id", id)
   const {
     username,
     firebase_uid,

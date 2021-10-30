@@ -7,7 +7,7 @@ import "../Styling/ArtworkInfo.css";
 
 const API = apiURL();
 
-const ArtistEditContainer = ({ setArtistEdit, userObj }) => {
+const ArtistEditContainer = ({ editArtistSuccess, setEditArtistSuccess, userObj }) => {
   const [editedArtist, setEditedArtist] = useState({
     username: "",
     image: "",
@@ -15,37 +15,33 @@ const ArtistEditContainer = ({ setArtistEdit, userObj }) => {
     artist_info: "",
     location: "",
   });
-  const [editArtistSuccess, setEditArtistSuccess] = useState(null);
+
+  
   const currentUser = useCurrentUser();
-  const { firebase_uid } = useParams();
-  let currentArtist = Object.assign({}, userObj);
+  // let currentArtist =  Object.assign({}, userObj);
+  // const { firebase_uid } = useParams();
 
   useEffect(() => {
     const setCurrentUser = async (editedArtist) => {
-      await setEditedArtist(Object.assign(currentArtist, editedArtist));
+      await setEditedArtist(Object.assign(userObj, editedArtist));
     };
     setCurrentUser();
-    // setVenueChange(null);
   }, []);
 
   const editArtist = async (editedArtist) => {
-    const editArtistObject = Object.assign({}, editedArtist);
-    // editVenueObject.owner_id = currentUser.firebase_uid
-
-  
+   
+    const editArtistObject = await Object.assign({}, editedArtist);
     try {
       const res = await axios.put(
         `${API}/users/${currentUser.firebase_uid}`,
         editArtistObject
       );
-
-      //   if (res.data.success) {
-      //   debugger;
-      //   setEditPostSuccess(true);
-      //   setTimeout(() => {
-      //     setEditPostSuccess(false);
-      //   }, 2000);
-      // }
+      if (res.data.success) {
+        await setEditArtistSuccess(true);
+        setTimeout(() => {
+          setEditArtistSuccess(false);
+        }, 2000);
+      }
     } catch (error) {
       console.log(error);
     }

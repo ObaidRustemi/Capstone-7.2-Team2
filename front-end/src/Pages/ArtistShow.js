@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "../Styling/ArtworkIndex.css";
 import ArtistEditContainer from "../Containers/ArtistEditContainer";
 import ArtworkList from "../Components/ArtworkList";
@@ -11,29 +11,27 @@ const ArtistShow = ({
   userObj,
   showEditArtist,
   setShowEditArtist,
+  editArtistSuccess,
+  setEditArtistSuccess,
 }) => {
   const [showEditButton, setShowEditButton] = useState(null);
 
   const { firebase_uid } = useParams();
 
   useEffect(() => {
-    const checkEditAuth = async () => {
-      if (!currentUser?.firebase_uid) {
-        return;
-      } else {
-        debugger
-        (await currentUser.firebase_uid) === firebase_uid
-          ? setShowEditButton(true)
-          : setShowEditButton(null);
+    console.log(userObj)
+    const checkEditAuth = async (userObj) => {
+      if (currentUser.firebase_uid === userObj?.firebase_uid) {
+        await setShowEditButton(true);
+      } else if (!currentUser?.firebase_uid) {
         return;
       }
     };
 
     checkEditAuth();
-  }, []);
+  }, [userObj]);
 
   const currentUser = useCurrentUser();
-  
 
   return (
     <div className="artist-show-container">
@@ -42,14 +40,24 @@ const ArtistShow = ({
       <div className="artist-details">
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
-          {showEditArtist ? <ArtistEditContainer userObj={userObj} /> : null}
-          {showEditButton? <button
-            onClick={() =>
-              showEditArtist ? setShowEditArtist(null) : setShowEditArtist(true)
-            }
-          >
-            Edit
-          </button> : null}
+          {showEditArtist ? (
+            <ArtistEditContainer
+              userObj={userObj}
+              editArtistSuccess={editArtistSuccess}
+              setEditArtistSuccess={setEditArtistSuccess}
+            />
+          ) : null}
+          {showEditButton ? (
+            <button
+              onClick={() =>
+                showEditArtist
+                  ? setShowEditArtist(null)
+                  : setShowEditArtist(true)
+              }
+            >
+              Edit
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

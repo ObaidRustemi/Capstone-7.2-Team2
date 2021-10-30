@@ -76,8 +76,8 @@ users.post("/", async (req, res) => {
 
 users.put("/:firebase_uid", async (req, res) => {
   try {
-    const { firebase_uid } = req.params;
-    const updatedUser = await editUser(req.body, firebase_uid);
+    const { id } = req.body;
+    const updatedUser = await editUser(req.body, id);
     if (updatedUser["id"]) {
       res.json({ success: true, payload: updatedUser });
     } else {

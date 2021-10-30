@@ -1,12 +1,17 @@
 .card-login {
-    display: flex;
-    flex-direction: column;
-    padding: 20px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 
-#login-btn{
-    background-color: black;
-    margin-top: 20px;
+.div-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
+#login-btn {
+  background-color: black;
 }
 

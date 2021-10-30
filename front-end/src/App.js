@@ -20,12 +20,14 @@ import UploadArtwork from "./Components/UploadArtwork";
 import UploadVenueImage from "./Components/UploadVenueImage";
 import VenueOwnerUpdate from "./Components/VenueOwnerUpdate";
 import Footer from "./Components/Footer"
+// import Chat from "./Components/Chat";
 
 //DEPENDENCIES
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { AuthProvider } from "./Contexts/AuthContext";
+import Contact from "./Components/Contact";
 
 function App() {
   const API = apiURL()
@@ -48,6 +50,7 @@ function App() {
     <div className="App">
       <AuthProvider>
         <NavBar />
+        {/* <Chat /> */}
         <Switch>
           <Route exact path="/users">
             <UsersContainer />
@@ -65,6 +68,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/contact" component={Contact}/>
           <PrivateRoute path="/uploadArtwork" component={UploadArtwork} />
           <PrivateRoute path="/uploadVenueImage" component={UploadVenueImage} />
           <PrivateRoute

@@ -5,6 +5,8 @@ import Modal from "./Modal";
 import VenueImageListItem from "./VenueImageListItem";
 import VenueEditContainer from "../Containers/VenueEditContainer";
 import useCurrentUser from "../util/useCurrentUser";
+import { useHistory } from "react-router-dom";
+
 
 const VenueImageList = ({
   currentVenue,
@@ -19,22 +21,30 @@ const VenueImageList = ({
   const [showEditButton, setShowEditButton] = useState(null);
   const currentUser = useCurrentUser();
   const { firebase_uid } = useParams();
+  const history = useHistory();
   console.log(currentUser?.firebase_uid);
   debugger;
   console.log(firebase_uid);
 
   useEffect(() => {
     const checkEditAuth = async () => {
-      (await currentUser?.firebase_uid) === firebase_uid
-        ? setShowEditButton(true)
-        : setShowEditButton(null);
+      if (!currentUser?.firebase_uid) {
+        return;
+      } else {
+        (await currentUser.firebase_uid) === firebase_uid
+          ? setShowEditButton(true)
+          : setShowEditButton(null);
+        return;
+      }
     };
-    //   (await "ZE6t5nOcxwMMhFxtaanEMBSWlYn2") === firebase_uid
-    //     ? setShowEditButton(true)
-    //     : setShowEditButton(null);
-    // };
+
     checkEditAuth();
   }, []);
+
+  const contact = () => {
+      history.push('/contact')
+  }
+
   return (
     <div className="venue-info-container">
       <h2>{currentVenue.name}</h2>
@@ -52,50 +62,53 @@ const VenueImageList = ({
           <div className="venue-image-list-container">
             {venueImages.length > 0
               ? venueImages.map((image) => {
-                  return (
-                    <VenueImageListItem
-                      key={image.id}
-                      setSelectedImg={setSelectedImg}
-                      image={image}
-                    />
+                return (
+                  <VenueImageListItem
+                  key={image.id}
+                  setSelectedImg={setSelectedImg}
+                  image={image}
+                  />
                   );
                 })
-              : null}
+                : null}
           </div>
         </div>
         {selectedImg && (
           <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-        )}
+          )}
         <div className="button-and-form-container">
           {editVenue ? (
             <VenueEditContainer
-              setVenueChange={setVenueChange}
-              currentVenue={currentVenue}
-              setShowHideButton={setShowHideButton}
-              venueChange={venueChange}
+            setVenueChange={setVenueChange}
+            currentVenue={currentVenue}
+            setShowHideButton={setShowHideButton}
+            venueChange={venueChange}
             />
-          ) : null}
+            ) : null}
           {!showEditButton ? null : (
             <button
-              className="show-edit-button"
-              onClick={() => setEditVenue(true)}
+            className="show-edit-button"
+            onClick={() => setEditVenue(true)}
             >
               Edit Venue
-            </button>
+            </button> 
           )}
+          <button onClick={() => {contact()}}>Contact</button>
+          {/* {showEditButton? 
+          : null} */}
           {showHideButton ? (
             <button
-              className="hide-button"
-              onClick={() => {
-                setEditVenue(false);
-                setShowHideButton(false);
-              }}
+            className="hide-button"
+            onClick={() => {
+              setEditVenue(false);
+              setShowHideButton(false);
+            }}
             >
               Hide
             </button>
           ) : null}
-        </div>
       </div>
+        </div>
     </div>
   );
 };

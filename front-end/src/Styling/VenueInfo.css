@@ -97,11 +97,33 @@
 }
 
 .show-edit-button {
-  /* margin-top: 135px; */
-  /* margin-bottom: 135px; */
-  max-width: 100px;
-  display: block;
-  /* border: 2px solid red;s */
+  background: #404040;
+  background-image: -webkit-linear-gradient(top, #404040, #000000);
+  background-image: -moz-linear-gradient(top, #404040, #000000);
+  background-image: -ms-linear-gradient(top, #404040, #000000);
+  background-image: -o-linear-gradient(top, #404040, #000000);
+  background-image: linear-gradient(to bottom, #404040, #000000);
+  -webkit-border-radius: 24;
+  -moz-border-radius: 24;
+  border-radius: 24px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 1em;
+  padding: 9px 21px 10px 20px;
+  text-decoration: none;
+  max-width: 145px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.show-edit-button:hover {
+  background: #404040;
+  background-image: -webkit-linear-gradient(top, #404040, #333333);
+  background-image: -moz-linear-gradient(top, #404040, #333333);
+  background-image: -ms-linear-gradient(top, #404040, #333333);
+  background-image: -o-linear-gradient(top, #404040, #333333);
+  background-image: linear-gradient(to bottom, #404040, #333333);
+  text-decoration: none;
 }
 
 .hide-button {

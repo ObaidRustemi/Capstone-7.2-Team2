@@ -29,11 +29,11 @@ export default function Dashboard() {
   }
   return (
     <div>
-      <ProfileCard
+      {/* <ProfileCard
         username={currentUser.username}
         image={currentUser.image}
         description={currentUser.description}
-      />
+      /> */}
       <ProfileCardEdit
         username={currentUser.username}
         image={currentUser.image}

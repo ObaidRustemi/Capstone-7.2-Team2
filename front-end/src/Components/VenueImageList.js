@@ -24,7 +24,7 @@ const VenueImageList = ({
   const history = useHistory();
   console.log(currentUser?.firebase_uid);
   // debugger;
-  console.log("This is the currentUser: ", currentUser.firebase_uid);
+  console.log("This is the currentUser: ", currentUser?.firebase_uid);
   console.log(firebase_uid);
 
   useEffect(() => {
@@ -33,12 +33,12 @@ const VenueImageList = ({
       if (!currentUser?.firebase_uid) {
         setShowEditButton(null);
         return;
-      } else if (currentUser.firebase_uid === firebase_uid) {
+      } else if (currentUser?.firebase_uid === firebase_uid) {
         debugger;
         setShowEditButton(true);
         setShowContactButton(false);
         return;
-      } else if (currentUser.firebase_uid !== firebase_uid) {
+      } else if (currentUser?.firebase_uid !== firebase_uid) {
         setShowContactButton(true)
         setShowEditButton(null);
         return;

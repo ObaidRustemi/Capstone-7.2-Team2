@@ -36,12 +36,12 @@ const VenueEditContainer = ({
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
-    editVenueObject.owner_id = currentUser.firebase_uid
+    editVenueObject.owner_id = currentUser?.firebase_uid
   
 
     try {
       const res = await axios.put(
-        `${API}/users/${currentUser.firebase_uid}/venues/${venue_id}`,
+        `${API}/users/${currentUser?.firebase_uid}/venues/${venue_id}`,
         editVenueObject
         );
        

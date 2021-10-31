@@ -34,7 +34,7 @@ const UploadForm = () => {
   const handleUpload = () => {
     if (file) {
       const uploadTask = storage
-        .ref(`/${currentUser.firebase_uid}/${file.name}`)
+        .ref(`/${currentUser?.firebase_uid}/${file.name}`)
         .put(file);
 
       uploadTask.on(
@@ -49,7 +49,7 @@ const UploadForm = () => {
         },
         async () => {
           const url = await storage
-            .ref(`/${currentUser.firebase_uid}/${file.name}`)
+            .ref(`/${currentUser?.firebase_uid}/${file.name}`)
             .getDownloadURL();
           if (url) {
           

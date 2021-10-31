@@ -33,7 +33,7 @@ const ArtistEditContainer = ({ editArtistSuccess, setEditArtistSuccess, userObj 
     const editArtistObject = await Object.assign({}, editedArtist);
     try {
       const res = await axios.put(
-        `${API}/users/${currentUser.firebase_uid}`,
+        `${API}/users/${currentUser?.firebase_uid}`,
         editArtistObject
       );
       if (res.data.success) {

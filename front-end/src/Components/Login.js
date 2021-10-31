@@ -35,7 +35,7 @@ export default function Login() {
   useEffect(() => {
     if (currentUser?.firebase_uid) {
       //current user and current user uid
-      history.push(`/users/${currentUser.firebase_uid}`);
+      history.push(`/users/${currentUser?.firebase_uid}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);

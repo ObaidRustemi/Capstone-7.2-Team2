@@ -12,6 +12,7 @@ CREATE TABLE users(
     is_venue BOOLEAN,
     is_artist BOOLEAN,
     status TEXT
+    
 );
 
 DROP TABLE IF EXISTS artwork;
@@ -43,8 +44,8 @@ CREATE TABLE venues(
     venue_profile_photo TEXT,
     owner_id TEXT REFERENCES users(firebase_uid),
     venue_info TEXT,
-    address TEXT
-    -- ON DELETE CASCADE
+    address TEXT,
+    price INT
 );
 
 --COME BACK LATER --

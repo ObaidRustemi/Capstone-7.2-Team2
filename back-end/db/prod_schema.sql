@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS artwork;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
@@ -15,7 +16,7 @@ CREATE TABLE users(
     
 );
 
-DROP TABLE IF EXISTS artwork;
+
 
 CREATE TABLE artwork(
     id SERIAL PRIMARY KEY, 

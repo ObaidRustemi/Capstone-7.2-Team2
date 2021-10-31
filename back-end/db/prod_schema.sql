@@ -37,7 +37,7 @@ CREATE TABLE artwork(
 --     message TEXT
 -- );
 
-DROP TABLE IF EXISTS venues;
+DROP TABLE IF EXISTS venues cascade;
 
 CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 

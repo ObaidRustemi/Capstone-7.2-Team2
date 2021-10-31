@@ -4,7 +4,8 @@
   "description": "- Write a production README.md",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./back-end && node ./server.js" 
+    "start": "cd ./back-end && npm i && node ./server.js"
+
   },
   "repository": {
     "type": "git",

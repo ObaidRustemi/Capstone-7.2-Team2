@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS artwork;
+
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
@@ -13,10 +13,10 @@ CREATE TABLE users(
     is_venue BOOLEAN,
     is_artist BOOLEAN,
     status TEXT
-    
+    ON DELETE CASCADE,
 );
 
-
+DROP TABLE IF EXISTS artwork;
 
 CREATE TABLE artwork(
     id SERIAL PRIMARY KEY, 

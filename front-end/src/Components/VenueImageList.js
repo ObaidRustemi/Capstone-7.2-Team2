@@ -7,7 +7,6 @@ import VenueEditContainer from "../Containers/VenueEditContainer";
 import useCurrentUser from "../util/useCurrentUser";
 import { useHistory } from "react-router-dom";
 
-
 const VenueImageList = ({
   currentVenue,
   venueImages,
@@ -19,21 +18,29 @@ const VenueImageList = ({
   const [editVenue, setEditVenue] = useState(null);
   const [showHideButton, setShowHideButton] = useState(null);
   const [showEditButton, setShowEditButton] = useState(null);
+  const [showContactButton, setShowContactButton] = useState(null);
   const currentUser = useCurrentUser();
   const { firebase_uid } = useParams();
   const history = useHistory();
   console.log(currentUser?.firebase_uid);
-  debugger;
+  // debugger;
+  console.log("This is the currentUser: ", currentUser.firebase_uid);
   console.log(firebase_uid);
 
   useEffect(() => {
-    const checkEditAuth = async () => {
+    debugger
+    const checkEditAuth = () => {
       if (!currentUser?.firebase_uid) {
+        setShowEditButton(null);
         return;
-      } else {
-        (await currentUser.firebase_uid) === firebase_uid
-          ? setShowEditButton(true)
-          : setShowEditButton(null);
+      } else if (currentUser.firebase_uid === firebase_uid) {
+        debugger;
+        setShowEditButton(true);
+        setShowContactButton(false);
+        return;
+      } else if (currentUser.firebase_uid !== firebase_uid) {
+        setShowContactButton(true)
+        setShowEditButton(null);
         return;
       }
     };
@@ -42,8 +49,8 @@ const VenueImageList = ({
   }, []);
 
   const contact = () => {
-      history.push('/contact')
-  }
+    history.push("/contact");
+  };
 
   return (
     <div className="venue-info-container">
@@ -62,51 +69,59 @@ const VenueImageList = ({
           <div className="venue-image-list-container">
             {venueImages.length > 0
               ? venueImages.map((image) => {
-                return (
-                  <VenueImageListItem
-                  key={image.id}
-                  setSelectedImg={setSelectedImg}
-                  image={image}
-                  />
+                  return (
+                    <VenueImageListItem
+                      key={image.id}
+                      setSelectedImg={setSelectedImg}
+                      image={image}
+                    />
                   );
                 })
-                : null}
+              : null}
           </div>
         </div>
         {selectedImg && (
           <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-          )}
+        )}
         <div className="button-and-form-container">
           {editVenue ? (
             <VenueEditContainer
-            setVenueChange={setVenueChange}
-            currentVenue={currentVenue}
-            setShowHideButton={setShowHideButton}
-            venueChange={venueChange}
+              setVenueChange={setVenueChange}
+              currentVenue={currentVenue}
+              setShowHideButton={setShowHideButton}
+              venueChange={venueChange}
             />
-            ) : null}
+          ) : null}
           {!showEditButton ? null : (
             <button
-            className="show-edit-button"
-            onClick={() => setEditVenue(true)}
+              className="show-edit-button"
+              onClick={() => setEditVenue(true)}
             >
               Edit Venue
-            </button> 
+            </button>
           )}
-          <button onClick={() => {contact()}}>Contact</button>
-          {showHideButton ? (
+          {showContactButton ? (
             <button
-            className="hide-button"
-            onClick={() => {
-              setEditVenue(false);
-              setShowHideButton(false);
-            }}
+              onClick={() => {
+                contact();
+              }}
+            >
+              Contact
+            </button>
+          ) : null}
+          {/* {showHideButton ? (
+            <button
+              className="hide-button"
+              onClick={() => {
+                setEditVenue(false);
+                setShowHideButton(false);
+              }}
             >
               Hide
             </button>
-          ) : null}
-      </div>
+          ) : null} */}
         </div>
+      </div>
     </div>
   );
 };

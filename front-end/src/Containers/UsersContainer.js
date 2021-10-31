@@ -65,9 +65,9 @@ const UsersContainer = () => {
         style={{ minHeight: "100vh" }}
       >
         <div className="user_display">
-          <div>
+          <div >
             {toggled ? (
-              <ul>
+              <ul className="filter-artist-ul">
                 {users
                   .filter((user) => user.is_artist)
                   .map((artist) => (
@@ -91,7 +91,7 @@ const UsersContainer = () => {
                   ))}
               </ul>
             ) : (
-              <ul>
+              <ul className="filter-venue-ul">
                 {allVenues.map((venue) => (
                   <li key={venue.id}>
                     <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>

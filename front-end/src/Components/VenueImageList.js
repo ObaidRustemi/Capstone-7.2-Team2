@@ -28,18 +28,16 @@ const VenueImageList = ({
   console.log(firebase_uid);
 
   useEffect(() => {
-    debugger
     const checkEditAuth = () => {
       if (!currentUser?.firebase_uid) {
         setShowEditButton(null);
         return;
       } else if (currentUser?.firebase_uid === firebase_uid) {
-        debugger;
         setShowEditButton(true);
         setShowContactButton(false);
         return;
       } else if (currentUser?.firebase_uid !== firebase_uid) {
-        setShowContactButton(true)
+        setShowContactButton(true);
         setShowEditButton(null);
         return;
       }
@@ -68,7 +66,7 @@ const VenueImageList = ({
           </div>
           <div className="venue-image-list-container">
             {venueImages.length > 0
-              ? venueImages.map((image) => {
+              ? venueImages?.map((image) => {
                   return (
                     <VenueImageListItem
                       key={image.id}

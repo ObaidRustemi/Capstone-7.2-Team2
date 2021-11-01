@@ -18,7 +18,7 @@ const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNe
         {/* <UploadForm /> */}
       </div>
       {showAddVenue ? <NewVenueContainer setShowHideButton={setShowHideButton} newVenueAdded={newVenueAdded} setNewVenueAdded={setNewVenueAdded}/> : null}
-     {showHideButton? null: <button onClick={() => setShowAddVenue(true)}>Add Venue</button>}
+     {showHideButton? null: <button className="add-venue-button" onClick={() => setShowAddVenue(true)}>Add Venue</button>}
       {showHideButton? <button onClick={() => {
         setShowAddVenue(false)
         setShowHideButton(false)

@@ -19,16 +19,16 @@ const ArtistShow = ({
   const { firebase_uid } = useParams();
 
   useEffect(() => {
-    console.log(userObj)
     const checkEditAuth = async (userObj) => {
-      if (currentUser?.firebase_uid === userObj?.firebase_uid) {
-        await setShowEditButton(true);
-      } else if (!currentUser?.firebase_uid) {
+      if (!currentUser?.firebase_uid) {
+        await setShowEditButton(false);
         return;
+      } else if (currentUser.firebase_uid === userObj?.firebase_uid) {
+        await setShowEditButton(true);
       }
     };
 
-    checkEditAuth();
+    checkEditAuth(currentUser, userObj);
   }, [userObj]);
 
   const currentUser = useCurrentUser();

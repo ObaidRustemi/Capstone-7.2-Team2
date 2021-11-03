@@ -54,7 +54,7 @@ const ArtistShow = ({
       {/* <h2>Artist Details</h2> */}
       <ProfileCard userObj={userObj}/>
       <ArtworkList artwork={artwork} />
-      <div className="artist-details">
+      {/* <div className="artist-details">
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
           
@@ -77,8 +77,7 @@ const ArtistShow = ({
               editArtistSuccess={editArtistSuccess}
               setEditArtistSuccess={setEditArtistSuccess}
             />
-          ) : null}
-      <Contact />
+          ) : null} */}
     </div>
   );
 };

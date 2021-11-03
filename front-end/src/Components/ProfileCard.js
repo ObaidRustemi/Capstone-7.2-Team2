@@ -1,11 +1,11 @@
-// import { useState } from "react";
 import useCurrentUser from "../util/useCurrentUser";
-import { useParams } from "react-router";
+import ArtistEditContainer from "../Containers/ArtistEditContainer";
+import { useHistory } from "react-router-dom";
+
 
 export default function ProfileCard({ userObj }) {
   const currentUser = useCurrentUser();
-  const { firebase_uid } = useParams();
-
+  const history = useHistory();
   return (
     <div>
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
@@ -35,13 +35,15 @@ export default function ProfileCard({ userObj }) {
             </div> */}
             {currentUser?.firebase_uid === userObj.firebase_uid ? (
               <div class=" d-flex mt-2">
-                <button style={{ margin: "10px" }} className="btn1 btn-dark">
+                <button style={{ margin: "10px" }} className="btn1 btn-dark" onClick={<ArtistEditContainer/>}>
                   Edit Profile
                 </button>
               </div>
             ) : (
               <div class=" d-flex mt-2">
-                <button style={{ margin: "10px" }} className="btn1 btn-dark">
+                <button onClick={()=> {
+                    history.push('/contact')
+                }}style={{ margin: "10px" }} className="btn1 btn-dark">
                   Contact
                 </button>
               </div>

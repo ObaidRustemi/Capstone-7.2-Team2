@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function ProfileCard({ userObj }) {
+  debugger;
   return (
     <div>
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
@@ -9,8 +10,8 @@ export default function ProfileCard({ userObj }) {
             <button class="btn btn-secondary">
               <img
                 src={userObj.image}
-                height="150"
-                width="150"
+                height="200"
+                width="200"
                 alt=""
               />
             </button>

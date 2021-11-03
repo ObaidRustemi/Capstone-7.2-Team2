@@ -5,6 +5,8 @@ import ArtworkList from "../Components/ArtworkList";
 import ArtistInfoCard from "../Components/ArtistInfoCard";
 import useCurrentUser from "../util/useCurrentUser";
 import { useParams } from "react-router";
+import ProfileCard from "../Components/ProfileCard";
+import "../Styling/ArtistShow.css"
 
 const ArtistShow = ({
   artwork,
@@ -34,20 +36,23 @@ const ArtistShow = ({
   const currentUser = useCurrentUser();
 
   return (
-    <div className="artist-show-container">
+    // <div className="artist-show-container">
+    <div className="artist-show">
+
       {/* <h2>Artist Details</h2> */}
+      <ProfileCard userObj={userObj}/>
       <ArtworkList artwork={artwork} />
-      <div className="artist-details">
-        <div className="card">
-          <ArtistInfoCard userObj={userObj} />
-          {showEditArtist ? (
+      {/* <div className="artist-details"> */}
+        {/* <div className="card"> */}
+          {/* <ArtistInfoCard userObj={userObj} /> */}
+          {/* {showEditArtist ? (
             <ArtistEditContainer
               userObj={userObj}
               editArtistSuccess={editArtistSuccess}
               setEditArtistSuccess={setEditArtistSuccess}
             />
-          ) : null}
-          {showEditButton ? (
+          ) : null} */}
+          {/* {showEditButton ? (
             <button
               onClick={() =>
                 showEditArtist
@@ -57,9 +62,9 @@ const ArtistShow = ({
             >
               Edit
             </button>
-          ) : null}
-        </div>
-      </div>
+          ) : null} */}
+        {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };

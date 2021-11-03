@@ -11,7 +11,7 @@ const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNe
   return (
     <div className="user-show-container">
       <div>
-        <ProfileCard userObj={userObj} />
+        {/* <ProfileCard userObj={userObj} /> */}
         <VenueOwnerShow userObj={userObj}/>
         <h3>My Venues</h3>
         <VenueList venues={venues} />

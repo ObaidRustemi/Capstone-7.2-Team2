@@ -29,7 +29,7 @@ export default function Dashboard() {
   }
   return (
     <div>
-      <ProfileCard
+      {/* <ProfileCard
         username={currentUser.username}
         image={currentUser.image}
         description={currentUser.description}
@@ -39,7 +39,7 @@ export default function Dashboard() {
         image={currentUser.image}
         description={currentUser.description}
         location={currentUser.location}
-      />
+      /> */}
 
       <Card>
         <Card.Body>

@@ -4,6 +4,7 @@ import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import { Form, Button, Card, Alert, Container, Text } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.min.css";
+import "../Styling/Contact.css"
 
 init("user_8IkyJiaBrk0LNwhab0V1p");
 const Contact = () => {
@@ -57,6 +58,7 @@ const Contact = () => {
     >
       <Card>
       <Card.Body>
+      <h2 className="text-center mb-4">Connect</h2>
     <div className="ContactForm">
       <div className="container">
         <div className="row">
@@ -70,8 +72,9 @@ const Contact = () => {
                 {/* Row 1 of form */}
                 <div className="row formRow">
                   <div className="col-6">
-                    <Form.Group>
+                    <Form.Group className="contact-input">
                     <Form.Control
+                      
                       type="text"
                       name="name"
                       {...register("name", {
@@ -88,14 +91,16 @@ const Contact = () => {
                       placeholder="Name"
                     />
                     {errors.name && (
-                      <span className="errorMessage">
+                      <span className="errorMessage" style={{color:"red"}}>
                         {errors.name.message}
                       </span>
                     )}
                     </Form.Group>
                   </div>
                   <div className="col-6">
-                    <Form.Group>
+                    <Form.Group 
+                    className="contact-input"
+                    id="email-input">
                     <Form.Control
                       type="email"
                       name="email"
@@ -108,17 +113,17 @@ const Contact = () => {
                       placeholder="Email address"
                     />
                     {errors.email && (
-                      <span className="errorMessage">
+                      <span className="errorMessage" style={{color:"red"}}>
                         Please enter a valid email address
                       </span>
                     )}
-                    </Form.Group>
+                    </Form.Group >
                   </div>
                 </div>
                 {/* Row 2 of form */}
                 <div className="row formRow">
                   <div className="col">
-                    <Form.Group>
+                    <Form.Group className="contact-input">
                     <Form.Control
                       type="text"
                       name="subject"
@@ -136,7 +141,7 @@ const Contact = () => {
                       placeholder="Subject"
                     />
                     {errors.subject && (
-                      <span className="errorMessage">
+                      <span className="errorMessage" style={{color:"red"}}>
                         {errors.subject.message}
                       </span>
                     )}
@@ -146,6 +151,7 @@ const Contact = () => {
                 {/* Row 3 of form */}
                 <div className="row formRow">
                   <div className="col">
+                    <Form.Group className="contact-input">
                     <Form.Control as="textarea"
                     // <textarea as="textarea"
                       rows={3}
@@ -157,13 +163,14 @@ const Contact = () => {
                       placeholder="Message"
                     />
                     {errors.message && (
-                      <span className="errorMessage">
+                      <span className="errorMessage" style={{color:"red"}}>
                         Please enter a message
                       </span>
                     )}
+                    </Form.Group>
                   </div>
                 </div>
-                <Button className="submit-btn" type="submit">
+                <Button id="contact-btn" className="submit-btn" type="submit">
                   Submit
                 </Button>
               </Form>

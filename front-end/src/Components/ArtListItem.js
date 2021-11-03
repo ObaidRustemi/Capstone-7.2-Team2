@@ -6,7 +6,7 @@ const ArtListItem = ({ art }) => {
     <div className="single-art-container">
       <Link to={`/users/${art.artist_id}/artwork/${art.id}`}>
       <p>{art.title}</p>
-      <img src={art.image} alt={art.artist_id}/>
+      <img src={art.image} alt={art.artist_id} widht="350px" height="350px" />
       </Link>
       </div>
   );

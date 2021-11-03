@@ -6,6 +6,14 @@
     /* border: 2px solid red */
 }
 
+.venue-info-container > h2 {
+    margin-right: 150px;
+}
+.venue-info-container > img {
+    margin-right: 150px;
+}
+
+
 .venue-image-list-container {
     display: flex;
     justify-content: space-evenly;
@@ -16,6 +24,10 @@
 .venue-profile-photo {
     max-width: 80vw;
 }
+
+/* .venue-edit-message {
+    margin-top: 50px;
+} */
 
 
 
@@ -45,6 +57,25 @@
     padding: 9px 21px 10px 20px;
     text-decoration: none;
     max-width: 145px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.venue-edit-button:hover {
+    background: #404040;
+    background-image: -webkit-linear-gradient(top, #404040, #333333);
+    background-image: -moz-linear-gradient(top, #404040, #333333);
+    background-image: -ms-linear-gradient(top, #404040, #333333);
+    background-image: -o-linear-gradient(top, #404040, #333333);
+    background-image: linear-gradient(to bottom, #404040, #333333);
+    text-decoration: none;
+}
+
+.button-and-form-container {
+    display: flex;
+    margin-bottom: 150px;
+}
+
+.show-edit-button {
+    margin-top:10px
 }

@@ -63,8 +63,9 @@ const VenueImageList = ({
       <div className="venue-bottom-container">
         <div className="combined-image-blurb-container">
           <div className="venue-blurb-container">
-            <p>{currentVenue.venue_info}</p>
-            <p>{currentVenue.address}</p>
+            <p>Venue Info: {currentVenue.venue_info}</p>
+            <p>Address: {currentVenue.address}</p>
+            <p>Price: ${currentVenue?.price?.toLocaleString()}</p>
           </div>
           <div className="venue-image-list-container">
             {venueImages.length > 0
@@ -84,15 +85,7 @@ const VenueImageList = ({
           <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
         )}
         <div className="button-and-form-container">
-          {editVenue ? (
-            <VenueEditContainer
-              setVenueChange={setVenueChange}
-              currentVenue={currentVenue}
-              setShowHideButton={setShowHideButton}
-              venueChange={venueChange}
-            />
-          ) : null}
-          {!showEditButton ? null : (
+        {!showEditButton ? null : (
             <button
               className="show-edit-button"
               onClick={() =>
@@ -102,6 +95,24 @@ const VenueImageList = ({
               Edit Venue
             </button>
           )}
+          {editVenue ? (
+            <VenueEditContainer
+              setVenueChange={setVenueChange}
+              currentVenue={currentVenue}
+              setShowHideButton={setShowHideButton}
+              venueChange={venueChange}
+            />
+          ) : null}
+          {/* {!showEditButton ? null : (
+            <button
+              className="show-edit-button"
+              onClick={() =>
+                editVenue ? setEditVenue(false) : setEditVenue(true)
+              }
+            >
+              Edit Venue
+            </button>
+          )} */}
           {showContactButton ? (
             <button
               onClick={() => {

@@ -14,17 +14,18 @@ const VenueEditContainer = ({
   venueChange,
 }) => {
   const { venue_id } = useParams();
-  const currentUser = useCurrentUser()
+  const currentUser = useCurrentUser();
   const [editedVenue, setEditedVenue] = useState({
     name: "",
     owner_id: "",
     venue_profile_photo: "",
     venue_info: "",
+    price: "",
     address: "",
   });
   const [editPostSuccess, setEditPostSuccess] = useState(null);
 
-  useEffect( () => {
+  useEffect(() => {
     const setCurrentUser = async (editedVenue) => {
       await setEditedVenue(Object.assign(currentVenue, editedVenue));
     };
@@ -36,16 +37,16 @@ const VenueEditContainer = ({
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
-    editVenueObject.owner_id = currentUser?.firebase_uid
-  
+    editVenueObject.owner_id = currentUser?.firebase_uid;
 
     try {
       const res = await axios.put(
         `${API}/users/${currentUser?.firebase_uid}/venues/${venue_id}`,
         editVenueObject
-        );
-       
-        if (res.data.success) {
+      );
+
+      if (res.data.success) {
+        debugger;
         setEditPostSuccess(true);
         setTimeout(() => {
           setEditPostSuccess(false);
@@ -57,13 +58,13 @@ const VenueEditContainer = ({
   };
 
   const handleSubmit = async (e) => {
-    console.log("hello")
+    console.log("hello");
     e.preventDefault();
     editVenue(editedVenue);
-    setVenueChange(true)
-    setTimeout(()=> {
-        setVenueChange(false)
-    }, 1000)
+    setVenueChange(true);
+    setTimeout(() => {
+      setVenueChange(false);
+    }, 1000);
   };
 
   const handleTextChange = (e) => {
@@ -71,7 +72,7 @@ const VenueEditContainer = ({
     setEditPostSuccess(null);
   };
 
-  const { name, venue_profile_photo, venue_info, address } = editedVenue;
+  const { name, venue_profile_photo, venue_info, price, address } = editedVenue;
   return (
     <div className="edit-venue-container">
       <h2>Edit Venue</h2>
@@ -103,6 +104,15 @@ const VenueEditContainer = ({
           placeholder="Enter venue information"
           //   required
         />
+        <label htmlFor="price">price:</label>
+        <input
+          id="price"
+          value={price}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Enter price of venue"
+          //   required
+        />
         <label htmlFor="address">Address:</label>
         <input
           id="address"
@@ -113,8 +123,10 @@ const VenueEditContainer = ({
           //   required
         />
         <input className="venue-edit-button" type="submit" />
+        {editPostSuccess ? (
+          <h4 className="venue-edit-message">Venue Edit Complete</h4>
+        ) : null}
       </form>
-      {editPostSuccess ? <h4>Venue Edit Complete</h4> : null}
     </div>
   );
 };

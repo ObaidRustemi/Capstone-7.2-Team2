@@ -112,7 +112,7 @@ const VenueEditContainer = ({
           placeholder="Enter city + state"
           //   required
         />
-        <input type="submit" />
+        <input className="venue-edit-button" type="submit" />
       </form>
       {editPostSuccess ? <h4>Venue Edit Complete</h4> : null}
     </div>

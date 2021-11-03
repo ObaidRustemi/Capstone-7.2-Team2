@@ -73,7 +73,7 @@ const UsersContainer = () => {
                   .map((artist) => (
                     <li key={artist.firebase_uid}>
                       <Link to={`/users/${artist.firebase_uid}`}>
-                        <Card style={{ width: "250px" }}>
+                        <Card style={{ width: "250px"  }}>
                           <Card.Img
                             variant="top"
                             src={artist.image}

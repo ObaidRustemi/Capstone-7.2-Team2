@@ -1,7 +1,9 @@
+import LandingPage from "../Pages/LandingPage"
+
 const Index = () => {
   return (
     <div id="index-main-div">
-      <h1>HOME PAGE</h1>
+      <LandingPage />
     </div>
   );
 };

@@ -105,7 +105,7 @@ const UsersContainer = () => {
                           <Card.Text>
                             <h4>{venue.name}</h4>
                             <p>{venue.address}</p>
-                            <p><strong>Price:</strong> ${venue.price}</p>
+                            <p><strong>Price:</strong> ${venue?.price?.toLocaleString()}</p>
                           </Card.Text>
                         </Card.Body>
                       </Card>

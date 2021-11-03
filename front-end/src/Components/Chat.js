@@ -131,7 +131,7 @@ function ChatMessage(props) {
 
   const { text, uid, photoURL } = props.message;
 
-  const messageClass = uid === auth.currentUser.firebase_uid ? "sent" : "received";
+  const messageClass = uid === auth.currentUser?.firebase_uid ? "sent" : "received";
 
   return (
     <>

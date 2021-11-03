@@ -2,7 +2,7 @@
 // import useCurrentUser from "../util/useCurrentUser";
 
 // export default function VenueOwnerShow() {
-  
+
 //   const currentUser = useCurrentUser()
 
 //   const [updatedInfo, setUpdatedInfo] = useState({
@@ -14,7 +14,6 @@
 //     is_venue: "",
 //     is_artist: ""
 //   });
-
 
 //   const updateVenueOwner = async (updatedInfo) => {
 //     try {
@@ -28,15 +27,13 @@
 //     }
 //   };
 
-
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
-   
+
 //   };
 
-
 //   useEffect(() => {
-      
+
 //   }, [])
 
 //   const { name, preference, description, phoneNumber, location } = updatedInfo;
@@ -66,21 +63,23 @@ import useCurrentUser from "../util/useCurrentUser";
 
 const API = apiURL();
 
-const VenueOwnerShow = ({
- userObj
-}) => {
+const VenueOwnerShow = ({ userObj }) => {
   const { venue_id } = useParams();
-  const currentUser = useCurrentUser()
-  const [editOwnerSuccess, setEditOwnerSuccess] = useState()
+  const currentUser = useCurrentUser();
+  const [editOwnerSuccess, setEditOwnerSuccess] = useState();
+  // const [editedOwner, setEditedOwner] = useState(Object.assign({},userObj))
+
   const [editedOwner, setEditedOwner] = useState({
+    id: null,
     username: "",
     image: "",
     description: "",
-    phone_number: 0,
-    location: "",
+    phone_number: "",
+    location:"",
     is_venue: "",
-    is_artist: ""
+    is_artist: "",
   });
+  // debugger;
   const [editPostSuccess, setEditPostSuccess] = useState(null);
 
   useEffect( () => {
@@ -94,18 +93,17 @@ const VenueOwnerShow = ({
   }, []);
 
   const editOwner = async (editedOwner) => {
+    // const editOwnerObject = await Object.assign({}, editedOwner);
 
-    const editOwnerObject = await Object.assign({}, editedOwner);
-    
     // editOwnerObject.owner_id = currentUser?.firebase_uid
-    editOwnerObject.id = userObj.id
+    // editOwnerObject.id = userObj.id
     try {
       const res = await axios.put(
         `${API}/users/${currentUser.firebase_uid}`,
-        editOwnerObject
-        );
-       
-        if (res.data.success) {
+        editedOwner
+      );
+
+      if (res.data.success) {
         setEditOwnerSuccess(true);
         setTimeout(() => {
           setEditOwnerSuccess(false);
@@ -117,9 +115,9 @@ const VenueOwnerShow = ({
   };
 
   const handleSubmit = async (e) => {
-    console.log("hello")
+    console.log("hello");
     e.preventDefault();
-    debugger;
+    // debugger
     editOwner(editedOwner);
 
     // setVenueChange(true)
@@ -129,12 +127,14 @@ const VenueOwnerShow = ({
   };
 
   const handleTextChange = (e) => {
-    
-    setEditedOwner({ ...editedOwner, [e.target.id]: e.target.value });
+    // debugger;
+    setEditedOwner(
+      Object.assign({}, editedOwner, { [e.target.id]: e.target.value })
+    );
+    // { ...editedOwner, [e.target.id]: e.target.value });
+    debugger;
     // setEditPostSuccess(null);
   };
-
-  
 
   const { username, image, phone_number, description, location } = editedOwner;
   return (

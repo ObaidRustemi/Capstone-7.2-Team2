@@ -33,13 +33,13 @@ export default function Dashboard() {
         username={currentUser.username}
         image={currentUser.image}
         description={currentUser.description}
-      />
+      /> */}
       <ProfileCardEdit
         username={currentUser.username}
         image={currentUser.image}
         description={currentUser.description}
         location={currentUser.location}
-      /> */}
+      /> 
 
       <Card>
         <Card.Body>

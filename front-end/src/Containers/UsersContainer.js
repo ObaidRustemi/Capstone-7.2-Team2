@@ -65,15 +65,15 @@ const UsersContainer = () => {
         style={{ minHeight: "100vh" }}
       >
         <div className="user_display">
-          <div>
+          <div >
             {toggled ? (
-              <ul>
+              <ul className="filter-artist-ul">
                 {users
                   .filter((user) => user.is_artist)
                   .map((artist) => (
                     <li key={artist.firebase_uid}>
                       <Link to={`/users/${artist.firebase_uid}`}>
-                        <Card style={{ width: "250px" }}>
+                        <Card style={{ width: "250px"  }}>
                           <Card.Img
                             variant="top"
                             src={artist.image}
@@ -91,7 +91,7 @@ const UsersContainer = () => {
                   ))}
               </ul>
             ) : (
-              <ul>
+              <ul className="filter-venue-ul">
                 {allVenues.map((venue) => (
                   <li key={venue.id}>
                     <Link to={`/users/${venue.owner_id}/venues/${venue.id}`}>
@@ -105,7 +105,7 @@ const UsersContainer = () => {
                           <Card.Text>
                             <h4>{venue.name}</h4>
                             <p>{venue.address}</p>
-                            <p><strong>Price:</strong> ${venue.price.toLocaleString()}</p>
+                            <p><strong>Price:</strong> ${venue.price}</p>
                           </Card.Text>
                         </Card.Body>
                       </Card>

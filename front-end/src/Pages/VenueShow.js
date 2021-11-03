@@ -12,13 +12,13 @@ const VenueShow = ({ venues, showAddVenue, setShowAddVenue, newVenueAdded, setNe
     <div className="user-show-container">
       <div>
         {/* <ProfileCard userObj={userObj} /> */}
-        <VenueOwnerShow userObj={userObj}/>
+        {/* <VenueOwnerShow userObj={userObj}/> */}
         <h3>My Venues</h3>
         <VenueList venues={venues} />
         {/* <UploadForm /> */}
       </div>
       {showAddVenue ? <NewVenueContainer setShowHideButton={setShowHideButton} newVenueAdded={newVenueAdded} setNewVenueAdded={setNewVenueAdded}/> : null}
-     {showHideButton? null: <button onClick={() => setShowAddVenue(true)}>Add Venue</button>}
+     {showHideButton? null: <button className="add-venue-button" onClick={() => setShowAddVenue(true)}>Add Venue</button>}
       {showHideButton? <button onClick={() => {
         setShowAddVenue(false)
         setShowHideButton(false)

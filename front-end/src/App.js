@@ -20,6 +20,7 @@ import UploadArtwork from "./Components/UploadArtwork";
 import UploadVenueImage from "./Components/UploadVenueImage";
 import VenueOwnerUpdate from "./Components/VenueOwnerUpdate";
 import Footer from "./Components/Footer"
+
 // import Chat from "./Components/Chat";
 
 //DEPENDENCIES

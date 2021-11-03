@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS users;
+
+DROP TABLE IF EXISTS users cascade;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
@@ -12,6 +13,7 @@ CREATE TABLE users(
     is_venue BOOLEAN,
     is_artist BOOLEAN,
     status TEXT
+  
 );
 
 DROP TABLE IF EXISTS artwork;
@@ -35,7 +37,7 @@ CREATE TABLE artwork(
 --     message TEXT
 -- );
 
-DROP TABLE IF EXISTS venues;
+DROP TABLE IF EXISTS venues cascade;
 
 CREATE TABLE venues(
     id SERIAL PRIMARY KEY, 
@@ -43,8 +45,8 @@ CREATE TABLE venues(
     venue_profile_photo TEXT,
     owner_id TEXT REFERENCES users(firebase_uid),
     venue_info TEXT,
-    address TEXT
-    -- ON DELETE CASCADE
+    address TEXT,
+    price INT
 );
 
 --COME BACK LATER --

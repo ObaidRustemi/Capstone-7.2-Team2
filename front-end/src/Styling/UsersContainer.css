@@ -49,4 +49,19 @@ ul li img {
 
 .venue_img{
   max-width: 350px;
+  max-height: 200px;
+}
+
+.artist_img {
+  max-width: 350px;
+  max-height: 250px;
+}
+
+.filter-artist-ul{
+  display: flex;
+  flex-direction: row;
+}
+.filter-venue-ul{
+  display: flex;
+  flex-direction: row;
 }

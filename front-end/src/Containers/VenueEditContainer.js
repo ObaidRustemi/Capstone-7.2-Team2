@@ -36,12 +36,12 @@ const VenueEditContainer = ({
 
   const editVenue = async (venue) => {
     const editVenueObject = Object.assign({}, editedVenue);
-    editVenueObject.owner_id = currentUser.firebase_uid
+    editVenueObject.owner_id = currentUser?.firebase_uid
   
 
     try {
       const res = await axios.put(
-        `${API}/users/${currentUser.firebase_uid}/venues/${venue_id}`,
+        `${API}/users/${currentUser?.firebase_uid}/venues/${venue_id}`,
         editVenueObject
         );
        
@@ -112,7 +112,7 @@ const VenueEditContainer = ({
           placeholder="Enter city + state"
           //   required
         />
-        <input type="submit" />
+        <input className="venue-edit-button" type="submit" />
       </form>
       {editPostSuccess ? <h4>Venue Edit Complete</h4> : null}
     </div>

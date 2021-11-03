@@ -12,7 +12,12 @@ export default function ProfileCard({ userObj }) {
         <div class="card p-4">
           <div class="image d-flex flex-column justify-content-center align-items-center">
             <button class="btn btn-secondary">
-              <img src={userObj.image} height="150px" width="150px" alt="" />
+              <img
+                src={userObj.image}
+                height="150"
+                width="150"
+                alt=""
+              />
             </button>
             <span class="name mt-3">{userObj.username}</span>
             {/* <span class="idd">@Mearone</span> */}

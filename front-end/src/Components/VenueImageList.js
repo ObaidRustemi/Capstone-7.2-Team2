@@ -65,7 +65,7 @@ const VenueImageList = ({
           <div className="venue-blurb-container">
             <p>Venue Info: {currentVenue.venue_info}</p>
             <p>Address: {currentVenue.address}</p>
-            <p>Price: ${currentVenue.price}</p>
+            <p>Price: ${currentVenue?.price?.toLocaleString()}</p>
           </div>
           <div className="venue-image-list-container">
             {venueImages.length > 0

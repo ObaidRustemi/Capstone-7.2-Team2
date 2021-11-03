@@ -12,7 +12,6 @@ const Landing = () => {
           <span className="am1 nl">C A N V A S</span>
           <span className="am1 nl">V I S I O N S</span>
           <span className="am1 nl">P A S S I O N </span>
-          <span className="am1 nl">I N S P R A T I O N </span>
           <span className="am1 last">A R T</span>
         </div>
       </div>

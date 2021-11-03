@@ -43,38 +43,32 @@ a:link {
   left: 20px;
 }
 .animated-words .nl:nth-child(2) {
-  -webkit-animation-delay: 3s;
-  -ms-animation-delay: 3s;
-  animation-delay: 3s;
+  -webkit-animation-delay: 2s;
+  -ms-animation-delay: 2s;
+  animation-delay: 2s;
   padding-top: 35px;
 
   color: aliceblue;
 }
 .animated-words .nl:nth-child(3) {
-  -webkit-animation-delay: 5s;
-  -ms-animation-delay: 5s;
-  animation-delay: 5s;
+  -webkit-animation-delay: 4s;
+  -ms-animation-delay: 4s;
+  animation-delay: 4s;
   padding-top: 35px;
   color: aliceblue;
 }
 .animated-words .nl:nth-child(4) {
-  -webkit-animation-delay: 7s;
-  -ms-animation-delay: 7s;
-  animation-delay: 7s;
+  -webkit-animation-delay: 6s;
+  -ms-animation-delay: 6s;
+  animation-delay: 6s;
   padding-top: 35px;
   color: aliceblue;
 }
-.animated-words .nl:nth-child(5) {
-  -webkit-animation-delay: 9s;
-  -ms-animation-delay: 9s;
-  animation-delay: 9s;
-  padding-top: 35px;
-  color: aliceblue;
-}
-.animated-words .last:nth-child(6) {
-  -webkit-animation-delay: 11s;
-  -ms-animation-delay: 11s;
-  animation-delay: 11s;
+
+.animated-words .last:nth-child(5) {
+  -webkit-animation-delay: 8s;
+  -ms-animation-delay: 8s;
+  animation-delay: 8s;
   padding-top: 35px;
   color: aliceblue;
 }
@@ -84,9 +78,9 @@ a:link {
   overflow: hidden;
   color: aliceblue;
   padding-top: 35px;
-  -webkit-animation: animateWord 11s linear 1 0s;
-  -ms-animation: animateWord 11s linear 1 0s;
-  animation: animateWord 11s linear 1 0s;
+  -webkit-animation: animateWord 8s linear 1 0s;
+  -ms-animation: animateWord 8s linear 1 0s;
+  animation: animateWord 8s linear 1 0s;
 }
 @keyframes animateWord {
   0% {
@@ -146,8 +140,8 @@ a:link {
 }
 
 .animated-words .last {
-  -webkit-animation: animateWordLast 100s linear 1 18s;
-  animation: animateWordLast 100s linear 1 18s;
+  -webkit-animation: animateWordLast 100s linear 1 8s;
+  animation: animateWordLast 100s linear 1 8s;
 }
 @keyframes animateWordLast {
   0% {

@@ -53,11 +53,13 @@ const VenueImageList = ({
   return (
     <div className="venue-info-container">
       <h2>{currentVenue.name}</h2>
+
       <img
         className="venue-profile-photo"
         src={currentVenue.venue_profile_photo}
         alt=""
       />
+
       <div className="venue-bottom-container">
         <div className="combined-image-blurb-container">
           <div className="venue-blurb-container">
@@ -93,7 +95,9 @@ const VenueImageList = ({
           {!showEditButton ? null : (
             <button
               className="show-edit-button"
-              onClick={() => setEditVenue(true)}
+              onClick={() =>
+                editVenue ? setEditVenue(false) : setEditVenue(true)
+              }
             >
               Edit Venue
             </button>

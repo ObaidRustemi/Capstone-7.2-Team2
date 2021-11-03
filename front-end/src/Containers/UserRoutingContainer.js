@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { apiURL } from "../util/apiURL";
 import { getUserVenues, getUserArtwork, getUser } from "../Actions/userActions";
+import useCurrentUser from "../util/useCurrentUser";
 
 import VenueShow from "../Pages/VenueShow";
 import ArtistShow from "../Pages/ArtistShow";
@@ -14,6 +15,7 @@ const API = apiURL();
 const UserRoutingContainer = () => {
   const dispatch = useDispatch();
   const { firebase_uid } = useParams();
+  const currentUser = useCurrentUser();
 
   const venues = useSelector((state) => state.venues);
   const artwork = useSelector((state) => state.artwork);
@@ -59,6 +61,7 @@ const UserRoutingContainer = () => {
         setShowEditArtist={setShowEditArtist}
         editArtistSuccess={editArtistSuccess}
         setEditArtistSuccess={setEditArtistSuccess}
+        currentUser={currentUser}
       />
     </div>
   ) : (

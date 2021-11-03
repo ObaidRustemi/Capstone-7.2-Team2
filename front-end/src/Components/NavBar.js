@@ -10,7 +10,8 @@ const NavBar = () => {
 
   return (
     <Navbar id="nav-main-div" expand="xxl" bg="dark" variant="light">
-      <Navbar.Brand href="/users">
+
+      <Navbar.Brand href="/">
         <img className="logo" src={Logo} alt="logo" />
       </Navbar.Brand>
       {currentUser ? (

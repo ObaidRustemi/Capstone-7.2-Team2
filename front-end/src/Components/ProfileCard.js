@@ -1,19 +1,18 @@
-import React from "react";
+// import { useState } from "react";
+import useCurrentUser from "../util/useCurrentUser";
+import { useParams } from "react-router";
 
 export default function ProfileCard({ userObj }) {
-  debugger;
+  const currentUser = useCurrentUser();
+  const { firebase_uid } = useParams();
+
   return (
     <div>
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
-          <div class=" image d-flex flex-column justify-content-center align-items-center">
+          <div class="image d-flex flex-column justify-content-center align-items-center">
             <button class="btn btn-secondary">
-              <img
-                src={userObj.image}
-                height="200"
-                width="200"
-                alt=""
-              />
+              <img src={userObj.image} height="150px" width="150px" alt="" />
             </button>
             <span class="name mt-3">{userObj.username}</span>
             {/* <span class="idd">@Mearone</span> */}
@@ -29,9 +28,19 @@ export default function ProfileCard({ userObj }) {
                 <span class="follow">Followers</span>
               </span>
             </div> */}
-            <div class=" d-flex mt-2">
-              <button class="btn1 btn-dark">Edit Profile</button>
-            </div>
+            {currentUser?.firebase_uid === userObj.firebase_uid ? (
+              <div class=" d-flex mt-2">
+                <button style={{ margin: "10px" }} className="btn1 btn-dark">
+                  Edit Profile
+                </button>
+              </div>
+            ) : (
+              <div class=" d-flex mt-2">
+                <button style={{ margin: "10px" }} className="btn1 btn-dark">
+                  Contact
+                </button>
+              </div>
+            )}
             <div class="text mt-3">
               <span>
                 {userObj.description}

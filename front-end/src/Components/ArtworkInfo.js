@@ -9,9 +9,9 @@ const ArtworkInfo = ({ image }) => {
     <div className="artwork-info">
 
       {image?.image ? <img src={image.image} alt={""}/> : <h1>Image Not Found</h1>}
-      {/* <div className="card-body text-dark"> */}
+      <div className="card-body text-dark">
         <h4 className="card-title">{image.title}</h4>
-      {/* </div> */}
+      </div>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import ArtistInfoCard from "../Components/ArtistInfoCard";
 // import useCurrentUser from "../util/useCurrentUser";
 import Contact from "../Components/Contact";
 import { useParams } from "react-router";
+import ProfileCard from "../Components/ProfileCard";
+import "../Styling/ArtistShow.css"
 import { async } from "@firebase/util";
 
 const ArtistShow = ({
@@ -46,10 +48,13 @@ const ArtistShow = ({
   }, [userObj]);
 
   return (
-    <div className="artist-show-container">
+    // <div className="artist-show-container">
+    <div className="artist-show">
+
       {/* <h2>Artist Details</h2> */}
+      <ProfileCard userObj={userObj}/>
       <ArtworkList artwork={artwork} />
-      <div className="artist-details">
+      {/* <div className="artist-details">
         <div className="card">
           <ArtistInfoCard userObj={userObj} />
           
@@ -72,8 +77,7 @@ const ArtistShow = ({
               editArtistSuccess={editArtistSuccess}
               setEditArtistSuccess={setEditArtistSuccess}
             />
-          ) : null}
-      <Contact />
+          ) : null} */}
     </div>
   );
 };

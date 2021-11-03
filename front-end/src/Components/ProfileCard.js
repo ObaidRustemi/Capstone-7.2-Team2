@@ -1,11 +1,16 @@
-import React from "react";
+import useCurrentUser from "../util/useCurrentUser";
+import ArtistEditContainer from "../Containers/ArtistEditContainer";
+import { useHistory } from "react-router-dom";
+
 
 export default function ProfileCard({ userObj }) {
+  const currentUser = useCurrentUser();
+  const history = useHistory();
   return (
     <div>
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
-          <div class=" image d-flex flex-column justify-content-center align-items-center">
+          <div class="image d-flex flex-column justify-content-center align-items-center">
             <button class="btn btn-secondary">
               <img
                 src={userObj.image}
@@ -28,9 +33,21 @@ export default function ProfileCard({ userObj }) {
                 <span class="follow">Followers</span>
               </span>
             </div> */}
-            <div class=" d-flex mt-2">
-              <button class="btn1 btn-dark">Edit Profile</button>
-            </div>
+            {currentUser?.firebase_uid === userObj.firebase_uid ? (
+              <div class=" d-flex mt-2">
+                <button style={{ margin: "10px" }} className="btn1 btn-dark" onClick={<ArtistEditContainer/>}>
+                  Edit Profile
+                </button>
+              </div>
+            ) : (
+              <div class=" d-flex mt-2">
+                <button onClick={()=> {
+                    history.push('/contact')
+                }}style={{ margin: "10px" }} className="btn1 btn-dark">
+                  Contact
+                </button>
+              </div>
+            )}
             <div class="text mt-3">
               <span>
                 {userObj.description}

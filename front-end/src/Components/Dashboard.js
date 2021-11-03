@@ -39,7 +39,7 @@ export default function Dashboard() {
         image={currentUser.image}
         description={currentUser.description}
         location={currentUser.location}
-      />
+      /> 
 
       <Card>
         <Card.Body>

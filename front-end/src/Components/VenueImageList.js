@@ -66,6 +66,15 @@ const VenueImageList = ({
             <p>Venue Info: {currentVenue.venue_info}</p>
             <p>Address: {currentVenue.address}</p>
             <p>Price: ${currentVenue?.price?.toLocaleString()}</p>
+            {showContactButton ? (
+            <button className="venue-contact-button"
+              onClick={() => {
+                contact();
+              }}
+            >
+              Contact
+            </button>
+          ) : null}
           </div>
           <div className="venue-image-list-container">
             {venueImages.length > 0
@@ -113,15 +122,7 @@ const VenueImageList = ({
               Edit Venue
             </button>
           )} */}
-          {showContactButton ? (
-            <button
-              onClick={() => {
-                contact();
-              }}
-            >
-              Contact
-            </button>
-          ) : null}
+          
           {/* {showHideButton ? (
             <button
               className="hide-button"

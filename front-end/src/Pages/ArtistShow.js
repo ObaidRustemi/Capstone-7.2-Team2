@@ -51,7 +51,7 @@ const ArtistShow = ({
     // <div className="artist-show-container">
     <div className="artist-show">
 
-      {/* <h2>Artist Details</h2> */}
+      <h2>Artist Details</h2>
       <ProfileCard userObj={userObj}/>
       <ArtworkList artwork={artwork} />
       {/* <div className="artist-details">

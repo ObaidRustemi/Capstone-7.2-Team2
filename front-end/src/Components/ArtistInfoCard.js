@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styling/ArtistCard.css";
+import "../Styling/ArtistCard.scss";
 
 
 const ArtistInfoCard = ({ userObj }) => {
